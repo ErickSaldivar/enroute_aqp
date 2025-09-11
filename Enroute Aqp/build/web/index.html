@@ -1,194 +1,138 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
-<html lang="es"><head>
-<meta charset="utf-8"/>
-<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" onload="this.rel='stylesheet'" rel="stylesheet"/>
-<title>Enroute AQP - Tu Guía de Autobuses en la Ciudad Blanca</title>
-<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style type="text/tailwindcss">
-      :root {
-        --brand-red-brick: #ec5413;
-        --brand-beige: #fcf9f8;
-        --brand-yellow: #fde68a;
-        --brand-text-primary: #1b120d;
-        --brand-text-secondary: #9a634c;
-        --brand-border: #f3ebe7;
-      }
-    </style>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Enroute AQP - Tu Guía de Autobuses en la Ciudad Blanca</title>
+    <link rel="stylesheet" href="css/landing-styles.css">
 </head>
-<body class="bg-[var(--brand-beige)] text-[var(--brand-text-primary)]" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
-<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<header class="sticky top-0 z-50 bg-[var(--brand-beige)]/80 backdrop-blur-sm">
-<div class="container mx-auto flex items-center justify-between whitespace-nowrap px-4 sm:px-6 lg:px-8 py-4">
-<a class="flex items-center gap-2 text-[var(--brand-text-primary)]" href="#">
-<svg class="h-8 w-8 text-[var(--brand-red-brick)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M13.8261 30.5736C16.7203 29.8826 20.2244 29.4783 24 29.4783C27.7756 29.4783 31.2797 29.8826 34.1739 30.5736C36.9144 31.2278 39.9967 32.7669 41.3563 33.8352L24.8486 7.36089C24.4571 6.73303 23.5429 6.73303 23.1514 7.36089L6.64374 33.8352C8.00331 32.7669 11.0856 31.2278 13.8261 30.5736Z" fill="currentColor"></path>
-<path clip-rule="evenodd" d="M39.998 35.764C39.9944 35.7463 39.9875 35.7155 39.9748 35.6706C39.9436 35.5601 39.8949 35.4259 39.8346 35.2825C39.8168 35.2403 39.7989 35.1993 39.7813 35.1602C38.5103 34.2887 35.9788 33.0607 33.7095 32.5189C30.9875 31.8691 27.6413 31.4783 24 31.4783C20.3587 31.4783 17.0125 31.8691 14.2905 32.5189C12.0012 33.0654 9.44505 34.3104 8.18538 35.1832C8.17384 35.2075 8.16216 35.233 8.15052 35.2592C8.09919 35.3751 8.05721 35.4886 8.02977 35.589C8.00356 35.6848 8.00039 35.7333 8.00004 35.7388C8.00004 35.739 8 35.7393 8.00004 35.7388C8.00004 35.7641 8.0104 36.0767 8.68485 36.6314C9.34546 37.1746 10.4222 37.7531 11.9291 38.2772C14.9242 39.319 19.1919 40 24 40C28.8081 40 33.0758 39.319 36.0709 38.2772C37.5778 37.7531 38.6545 37.1746 39.3151 36.6314C39.9006 36.1499 39.9857 35.8511 39.998 35.764ZM4.95178 32.7688L21.4543 6.30267C22.6288 4.4191 25.3712 4.41909 26.5457 6.30267L43.0534 32.777C43.0709 32.8052 43.0878 32.8338 43.104 32.8629L41.3563 33.8352C43.104 32.8629 43.1038 32.8626 43.104 32.8629L43.1051 32.865L43.1065 32.8675L43.1101 32.8739L43.1199 32.8918C43.1276 32.906 43.1377 32.9246 43.1497 32.9473C43.1738 32.9925 43.2062 33.0545 43.244 33.1299C43.319 33.2792 43.4196 33.489 43.5217 33.7317C43.6901 34.1321 44 34.9311 44 35.7391C44 37.4427 43.003 38.7775 41.8558 39.7209C40.6947 40.6757 39.1354 41.4464 37.385 42.0552C33.8654 43.2794 29.133 44 24 44C18.867 44 14.1346 43.2794 10.615 42.0552C8.86463 41.4464 7.30529 40.6757 6.14419 39.7209C4.99695 38.7775 3.99999 37.4427 3.99999 35.7391C3.99999 34.8725 4.29264 34.0922 4.49321 33.6393C4.60375 33.3898 4.71348 33.1804 4.79687 33.0311C4.83898 32.9556 4.87547 32.8935 4.9035 32.8471C4.91754 32.8238 4.92954 32.8043 4.93916 32.7889L4.94662 32.777L4.95178 32.7688ZM35.9868 29.004L24 9.77997L12.0131 29.004C12.4661 28.8609 12.9179 28.7342 13.3617 28.6282C16.4281 27.8961 20.0901 27.4783 24 27.4783C27.9099 27.4783 31.5719 27.8961 34.6383 28.6282C35.082 28.7342 35.5339 28.8609 35.9868 29.004Z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-<h2 class="text-xl font-bold tracking-tight">Enroute AQP</h2>
-</a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium hover:text-[var(--brand-red-brick)] transition-colors" href="#">Inicio</a>
-<a class="text-sm font-medium hover:text-[var(--brand-red-brick)] transition-colors" href="#">Cómo funciona</a>
-<a class="text-sm font-medium hover:text-[var(--brand-red-brick)] transition-colors" href="#">Beneficios</a>
-<a class="text-sm font-medium hover:text-[var(--brand-red-brick)] transition-colors" href="#">Contacto</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="md:hidden">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-<button class="hidden md:flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-[var(--brand-red-brick)] text-[var(--brand-beige)] text-sm font-bold shadow-lg shadow-[var(--brand-red-brick)]/20 hover:bg-opacity-90 transition-all">
-<span class="truncate">Quiero probar la app</span>
-</button>
-</div>
-</div>
-</header>
-<main class="flex-1">
-<section class="relative">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
-<div class="absolute inset-0 bg-cover bg-center" style='background-image: linear-gradient(to top, rgba(0,0,0,0.6) 20%, rgba(0,0,0,0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZNu-iBoLK4BBxUYW5tZ74_Qi6VSnczVcWY5qg-V3tWIN8BtLMoUNB-0wzelhFP1eqeaXGWm2grXXQeW9wp0BxF0_suF6J-k9gwIkxIAyieQ7kl9erzPj8TIaOPGA6cpqMxEraiYwjjzOwBbqAgY0tO3McRVs9GC8tOGc9qMlION0mvhVqfX0OZkzc3DClmqD0T3AWTP6XafWahQRAs33cYjXd8sRjutpEtuQJa5DacJ-bnRLx_Kv9HPWREKXPJVdLe4QVWqGpSKc_");'></div>
-<div class="relative z-10 text-center text-white max-w-3xl mx-auto">
-<h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-shadow">
-                  Descubre cómo llegar a tu destino en Arequipa en bus, fácil y económico
-                </h1>
-<p class="mt-6 text-lg sm:text-xl font-light max-w-2xl mx-auto text-shadow-sm">
-                  Encuentra la ruta perfecta para moverte por Arequipa de forma eficiente y asequible.
-                </p>
-<div class="mt-8 flex justify-center">
-<button class="min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-8 bg-[var(--brand-red-brick)] text-[var(--brand-beige)] text-base font-bold shadow-lg shadow-[var(--brand-red-brick)]/30 hover:bg-opacity-90 transition-all transform hover:scale-105">
-<span class="truncate">Quiero probar la app</span>
-</button>
-</div>
-</div>
-</div>
-</section>
-<section class="py-16 sm:py-24 bg-white">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--brand-text-primary)]">¿Cansado de perder tiempo y dinero?</h2>
-<p class="mt-4 max-w-2xl mx-auto text-lg text-[var(--brand-text-secondary)]">
-                En Arequipa, moverse puede ser un desafío. Los taxis son caros y las rutas de bus pueden ser confusas, especialmente para los visitantes. ¿No sería genial tener una forma fácil y económica de explorar la ciudad?
-              </p>
-</div>
-</section>
-<section class="py-16 sm:py-24 bg-[var(--brand-beige)]">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-12">
-<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--brand-text-primary)]">La solución está en tu bolsillo</h2>
-<p class="mt-4 max-w-2xl mx-auto text-lg text-[var(--brand-text-secondary)]">
-                  Con Enroute AQP, moverse por la ciudad es más fácil que nunca. Nuestra app te ofrece:
-                </p>
-</div>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
-<div class="flex flex-col gap-4">
-<div class="w-full h-48 bg-center bg-no-repeat bg-cover rounded-xl shadow-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBufbvAQWJp0uYKNLZqTPqDKiNWwztSLL02k45_9aiKOMS_i-awK_OobVjUJSg3FJB7eMoCmHPbaLbVcupZb8jNlj9EWkSU7tHXqQ09cJ-vlGFQ5VkhKpbdMHEyNFM1QGEOZZbj1X0SaQh37fMApyavc7oOQA7UUk78sapY8MFbP6pM03__j3XiHB9hciKhcchPaWmEtveupZ8ZiPswQsGbd8ayQQkbI44CYc_aDGPvOgPEDbFHK-RIIsPOc_Scy2a2Sct43DjMzWst");'></div>
-<div>
-<h3 class="text-xl font-bold text-[var(--brand-text-primary)]">Rutas optimizadas</h3>
-<p class="mt-2 text-[var(--brand-text-secondary)]">Encuentra la ruta de bus más rápida y eficiente para llegar a tu destino.</p>
-</div>
-</div>
-<div class="flex flex-col gap-4">
-<div class="w-full h-48 bg-center bg-no-repeat bg-cover rounded-xl shadow-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3hGuMddLugBoCPmdR47p0UxPWyexSZ6UzSrjrRG3dNGsmxd_TQnsPyZUBXauwWKRJ_K86O0lBVAg1sL2CRHcR0ErCmRi6OSddO9NwUeKdW_xD59TmYooN7WK09KQZMhiJuvSmT6Jy9ZNOPEfb7nYxcVHsKu13KkeRko11VirT3dSP6yHMll-ywOJmlJYOvuVal8aZy9yH7NiuAM09KELmutABDMH0_Nq1K01CjYG2FRhnxdW1Fz7PTZtoB2UT_4OUyHOJ5cUEnVJW");'></div>
-<div>
-<h3 class="text-xl font-bold text-[var(--brand-text-primary)]">Información en tiempo real</h3>
-<p class="mt-2 text-[var(--brand-text-secondary)]">Sigue la ubicación de los buses en tiempo real y evita esperas innecesarias.</p>
-</div>
-</div>
-<div class="flex flex-col gap-4">
-<div class="w-full h-48 bg-center bg-no-repeat bg-cover rounded-xl shadow-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDm54siGeoQ2QIg5TMaPQDmdYyaVCE_XKSyl0exMiZ3PkRu-yYe6KU0ojZgRq-ypWlfIaqc4EBcDtEgr6fLvLcfBM7csPGxw0X9xbQGAvLb2O_iDmnk_jZwcOxIXguYzsSxCt7y4vUrm62roNJtl5bxDtKoU2hgPjcvW3yFbV_A56TC2I5JmzSINHNBijjxNuK9lbnyFPTBoz3gnp00O2tFAR9apbvXYZPIkXecKhcoKtWThyjKedZ2gw-XYGi3m8aI3vpihOFgvIIB");'></div>
-<div>
-<h3 class="text-xl font-bold text-[var(--brand-text-primary)]">Fácil de usar</h3>
-<p class="mt-2 text-[var(--brand-text-secondary)]">Interfaz intuitiva y amigable, ideal para turistas y locales.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="py-16 sm:py-24 bg-white">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-12">
-<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--brand-text-primary)]">Ventajas de viajar con nosotros</h2>
-<p class="mt-4 max-w-2xl mx-auto text-lg text-[var(--brand-text-secondary)]">Enroute AQP te ofrece una experiencia de viaje superior.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="flex flex-col items-center text-center p-8 rounded-xl bg-[var(--brand-beige)] transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-<div class="bg-[var(--brand-red-brick)]/10 p-4 rounded-full mb-4">
-<svg class="w-8 h-8 text-[var(--brand-red-brick)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-<path d="M12 18a6 6 0 100-12 6 6 0 000 12z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</div>
-<h3 class="text-xl font-bold text-[var(--brand-text-primary)]">Ahorra dinero</h3>
-<p class="mt-2 text-[var(--brand-text-secondary)]">Viaja en bus por una fracción del costo de un taxi y ahorra para lo que de verdad importa.</p>
-</div>
-<div class="flex flex-col items-center text-center p-8 rounded-xl bg-[var(--brand-beige)] transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-<div class="bg-[var(--brand-red-brick)]/10 p-4 rounded-full mb-4">
-<svg class="w-8 h-8 text-[var(--brand-red-brick)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 3l6-3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</div>
-<h3 class="text-xl font-bold text-[var(--brand-text-primary)]">Rutas rápidas</h3>
-<p class="mt-2 text-[var(--brand-text-secondary)]">Planifica tus viajes de forma eficiente y sin complicaciones para no perderte de nada.</p>
-</div>
-<div class="flex flex-col items-center text-center p-8 rounded-xl bg-[var(--brand-beige)] transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-<div class="bg-[var(--brand-red-brick)]/10 p-4 rounded-full mb-4">
-<svg class="w-8 h-8 text-[var(--brand-red-brick)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</div>
-<h3 class="text-xl font-bold text-[var(--brand-text-primary)]">Para todos</h3>
-<p class="mt-2 text-[var(--brand-text-secondary)]">Explora Arequipa como un local, sin perderte ni gastar de más. Ideal para turistas y residentes.</p>
-</div>
-</div>
-</div>
-</section>
-<section class="py-16 sm:py-24 bg-[var(--brand-beige)]">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--brand-text-primary)]">Lo que dicen nuestros usuarios</h2>
-<div class="mt-8 max-w-2xl mx-auto">
-<blockquote class="text-xl italic text-[var(--brand-text-primary)]">
-                  "¡Enroute AQP me ha salvado! Como turista, me era muy difícil moverme en bus. Ahora puedo explorar la ciudad sin problemas y sin gastar una fortuna."
-                </blockquote>
-<cite class="mt-4 block font-semibold text-[var(--brand-text-secondary)]">- Sofia Ramirez, Turista</cite>
-</div>
-</div>
-</section>
-<section class="py-16 sm:py-24 bg-white">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<div class="bg-[var(--brand-yellow)]/20 rounded-2xl p-8 sm:p-12 lg:p-16 text-center">
-<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--brand-text-primary)]">Sé el primero en probar Enroute AQP</h2>
-<p class="mt-4 max-w-2xl mx-auto text-lg text-[var(--brand-text-secondary)]">
-                  Regístrate y empieza a explorar Arequipa de forma inteligente.
-                </p>
-<div class="mt-8 max-w-md mx-auto">
-<form class="flex flex-col sm:flex-row gap-4">
-<input class="flex-1 w-full px-5 py-3 rounded-lg border-2 border-transparent bg-white focus:outline-none focus:ring-2 focus:ring-[var(--brand-red-brick)] focus:border-transparent placeholder:text-[var(--brand-text-secondary)]/70" placeholder="Tu correo electrónico" type="email"/>
-<button class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[var(--brand-red-brick)] text-white font-bold shadow-lg shadow-[var(--brand-red-brick)]/20 hover:bg-opacity-90 transition-all transform hover:scale-105" type="submit">
-                      Recibir acceso anticipado
-                    </button>
-</form>
-</div>
-</div>
-</div>
-</section>
-</main>
-<footer class="bg-[var(--brand-text-primary)] text-white">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm">
-<p>© 2024 Enroute AQP. Todos los derechos reservados.</p>
-<nav class="mt-4 flex justify-center gap-6">
-<a class="hover:text-[var(--brand-yellow)] transition-colors" href="#">Términos de servicio</a>
-<a class="hover:text-[var(--brand-yellow)] transition-colors" href="#">Política de privacidad</a>
-</nav>
-</div>
-</footer>
-</div>
-</div>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h2>Enroute AQP</h2>
+            </div>
+            <nav class="navigation">
+                <a href="#">Inicio</a>
+                <a href="#">Cómo funciona</a>
+                <a href="#">Beneficios</a>
+                <a href="#">Contacto</a>
+            </nav>
+            <a href='pages/login.jsp'><button class="btn-primary" >Iniciar Sesión </button></a>
+        </div>
+    </header>
 
-</body></html>
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Descubre cómo llegar a tu destino en Arequipa en bus, fácil y económico</h1>
+                <p>Encuentra la ruta perfecta para moverte por Arequipa de forma eficiente y asequible.</p>
+                <button class="btn-hero">Quiero probar la app</button>
+            </div>
+        </section>
+
+        <!-- Sección problema -->
+        <section class="problem-section">
+            <div class="container">
+                <h2>¿Cansado de perder tiempo y dinero?</h2>
+                <p>En Arequipa, moverse puede ser un desafío. Los taxis son caros y las rutas de bus pueden ser confusas, especialmente para los visitantes. ¿No sería genial tener una forma fácil y económica de explorar la ciudad?</p>
+            </div>
+        </section>
+
+        <!-- Sección solución -->
+        <section class="solution-section">
+            <div class="container">
+                <h2>La solución está en tu bolsillo</h2>
+                <p>Con Rutas Arequipa, moverse por la ciudad es más fácil que nunca. Nuestra app te ofrece:</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-image feature-image-1"></div>
+                        <h3>Rutas optimizadas</h3>
+                        <p>Encuentra la ruta de bus más rápida y eficiente para llegar a tu destino.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-image feature-image-2"></div>
+                        <h3>Información en tiempo real</h3>
+                        <p>Sigue la ubicación de los buses en tiempo real y evita esperas innecesarias.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-image feature-image-3"></div>
+                        <h3>Fácil de usar</h3>
+                        <p>Interfaz intuitiva y amigable, ideal para turistas y locales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección ventajas -->
+        <section class="benefits-section">
+            <div class="container">
+                <h2>Ventajas de viajar con nosotros</h2>
+                <p>Rutas Arequipa te ofrece una experiencia de viaje superior.</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💰</div>
+                        <h3>Ahorra dinero</h3>
+                        <p>Viaja en bus por una fracción del costo de un taxi y ahorra para lo que de verdad importa.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🗺️</div>
+                        <h3>Rutas rápidas</h3>
+                        <p>Planifica tus viajes de forma eficiente y sin complicaciones para no perderte de nada.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">👥</div>
+                        <h3>Para todos</h3>
+                        <p>Explora Arequipa como un local, sin perderte ni gastar de más. Ideal para turistas y residentes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección testimonios -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2>Lo que dicen nuestros usuarios</h2>
+                <div class="testimonial">
+                    <blockquote>"¡Rutas Arequipa me ha salvado! Como turista, me era muy difícil moverme en bus. Ahora puedo explorar la ciudad sin problemas y sin gastar una fortuna."</blockquote>
+                    <cite>- Sofia Ramirez, Turista</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección registro -->
+        <section class="signup-section">
+            <div class="container">
+                <div class="signup-box">
+                    <h2>Sé el primero en probar Rutas Arequipa</h2>
+                    <p>Regístrate para recibir acceso anticipado a nuestra app y empieza a explorar Arequipa de forma inteligente.</p>
+                    
+                    <form class="signup-form">
+                        <input type="email" placeholder="Tu correo electrónico" class="email-input">
+                        <button type="submit" class="btn-signup">Recibir acceso anticipado</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Rutas Arequipa. Todos los derechos reservados.</p>
+            <nav class="footer-nav">
+                <a href="#">Términos de servicio</a>
+                <a href="#">Política de privacidad</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

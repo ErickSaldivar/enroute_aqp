@@ -1,0 +1,5 @@
+11-Sep-2025 00:06:17.709 INFO [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+11-Sep-2025 00:06:17.710 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+11-Sep-2025 00:06:17.711 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+11-Sep-2025 00:06:17.723 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+11-Sep-2025 00:06:17.735 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
