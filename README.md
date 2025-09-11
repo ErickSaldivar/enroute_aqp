@@ -1,6 +1,8 @@
 # Enroute AQP - Tu Guía de Autobuses en la Ciudad Blanca
 
-*logo
+<div align="center">
+<img src="https://github.com/ErickSaldivar/enroute_aqp/blob/main/Enroute%20Aqp/web/assets/icon_img.png" width="200" height="200">
+</div>
 
 ## Descripción del Proyecto
 
@@ -18,3 +20,20 @@ Nuestra mision es ayudar a los residentes y turistas a navegar por el sistema de
 ..
 ..
 ..
+
+## Tecnologias Utilizadas
+
+- **Frontend**: HTML5, CSS3
+- **Backend**: Java (NetBeans)
+-
+
+
+## Contacto
+
+Para mas informacion o consultas, no dudes en contactarnos:
+
+- **Email**: u21232573@utp.edu.pe
+- **Telefono**: +51 971388052
+
+© 2024 Enroute AQP. Todos los derechos reservados.
+  
