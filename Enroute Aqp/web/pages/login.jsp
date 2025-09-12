@@ -25,13 +25,20 @@
             <h2 class="subtitle">Iniciar Sesión</h2>
             
             <% String error = (String) request.getAttribute("error"); %>
-            <% if (error != null) { %>
-                <div class="error-message" style="color: #d32f2f; background-color: #ffebee; padding: 10px; border-radius: 4px; margin-bottom: 15px; text-align: center;">
-                    <%= error %>
-                </div>
-            <% } %>
+             <% if (error != null) { %>
+                 <div class="error-message" style="color: #d32f2f; background-color: #ffebee; padding: 10px; border-radius: 4px; margin-bottom: 15px; text-align: center;">
+                     <%= error %>
+                 </div>
+             <% } %>
+             
+             <% String registration = request.getParameter("registration"); %>
+             <% if ("success".equals(registration)) { %>
+                 <div class="success-message" style="color: #2e7d32; background-color: #e8f5e8; padding: 10px; border-radius: 4px; margin-bottom: 15px; text-align: center;">
+                     ¡Registro exitoso! Ahora puedes iniciar sesión.
+                 </div>
+             <% } %>
             
-            <form method="post" action="../LoginServlet" class="form">
+            <form method="post" action="${pageContext.request.contextPath}/LoginServlet" class="form">
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
                     <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>

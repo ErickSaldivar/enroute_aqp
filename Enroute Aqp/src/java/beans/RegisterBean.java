@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
- */
 package beans;
-
-/**
- *
- * @author erick
- */
 
 import java.io.Serializable;
 
@@ -22,8 +13,8 @@ public class RegisterBean implements Serializable {
     public String getNombre() {
         return nombre;
     }
-    public void setNombre(String username) {
-        this.nombre = username;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getApellido() {

@@ -25,8 +25,30 @@
                 <h2 class="form-title">Crea tu cuenta</h2>
                 <p class="form-subtitle">Empieza a planificar tus viajes en autobús por Arequipa.</p>
             </div>
+            
+            <% String error = request.getParameter("error"); %>
+            <% if (error != null) { %>
+                <div class="error-message" style="color: #d32f2f; background-color: #ffebee; padding: 10px; border-radius: 4px; margin-bottom: 15px; text-align: center;">
+                    <% if ("empty".equals(error)) { %>
+                        Todos los campos son obligatorios.
+                    <% } else if ("duplicate".equals(error)) { %>
+                        Este correo electrónico ya está registrado.
+                    <% } else if ("database".equals(error)) { %>
+                        Error en la base de datos. Inténtalo de nuevo.
+                    <% } else { %>
+                        Error desconocido. Inténtalo de nuevo.
+                    <% } %>
+                </div>
+            <% } %>
+            
+            <% String errorAttr = (String) request.getAttribute("error"); %>
+            <% if (errorAttr != null) { %>
+                <div class="error-message" style="color: #d32f2f; background-color: #ffebee; padding: 10px; border-radius: 4px; margin-bottom: 15px; text-align: center;">
+                    <%= errorAttr %>
+                </div>
+            <% } %>
 
-            <form action="${pageContext.request.contextPath}/servlets/RegisterServlet" method="POST" class="form">
+            <form action="${pageContext.request.contextPath}/RegisterServlet" method="POST" class="form">
                 <input type="text" name="nombre" placeholder="Nombres" required class="input">
                 <input type="text" name="apellido" placeholder="Apellidos" required class="input">
                 <input type="email" name="email" placeholder="Correo electrónico" required class="input">
