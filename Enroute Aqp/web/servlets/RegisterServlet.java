@@ -1,9 +1,12 @@
-import web.db_crud.DBConnection;
+package servlets;
+
+import db_crud.DBConnection;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(urlPatterns = {"/RegisterServlet"})
+@WebServlet(name= "RegisterServlet", urlPatterns = {"../RegisterServlet"})
 public class RegisterServlet extends HttpServlet {
 
 
@@ -20,14 +23,24 @@ public class RegisterServlet extends HttpServlet {
                 throws ServletException, IOException {
         
         // Obtener parametros del formulario
-        String username = request.getParameter("username");
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirm-password");
+        
+        System.err.println("Variables cargadas correctamente");
         
         // Validaciones basicas
-        if (username == null || email == null || password == null ||
-            username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+        if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || password.isEmpty()) {
             response.sendRedirect("register.jsp?error=empty");
+            return;
+        }
+        
+        if (!password.equals(confirmPassword)) {
+            request.setAttribute("error", "Las contraseñas no coinciden");
+            RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+            rd.forward(request, response);
             return;
         }
         
@@ -42,11 +55,12 @@ public class RegisterServlet extends HttpServlet {
             String hashedPassword = hashPassword(password);
             
             // Insertar usuario en la base de datos
-            String sql = "INSERT INTO users (username, email, password) VALUES(?, ?, ?)";
+            String sql = "INSERT INTO usuarios (nombre, apellido, email, password) VALUES(?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1,username);
-            pstmt.setString(2, email);
-            pstmt.setString(3, hashedPassword);
+            pstmt.setString(1,nombre);
+            pstmt.setString(2,apellido);
+            pstmt.setString(3, email);
+            pstmt.setString(4, hashedPassword);
             
             int rowsAffected = pstmt.executeUpdate();
             

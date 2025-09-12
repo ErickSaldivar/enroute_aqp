@@ -26,8 +26,9 @@
                 <p class="form-subtitle">Empieza a planificar tus viajes en autobús por Arequipa.</p>
             </div>
 
-            <form action="RegisterServlet" method="POST" class="form">
-                <input type="text" name="username" placeholder="Nombre de usuario" required class="input">
+            <form action="${pageContext.request.contextPath}/servlets/RegisterServlet" method="POST" class="form">
+                <input type="text" name="nombre" placeholder="Nombres" required class="input">
+                <input type="text" name="apellido" placeholder="Apellidos" required class="input">
                 <input type="email" name="email" placeholder="Correo electrónico" required class="input">
                 <input type="password" name="password" placeholder="Contraseña" required class="input">
                 <input type="password" name="confirm-password" placeholder="Confirmar contraseña" required class="input">
