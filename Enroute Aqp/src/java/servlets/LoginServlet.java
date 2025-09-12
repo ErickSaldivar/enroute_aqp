@@ -1,5 +1,6 @@
 package servlets;
 
+import beans.LoginBean;
 import db_crud.DBConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,11 +44,14 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        // Instanciar LoginBean
+        LoginBean loginBean = new LoginBean();
+        loginBean.setEmail(request.getParameter("email"));
+        loginBean.setPassword(request.getParameter("password"));
         
         // Validaciones básicas
-        if (email == null || password == null || email.trim().isEmpty() || password.trim().isEmpty()) {
+        if (loginBean.getEmail() == null || loginBean.getPassword() == null || 
+            loginBean.getEmail().trim().isEmpty() || loginBean.getPassword().trim().isEmpty()) {
             response.sendRedirect("pages/login.jsp?error=empty");
             return;
         }
@@ -60,11 +64,11 @@ public class LoginServlet extends HttpServlet {
             conn = DBConnection.getConnection();
             
             // Hash de la contraseña para comparar
-            String hashedPassword = hashPassword(password);
+            String hashedPassword = hashPassword(loginBean.getPassword());
             
             String sql = "SELECT id_usuario, nombre, apellido FROM usuarios WHERE email = ? AND password = ?";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, email);
+            pstmt.setString(1, loginBean.getEmail());
             pstmt.setString(2, hashedPassword);
             
             rs = pstmt.executeQuery();
@@ -75,7 +79,8 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("userId", rs.getInt("id_usuario"));
                 session.setAttribute("userName", rs.getString("nombre"));
                 session.setAttribute("userLastName", rs.getString("apellido"));
-                session.setAttribute("userEmail", email);
+                session.setAttribute("userEmail", loginBean.getEmail());
+                session.setAttribute("loginBean", loginBean);
                 
                 response.sendRedirect("pages/dashboard.jsp");
             } else {
