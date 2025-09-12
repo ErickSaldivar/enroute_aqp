@@ -23,7 +23,15 @@
 
         <div class="card">
             <h2 class="subtitle">Iniciar Sesión</h2>
-            <form method="post" action="LoginServlet" class="form">
+            
+            <% String error = (String) request.getAttribute("error"); %>
+            <% if (error != null) { %>
+                <div class="error-message" style="color: #d32f2f; background-color: #ffebee; padding: 10px; border-radius: 4px; margin-bottom: 15px; text-align: center;">
+                    <%= error %>
+                </div>
+            <% } %>
+            
+            <form method="post" action="../LoginServlet" class="form">
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
                     <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
