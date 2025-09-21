@@ -1,11 +1,11 @@
 /* Variables de colores */
 :root {
     --color-principal: #ec5413;     /* Rojo ladrillo */
-    --color-fondo: #fcf9f8;         /* Beige claro */
+    --color-fondo: #1a1a1a;         /* Beige claro */
     --color-amarillo: #fde68a;      /* Amarillo */
-    --color-texto: #1b120d;         /* Texto principal */
-    --color-texto-secundario: #9a634c; /* Texto secundario */
-    --color-blanco: #ffffff;        /* Blanco */
+    --color-texto: #f0f0f0;         /* Texto principal */
+    --color-texto-secundario: #a0a0a0; /* Texto secundario */
+    --color-gris: #2c2c2c;        /* gris */
 }
 
 /* Estilos generales */
@@ -69,7 +69,7 @@ body {
 /* Botones */
 .btn-primary, .btn-hero, .btn-signup {
     background-color: var(--color-principal);
-    color: var(--color-blanco);
+    color: var(--color-texto);
     padding: 12px 25px;
     border: none;
     border-radius: 8px;
@@ -93,13 +93,13 @@ body {
 
 /* Sección Hero */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
+    background: linear-gradient(to top, var(--color-fondo) 20%, rgba(26,26,26,0) 60%),
         url('../assets/bg_img.png');
     background-size: cover;
     background-position: center;
     padding: 120px 0;
     text-align: center;
-    color: var(--color-blanco);
+    color: var(--color-texto);
 }
 
 .hero-content {
@@ -127,7 +127,7 @@ section {
 }
 
 .problem-section {
-    background-color: var(--color-blanco);
+    background-color: var(--color-gris);
     text-align: center;
 }
 
@@ -136,7 +136,7 @@ section {
 }
 
 .benefits-section {
-    background-color: var(--color-blanco);
+    background-color: var(--color-gris);
 }
 
 .testimonials-section {
@@ -145,7 +145,7 @@ section {
 }
 
 .signup-section {
-    background-color: var(--color-blanco);
+    background-color: var(--color-gris);
 }
 
 /* Títulos */
@@ -167,7 +167,7 @@ h3 {
 /* Párrafos */
 p {
     font-size: 18px;
-    color: var(--color-principal);
+    color: var(--color-texto-secundario);
     max-width: 600px;
     margin: 0 auto 40px;
     text-align: center;
@@ -289,14 +289,14 @@ p {
 
 /* Pie de página */
 .footer {
-    background-color: var(--color-texto);
-    color: var(--color-blanco);
+    background-color: var(--color-fondo);
+    color: var(--color-fondo);
     padding: 40px 0;
     text-align: center;
 }
 
 .footer p {
-    color: var(--color-blanco);
+    color: var(--color-texto);
     margin-bottom: 20px;
 }
 
@@ -307,7 +307,7 @@ p {
 }
 
 .footer-nav a {
-    color: var(--color-blanco);
+    color: var(--color-texto);
     text-decoration: none;
     transition: color 0.3s;
 }
