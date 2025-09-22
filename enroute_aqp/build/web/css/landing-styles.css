@@ -1,0 +1,447 @@
+/* Variables de colores */
+:root {
+    --primary-color: #ec5413; /* Naranja principal */
+    --secondary-color: #a23c14; /* Naranja oscuro */
+    --color-principal: #ec5413;
+    --color-fondo: #23140e; /* Marrón oscuro */
+    --color-amarillo: #fde68a;
+    --color-texto: #fffaf6; /* Blanco cálido */
+    --color-texto-secundario: #c7b6a4; /* Beige claro */
+    --color-gris: #2c1a13; /* Marrón grisáceo */
+    --icon-bg: #2c1a13; /* Fondo de icono */
+    --icon-color: #ec5413; /* Color de icono */
+}
+
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+.dashboard-card {
+    /* Mantener estilos de la tarjeta, solo asegurar color de fondo y borde */
+    background: transparent !important;
+    border: 2px solid var(--icon-bg) !important;
+}
+
+.icon-circle {
+    background: var(--icon-bg) !important;
+    box-shadow: none !important;
+}
+.icon-circle svg {
+    fill: var(--icon-color) !important;
+    stroke: var(--icon-color) !important;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Encabezado */
+.header {
+    background-color: var(--color-fondo);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(236,84,19,0.08);
+    border-bottom: 1.5px solid var(--icon-bg);
+}
+
+.navbar {
+    width: 100%;
+    background: var(--color-fondo);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    min-height: 64px;
+    border-bottom: 1.5px solid var(--icon-bg);
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    color: var(--color-texto);
+    font-weight: bold;
+    letter-spacing: 1px;    
+}
+.navbar-logo svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--primary-color);
+}
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.navbar-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 2px 8px rgba(236,84,19,0.08);
+}
+.navbar-avatar img {
+    
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+}
+.navbar-user-name {
+    color: var(--color-texto);
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h2 {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+.navigation {
+    display: flex;
+    gap: 30px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: var(--color-texto);
+    font-weight: 500;
+    transition: color 0.3s;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+
+.navigation a:hover {
+    color: var(--color-principal);
+}
+
+/* Botones */
+.btn-primary, .btn-hero, .btn-signup {
+    background-color: var(--primary-color);
+    color: var(--color-texto);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+
+.btn-primary:hover, .btn-hero:hover, .btn-signup:hover {
+    background-color: #d4460f;
+    transform: translateY(-2px);
+}
+
+.btn-hero {
+    font-size: 18px;
+    padding: 15px 30px;
+    margin-top: 20px;
+}
+
+/* Sección Hero */
+.hero {
+    background: linear-gradient(to top, var(--color-fondo) 20%, rgba(26,26,26,0) 60%),
+        url('../assets/bg_img.png');
+    background-size: cover;
+    background-position: center;
+    padding: 120px 0;
+    text-align: center;
+    color: var(--color-texto);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Secciones generales */
+section {
+    padding: 80px 0;
+}
+
+.problem-section {
+    background-color: var(--color-gris);
+    text-align: center;
+}
+
+.solution-section {
+    background-color: var(--color-fondo);
+}
+
+.benefits-section {
+    background-color: var(--color-gris);
+}
+
+.testimonials-section {
+    background-color: var(--color-fondo);
+    text-align: center;
+}
+
+.signup-section {
+    background-color: var(--color-gris);
+}
+
+/* Títulos */
+h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--color-texto);
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--color-texto);
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Párrafos */
+p {
+    font-size: 18px;
+    color: var(--color-texto-secundario);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    text-align: center;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Grillas */
+.features-grid, .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+/* Tarjetas de características */
+.feature-card {
+    text-align: center;
+}
+
+.feature-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.feature-image-1 {
+    background-image: url('../assets/app_img.png');
+}
+
+.feature-image-2 {
+    background-image: url('../assets/stop_img.png');
+}
+
+.feature-image-3 {
+    background-image: url('../assets/enroute_img.png');
+}
+
+.feature-card h3, .feature-card p {
+    text-align: center;
+}
+
+/* Tarjetas de beneficios */
+.benefit-card {
+    background-color: var(--color-fondo);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.benefit-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.benefit-card h3, .benefit-card p {
+    text-align: center;
+}
+
+/* Testimonios */
+.testimonial {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.testimonial blockquote {
+    font-size: 22px;
+    font-style: italic;
+    color: var(--color-texto);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.testimonial cite {
+    font-weight: bold;
+    color: var(--color-texto-secundario);
+}
+
+/* Sección de registro */
+.signup-box {
+    background-color: rgba(253, 230, 138, 0.2);
+    padding: 60px 40px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.signup-form {
+    display: flex;
+    gap: 15px;
+    max-width: 500px;
+    margin: 30px auto 0;
+    flex-wrap: wrap;
+}
+
+.email-input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    min-width: 250px;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: var(--color-principal);
+}
+
+/* Pie de página */
+.footer {
+    background-color: var(--color-fondo);
+    color: var(--color-fondo);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer p {
+    color: var(--color-texto);
+    margin-bottom: 20px;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-nav a {
+    color: var(--color-texto);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: var(--color-amarillo);
+}
+
+/* Responsive - Móviles */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .navigation {
+        gap: 20px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .features-grid, .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .signup-form {
+        flex-direction: column;
+    }
+
+    .email-input {
+        min-width: 100%;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+}

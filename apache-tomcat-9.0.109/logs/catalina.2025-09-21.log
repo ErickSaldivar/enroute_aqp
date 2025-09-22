@@ -357,3 +357,343 @@
 21-Sep-2025 16:53:34.116 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
 21-Sep-2025 16:53:34.127 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
 21-Sep-2025 16:53:34.139 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 17:07:52.869 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Nombre de la versión del servidor: Apache Tomcat/9.0.109
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:                      Sep 1 2025 12:15:33 UTC
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:     9.0.109.0
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:                           Linux
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Versión de Systema Operativo:      6.8.0-83-generic
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Arquitectura:                      amd64
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:                         /usr/lib/jvm/jdk-21.0.7-oracle-x64
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:                       21.0.7+8-LTS-245
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Vededor JVM:                       Oracle Corporation
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:                     /media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 17:07:52.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:                     /media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 17:07:52.884 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang=ALL-UNNAMED
+21-Sep-2025 17:07:52.884 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+21-Sep-2025 17:07:52.884 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+21-Sep-2025 17:07:52.884 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.io=ALL-UNNAMED
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util=ALL-UNNAMED
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.config.file=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/logging.properties
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dhttp.nonProxyHosts=localhost|127.0.0.1|erick-ASUS-TUF-A15
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djdk.tls.ephemeralDHKeySize=2048
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dsun.io.useCanonCaches=false
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dignore.endorsed.dirs=
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.base=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.home=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 17:07:52.885 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.io.tmpdir=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/temp
+21-Sep-2025 17:07:52.888 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+21-Sep-2025 17:07:53.117 INFO [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-8080"]
+
+21-Sep-2025 17:07:53.135 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [446] milliseconds
+21-Sep-2025 17:07:53.171 INFO [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+21-Sep-2025 17:07:53.171 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.109]
+21-Sep-2025 17:07:53.179 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml]
+21-Sep-2025 17:07:53.189 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Enroute_Aqp] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml] has been ignored
+21-Sep-2025 17:07:55.890 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 17:07:55.969 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml] has finished in [2.788] ms
+21-Sep-2025 17:07:55.969 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml]
+21-Sep-2025 17:07:55.970 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Test1] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml] has been ignored
+21-Sep-2025 17:07:55.996 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml] has finished in [27] ms
+21-Sep-2025 17:07:55.997 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/docs] de la aplicación web
+21-Sep-2025 17:07:56.065 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/docs] has finished in [67] ms
+21-Sep-2025 17:07:56.065 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/examples] de la aplicación web
+21-Sep-2025 17:07:56.800 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/examples] has finished in [735] ms
+21-Sep-2025 17:07:56.800 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/host-manager] de la aplicación web
+21-Sep-2025 17:07:56.868 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/host-manager] has finished in [68] ms
+21-Sep-2025 17:07:56.869 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/manager] de la aplicación web
+21-Sep-2025 17:07:56.942 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/manager] has finished in [74] ms
+21-Sep-2025 17:07:56.943 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/ROOT] de la aplicación web
+21-Sep-2025 17:07:56.998 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/ROOT] has finished in [55] ms
+21-Sep-2025 17:07:57.002 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 17:07:57.009 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [3872] milliseconds
+21-Sep-2025 17:07:57.095 INFO [http-nio-8080-exec-6] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml]
+21-Sep-2025 17:07:57.096 WARNING [http-nio-8080-exec-6] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/enroute_aqp] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has been ignored
+21-Sep-2025 17:07:57.117 INFO [http-nio-8080-exec-6] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has finished in [23] ms
+21-Sep-2025 17:07:57.122 INFO [http-nio-8080-exec-7] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/enroute_aqp]] after start() had already been called. The second call will be ignored.
+21-Sep-2025 17:08:09.170 INFO [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+21-Sep-2025 17:08:09.170 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 17:08:09.172 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+21-Sep-2025 17:08:09.192 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 17:08:09.194 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 17:53:33.715 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Nombre de la versión del servidor: Apache Tomcat/9.0.109
+21-Sep-2025 17:53:33.718 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:                      Sep 1 2025 12:15:33 UTC
+21-Sep-2025 17:53:33.718 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:     9.0.109.0
+21-Sep-2025 17:53:33.718 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:                           Linux
+21-Sep-2025 17:53:33.718 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Versión de Systema Operativo:      6.8.0-83-generic
+21-Sep-2025 17:53:33.719 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Arquitectura:                      amd64
+21-Sep-2025 17:53:33.719 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:                         /usr/lib/jvm/jdk-21.0.7-oracle-x64
+21-Sep-2025 17:53:33.719 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:                       21.0.7+8-LTS-245
+21-Sep-2025 17:53:33.719 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Vededor JVM:                       Oracle Corporation
+21-Sep-2025 17:53:33.719 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:                     /media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 17:53:33.719 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:                     /media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 17:53:33.725 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang=ALL-UNNAMED
+21-Sep-2025 17:53:33.725 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+21-Sep-2025 17:53:33.725 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+21-Sep-2025 17:53:33.725 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.io=ALL-UNNAMED
+21-Sep-2025 17:53:33.725 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util=ALL-UNNAMED
+21-Sep-2025 17:53:33.725 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.config.file=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/logging.properties
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dhttp.nonProxyHosts=localhost|127.0.0.1|erick-ASUS-TUF-A15
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djdk.tls.ephemeralDHKeySize=2048
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dsun.io.useCanonCaches=false
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dignore.endorsed.dirs=
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.base=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.home=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 17:53:33.726 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.io.tmpdir=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/temp
+21-Sep-2025 17:53:33.729 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+21-Sep-2025 17:53:33.965 INFO [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-8080"]
+
+21-Sep-2025 17:53:33.980 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [437] milliseconds
+21-Sep-2025 17:53:34.020 INFO [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+21-Sep-2025 17:53:34.020 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.109]
+21-Sep-2025 17:53:34.028 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml]
+21-Sep-2025 17:53:34.038 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Enroute_Aqp] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml] has been ignored
+21-Sep-2025 17:53:36.990 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 17:53:37.072 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml] has finished in [3.042] ms
+21-Sep-2025 17:53:37.072 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml]
+21-Sep-2025 17:53:37.073 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/enroute_aqp] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has been ignored
+21-Sep-2025 17:53:37.374 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 17:53:37.382 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has finished in [310] ms
+21-Sep-2025 17:53:37.382 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml]
+21-Sep-2025 17:53:37.383 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Test1] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml] has been ignored
+21-Sep-2025 17:53:37.411 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml] has finished in [29] ms
+21-Sep-2025 17:53:37.412 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/docs] de la aplicación web
+21-Sep-2025 17:53:37.490 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/docs] has finished in [78] ms
+21-Sep-2025 17:53:37.490 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/examples] de la aplicación web
+21-Sep-2025 17:53:38.232 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/examples] has finished in [742] ms
+21-Sep-2025 17:53:38.232 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/host-manager] de la aplicación web
+21-Sep-2025 17:53:38.304 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/host-manager] has finished in [72] ms
+21-Sep-2025 17:53:38.304 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/manager] de la aplicación web
+21-Sep-2025 17:53:38.376 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/manager] has finished in [72] ms
+21-Sep-2025 17:53:38.377 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/ROOT] de la aplicación web
+21-Sep-2025 17:53:38.435 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/ROOT] has finished in [57] ms
+21-Sep-2025 17:53:38.439 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 17:53:38.445 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [4464] milliseconds
+21-Sep-2025 17:53:39.040 INFO [http-nio-8080-exec-8] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/enroute_aqp]
+21-Sep-2025 17:53:39.053 INFO [http-nio-8080-exec-6] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml]
+21-Sep-2025 17:53:39.054 WARNING [http-nio-8080-exec-6] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/enroute_aqp] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has been ignored
+21-Sep-2025 17:53:39.272 INFO [http-nio-8080-exec-6] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 17:53:39.278 INFO [http-nio-8080-exec-6] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has finished in [225] ms
+21-Sep-2025 17:54:25.385 INFO [http-nio-8080-exec-7] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/enroute_aqp]
+21-Sep-2025 17:54:25.652 INFO [http-nio-8080-exec-7] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 17:54:25.658 INFO [http-nio-8080-exec-7] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+21-Sep-2025 17:54:25.986 INFO [http-nio-8080-exec-3] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/enroute_aqp]
+21-Sep-2025 17:54:26.226 INFO [http-nio-8080-exec-3] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 17:54:26.231 INFO [http-nio-8080-exec-3] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+21-Sep-2025 18:06:56.733 INFO [http-nio-8080-exec-18] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/enroute_aqp]
+21-Sep-2025 18:06:56.741 WARNING [http-nio-8080-exec-18] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [enroute_aqp] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+21-Sep-2025 18:06:56.741 WARNING [http-nio-8080-exec-18] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [enroute_aqp] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Sep-2025 18:06:56.958 INFO [http-nio-8080-exec-18] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 18:06:56.963 INFO [http-nio-8080-exec-18] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+21-Sep-2025 18:06:58.357 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1373)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:997)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Sep-2025 18:10:53.054 WARNING [http-nio-8080-exec-33] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [enroute_aqp] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+21-Sep-2025 18:10:53.054 WARNING [http-nio-8080-exec-33] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [enroute_aqp] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Sep-2025 18:10:53.556 INFO [http-nio-8080-exec-33] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/enroute_aqp]
+21-Sep-2025 18:10:55.239 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+	java.lang.IllegalStateException: Acceso ilegal: esta instancia de aplicación web ya ha sido parada.  Could not load [].  La eventual traza de pila que sigue ha sido motivada por un error lanzado con motivos de depuración así como para intentar terminar el hilo que motivó el acceso ilegal y no tiene impacto funcional.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1373)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:997)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+21-Sep-2025 18:45:28.550 INFO [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+21-Sep-2025 18:45:28.550 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 18:45:28.551 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+21-Sep-2025 18:45:28.560 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 18:45:28.562 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 21:28:26.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Nombre de la versión del servidor: Apache Tomcat/9.0.109
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:                      Sep 1 2025 12:15:33 UTC
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:     9.0.109.0
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:                           Linux
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Versión de Systema Operativo:      6.8.0-83-generic
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Arquitectura:                      amd64
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:                         /usr/lib/jvm/jdk-21.0.7-oracle-x64
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:                       21.0.7+8-LTS-245
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Vededor JVM:                       Oracle Corporation
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:                     /media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 21:28:26.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:                     /media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 21:28:26.690 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang=ALL-UNNAMED
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.io=ALL-UNNAMED
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util=ALL-UNNAMED
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.config.file=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/logging.properties
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dhttp.nonProxyHosts=localhost|127.0.0.1|erick-ASUS-TUF-A15
+21-Sep-2025 21:28:26.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djdk.tls.ephemeralDHKeySize=2048
+21-Sep-2025 21:28:26.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+21-Sep-2025 21:28:26.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dsun.io.useCanonCaches=false
+21-Sep-2025 21:28:26.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+21-Sep-2025 21:28:26.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dignore.endorsed.dirs=
+21-Sep-2025 21:28:26.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.base=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 21:28:26.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.home=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 21:28:26.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.io.tmpdir=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/temp
+21-Sep-2025 21:28:26.695 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+21-Sep-2025 21:28:26.907 INFO [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-8080"]
+
+21-Sep-2025 21:28:26.927 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [405] milliseconds
+21-Sep-2025 21:28:26.970 INFO [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+21-Sep-2025 21:28:26.970 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.109]
+21-Sep-2025 21:28:26.979 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml]
+21-Sep-2025 21:28:26.992 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Enroute_Aqp] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml] has been ignored
+21-Sep-2025 21:28:29.940 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 21:28:30.019 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml] has finished in [3.037] ms
+21-Sep-2025 21:28:30.019 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml]
+21-Sep-2025 21:28:30.021 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Test1] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml] has been ignored
+21-Sep-2025 21:28:30.047 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml] has finished in [27] ms
+21-Sep-2025 21:28:30.047 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/docs] de la aplicación web
+21-Sep-2025 21:28:30.117 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/docs] has finished in [70] ms
+21-Sep-2025 21:28:30.117 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/examples] de la aplicación web
+21-Sep-2025 21:28:30.920 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/examples] has finished in [802] ms
+21-Sep-2025 21:28:30.920 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/host-manager] de la aplicación web
+21-Sep-2025 21:28:30.993 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/host-manager] has finished in [73] ms
+21-Sep-2025 21:28:30.993 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/manager] de la aplicación web
+21-Sep-2025 21:28:31.061 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/manager] has finished in [68] ms
+21-Sep-2025 21:28:31.062 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/ROOT] de la aplicación web
+21-Sep-2025 21:28:31.122 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/ROOT] has finished in [60] ms
+21-Sep-2025 21:28:31.127 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 21:28:31.135 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [4206] milliseconds
+21-Sep-2025 21:28:33.571 INFO [http-nio-8080-exec-10] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml]
+21-Sep-2025 21:28:33.572 WARNING [http-nio-8080-exec-10] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/enroute_aqp] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has been ignored
+21-Sep-2025 21:28:33.831 INFO [http-nio-8080-exec-10] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 21:28:33.837 INFO [http-nio-8080-exec-10] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has finished in [265] ms
+21-Sep-2025 21:28:33.842 INFO [http-nio-8080-exec-1] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/enroute_aqp]] after start() had already been called. The second call will be ignored.
+21-Sep-2025 22:36:45.681 INFO [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+21-Sep-2025 22:36:45.682 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 22:36:45.683 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+21-Sep-2025 22:36:45.720 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [Enroute_Aqp] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/java.io.UnixFileSystem.canonicalize0(Native Method)
+ java.base/java.io.UnixFileSystem.canonicalize(UnixFileSystem.java:166)
+ java.base/java.io.File.getCanonicalPath(File.java:626)
+ org.apache.catalina.webresources.AbstractFileResourceSet.file(AbstractFileResourceSet.java:108)
+ org.apache.catalina.webresources.DirResourceSet.getResource(DirResourceSet.java:113)
+ org.apache.catalina.webresources.StandardRoot.getResourceInternal(StandardRoot.java:273)
+ org.apache.catalina.webresources.CachedResource.validateResource(CachedResource.java:107)
+ org.apache.catalina.webresources.Cache.getResource(Cache.java:96)
+ org.apache.catalina.webresources.StandardRoot.getResource(StandardRoot.java:212)
+ org.apache.catalina.webresources.StandardRoot.getClassLoaderResource(StandardRoot.java:221)
+ org.apache.catalina.loader.WebappClassLoaderBase.findResource(WebappClassLoaderBase.java:903)
+ org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1018)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:116)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:83)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Sep-2025 22:36:45.755 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [enroute_aqp] registró el conductor JDBC [com.mysql.cj.jdbc.Driver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+21-Sep-2025 22:36:45.756 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [enroute_aqp] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1852)
+ java.base/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)
+ java.base/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)
+ java.base/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+21-Sep-2025 22:36:45.760 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 22:36:45.766 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 22:36:48.976 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Nombre de la versión del servidor: Apache Tomcat/9.0.109
+21-Sep-2025 22:36:48.978 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:                      Sep 1 2025 12:15:33 UTC
+21-Sep-2025 22:36:48.978 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:     9.0.109.0
+21-Sep-2025 22:36:48.978 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:                           Linux
+21-Sep-2025 22:36:48.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Versión de Systema Operativo:      6.8.0-83-generic
+21-Sep-2025 22:36:48.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Arquitectura:                      amd64
+21-Sep-2025 22:36:48.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:                         /usr/lib/jvm/jdk-21.0.7-oracle-x64
+21-Sep-2025 22:36:48.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:                       21.0.7+8-LTS-245
+21-Sep-2025 22:36:48.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Vededor JVM:                       Oracle Corporation
+21-Sep-2025 22:36:48.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:                     /media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 22:36:48.979 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:                     /media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 22:36:48.982 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang=ALL-UNNAMED
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.io=ALL-UNNAMED
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util=ALL-UNNAMED
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.config.file=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/logging.properties
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dhttp.nonProxyHosts=localhost|127.0.0.1|erick-ASUS-TUF-A15
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djdk.tls.ephemeralDHKeySize=2048
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dsun.io.useCanonCaches=false
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dignore.endorsed.dirs=
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.base=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 22:36:48.983 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.home=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109
+21-Sep-2025 22:36:48.984 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.io.tmpdir=/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/temp
+21-Sep-2025 22:36:48.985 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+21-Sep-2025 22:36:49.170 INFO [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-8080"]
+
+21-Sep-2025 22:36:49.185 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [346] milliseconds
+21-Sep-2025 22:36:49.213 INFO [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+21-Sep-2025 22:36:49.214 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.109]
+21-Sep-2025 22:36:49.220 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml]
+21-Sep-2025 22:36:49.231 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Enroute_Aqp] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml] has been ignored
+21-Sep-2025 22:36:51.700 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 22:36:51.786 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Enroute_Aqp.xml] has finished in [2.564] ms
+21-Sep-2025 22:36:51.786 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml]
+21-Sep-2025 22:36:51.786 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/enroute_aqp] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has been ignored
+21-Sep-2025 22:36:52.050 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+21-Sep-2025 22:36:52.064 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/enroute_aqp.xml] has finished in [278] ms
+21-Sep-2025 22:36:52.064 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml]
+21-Sep-2025 22:36:52.065 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Test1] in deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml] has been ignored
+21-Sep-2025 22:36:52.088 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/conf/Catalina/localhost/Test1.xml] has finished in [23] ms
+21-Sep-2025 22:36:52.088 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/docs] de la aplicación web
+21-Sep-2025 22:36:52.155 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/docs] has finished in [66] ms
+21-Sep-2025 22:36:52.155 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/examples] de la aplicación web
+21-Sep-2025 22:36:52.765 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/examples] has finished in [610] ms
+21-Sep-2025 22:36:52.765 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/host-manager] de la aplicación web
+21-Sep-2025 22:36:52.828 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/host-manager] has finished in [63] ms
+21-Sep-2025 22:36:52.829 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/manager] de la aplicación web
+21-Sep-2025 22:36:52.887 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/manager] has finished in [58] ms
+21-Sep-2025 22:36:52.888 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/ROOT] de la aplicación web
+21-Sep-2025 22:36:52.938 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/media/erick/Datos/Erick/Documentos/UTP/web integrado/enroute_aqp/apache-tomcat-9.0.109/webapps/ROOT] has finished in [50] ms
+21-Sep-2025 22:36:52.942 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 22:36:52.949 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [3763] milliseconds
+21-Sep-2025 22:38:15.400 INFO [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+21-Sep-2025 22:38:15.400 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 22:38:15.401 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+21-Sep-2025 22:38:15.419 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+21-Sep-2025 22:38:15.423 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
