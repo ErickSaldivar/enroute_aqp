@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
+
+:root {
+    --brand-roca-volcanica: #2D3748;
+    --brand-naranja-fuego: #DD6B20;
+    --brand-verde-ichu: #689D6A;
+    --brand-arena-desierto: #F5EFE6;
+    --brand-blanco-nube: #FFFFFF;
+}
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+    background-color: var(--brand-roca-volcanica);
+    color: var(--brand-blanco-nube);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Encabezado */
+.header {
+    background-color: rgba(45, 55, 72, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #4A5568;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brand-blanco-nube);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.navigation {
+    display: flex;
+    gap: 2rem;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: var(--brand-blanco-nube);
+    font-weight: 900;
+    transition: color 0.3s;
+    font-size: 0.875rem;
+}
+
+.navigation a:hover {
+    color: var(--brand-naranja-fuego);
+}
+
+/* Botones */
+.btn-primary, .btn-hero, .btn-signup {
+    background-color: var(--brand-naranja-fuego);
+    color: var(--brand-blanco-nube);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 14px 0 rgba(221, 107, 32, 0.3);
+}
+
+.btn-primary:hover, .btn-hero:hover, .btn-signup:hover {
+    background-color: #c45f1c;
+    transform: translateY(-2px);
+}
+
+.btn-hero {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    margin-top: 1.5rem;
+}
+
+/* Sección Hero */
+.hero {
+    background: linear-gradient(to top, var(--brand-roca-volcanica) 20%, rgba(45,55,72,0) 60%),
+        url('../img/bg_img.png');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 0;
+    text-align: center;
+    color: var(--brand-blanco-nube);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    line-height: 1.2;
+}
+
+.hero p {
+    color: var(--brand-blanco-nube);
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    font-weight: 300;    
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Secciones generales */
+section {
+    padding: 5rem 0;
+}
+
+.problem-section {
+    background-color: var(--brand-arena-desierto);
+    text-align: center;
+}
+
+.solution-section {
+    background-color: var(--brand-roca-volcanica);
+}
+
+.benefits-section {
+    background-color: var(--brand-arena-desierto);
+}
+
+.testimonials-section {
+    background-color: var(--brand-roca-volcanica);
+    text-align: center;
+}
+
+.signup-section {
+    background-color: var(--brand-arena-desierto);
+}
+
+/* Títulos */
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--brand-roca-volcanica);
+}
+
+.solution-section h2, .testimonials-section h2 {
+    color: var(--brand-blanco-nube);
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--brand-blanco-nube);
+}
+
+.benefits-section h3 {
+    color: var(--brand-roca-volcanica);
+}
+
+/* Párrafos */
+p {
+    font-size: 1.125rem;
+    color: #4A5568;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+}
+
+.solution-section p, .testimonials-section p, .signup-section p, .footer p {
+    color: #A0AEC0;
+}
+
+/* Tarjetas */
+.features-grid, .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+.feature-card, .benefit-card {
+    text-align: center;
+}
+
+.feature-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    background-size: contain !important;
+    background-position: center;
+    background-repeat: no-repeat !important;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+.feature-card {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-card {
+    background-color: var(--brand-blanco-nube);
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(221, 107, 32, 0.2), 0 10px 10px -5px rgba(221, 107, 32, 0.1);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    padding: 1rem;
+    background-color: rgba(221, 107, 32, 0.1);
+    border-radius: 50%;
+    color: var(--brand-naranja-fuego);
+}
+
+/* Testimonios */
+.testimonial blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--brand-blanco-nube);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.testimonial cite {
+    font-weight: 600;
+    color: #A0AEC0;
+}
+
+/* Sección de registro */
+.signup-box {
+    background-color: var(--brand-roca-volcanica);
+    padding: 4rem;
+    border-radius: 1rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.signup-box h2 {
+    color: var(--brand-blanco-nube);
+}
+
+.signup-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 2rem auto 0;
+}
+
+.email-input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #4A5568;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: #4A5568;
+    color: var(--brand-blanco-nube);
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: var(--brand-naranja-fuego);
+    box-shadow: 0 0 0 3px rgba(221, 107, 32, 0.3);
+}
+
+/* Pie de página */
+.footer {
+    background-color: var(--brand-roca-volcanica);
+    color: #A0AEC0;
+    padding: 2.5rem 0;
+    text-align: center;
+    border-top: 1px solid #4A5568;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.footer-nav a {
+    color: #A0AEC0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: var(--brand-naranja-fuego);
+}
+
+/* Responsive - Móviles */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .navigation {
+        gap: 20px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .features-grid, .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .signup-form {
+        flex-direction: column;
+    }
+
+    .email-input {
+        min-width: 100%;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+}
