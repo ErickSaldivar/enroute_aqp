@@ -3,137 +3,242 @@
 <head>
     <meta charset="utf-8">
     <title>Enroute AQP - Tu Guía de Autobuses en la Ciudad Blanca</title>
-    <link rel="stylesheet" href="css/landing-styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-dark text-light" style="font-family: 'Plus Jakarta Sans', sans-serif;">
     <!-- Encabezado -->
-    <header class="header">
-        <div class="container">
-            <div class="navbar-logo">
-                <img src="img/icon_img.png" alt="Logo" class="navbar-logo-img" style="height: 40px">
-                <span>Enroute AQP</span>
+    <header class="bg-dark bg-opacity-75 sticky-top border-bottom border-secondary">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand text-light d-flex align-items-center fw-bold fs-5" href="#">
+                    <img src="img/icon_img.png" alt="Logo" style="height: 40px" class="me-2">
+                    <span>Enroute AQP</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-bold small" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-bold small" href="#">Cómo funciona</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-bold small" href="#">Beneficios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-bold small" href="#">Contacto</a>
+                        </li>
+                    </ul>
+                    <a href='pages/login.jsp' class="btn btn-warning rounded-pill px-4 fw-bold">Iniciar Sesión</a>
+                </div>
             </div>
-            <nav class="navigation">
-                <a href="#">Inicio</a>
-                <a href="#">Cómo funciona</a>
-                <a href="#">Beneficios</a>
-                <a href="#">Contacto</a>
-            </nav>
-            <a href='pages/login.jsp'><button class="btn-primary" >Iniciar Sesión </button></a>
-        </div>
+        </nav>
     </header>
 
     <!-- Contenido principal -->
     <main>
         <!-- Sección hero -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Descubre cómo llegar a tu destino en Arequipa en bus, fácil y económico</h1>
-                <p>Encuentra la ruta perfecta para moverte por Arequipa de forma eficiente y asequible.</p>
-                <a href="pages/register.jsp"><button class="btn-hero">Quiero probar la app</button></a>
+        <section class="min-vh-75 d-flex align-items-center text-center text-light py-5" 
+                 style="background: linear-gradient(to top, #2D3748 20%, rgba(45,55,72,0) 60%), url('img/bg_img.png'); background-size: cover; background-position: center;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <h1 class="display-2 fw-bolder mb-4 lh-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                            Descubre cómo llegar a tu destino en Arequipa en bus, fácil y económico
+                        </h1>
+                        <p class="fs-5 fw-light mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                            Encuentra la ruta perfecta para moverte por Arequipa de forma eficiente y asequible.
+                        </p>
+                        <a href="pages/register.jsp" class="btn btn-warning btn-lg rounded-pill px-5 py-3 fw-bold">
+                            Quiero probar la app
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Sección problema -->
-        <section class="problem-section">
+        <section class="py-5" style="background-color: #F5EFE6;">
             <div class="container">
-                <h2>¿Cansado de perder tiempo y dinero?</h2>
-                <p>En Arequipa, moverse puede ser un desafío. Los taxis son caros y las rutas de bus pueden ser confusas, especialmente para los visitantes. ¿No sería genial tener una forma fácil y económica de explorar la ciudad?</p>
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h2 class="display-4 fw-bold text-dark mb-4">¿Cansado de perder tiempo y dinero?</h2>
+                        <p class="fs-5 text-secondary mx-auto" style="max-width: 600px;">
+                            En Arequipa, moverse puede ser un desafío. Los taxis son caros y las rutas de bus pueden ser confusas, especialmente para los visitantes. ¿No sería genial tener una forma fácil y económica de explorar la ciudad?
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Sección solución -->
-        <section class="solution-section">
+        <section class="bg-dark text-light py-5">
             <div class="container">
-                <h2>La solución está en tu bolsillo</h2>
-                <p>Con Rutas Arequipa, moverse por la ciudad es más fácil que nunca. Nuestra app te ofrece:</p>
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h2 class="display-4 fw-bold text-light mb-4">La solución está en tu bolsillo</h2>
+                        <p class="fs-5 text-muted mb-5 mx-auto" style="max-width: 600px;">
+                            Con Rutas Arequipa, moverse por la ciudad es más fácil que nunca. Nuestra app te ofrece:
+                        </p>
+                    </div>
+                </div>
                 
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-image feature-image-1" style="background: url('img/enroute_img.png');"></div>
-                        <h3>Rutas optimizadas</h3>
-                        <p>Encuentra la ruta de bus más rápida y eficiente para llegar a tu destino.</p>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card bg-dark bg-opacity-25 border-0 rounded-3 p-3 h-100 text-center">
+                            <div class="card-body">
+                                <div class="mb-3 rounded-3 shadow" style="height: 200px; background: url('img/enroute_img.png'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+                                <h3 class="h4 fw-bold text-light mb-3">Rutas optimizadas</h3>
+                                <p class="text-light">Encuentra la ruta de bus más rápida y eficiente para llegar a tu destino.</p>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-image feature-image-2" style="background: url('img/app_img.png');"></div>
-                        <h3>Información en tiempo real</h3>
-                        <p>Sigue la ubicación de los buses en tiempo real y evita esperas innecesarias.</p>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card bg-dark bg-opacity-25 border-0 rounded-3 p-3 h-100 text-center">
+                            <div class="card-body">
+                                <div class="mb-3 rounded-3 shadow" style="height: 200px; background: url('img/app_img.png'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+                                <h3 class="h4 fw-bold text-light mb-3">Información en tiempo real</h3>
+                                <p class="text-light">Sigue la ubicación de los buses en tiempo real y evita esperas innecesarias.</p>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-image feature-image-3" style="background: url('img/stop_img.png');"></div>
-                        <h3>Fácil de usar</h3>
-                        <p>Interfaz intuitiva y amigable, ideal para turistas y locales.</p>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card bg-dark bg-opacity-25 border-0 rounded-3 p-3 h-100 text-center">
+                            <div class="card-body">
+                                <div class="mb-3 rounded-3 shadow" style="height: 200px; background: url('img/stop_img.png'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+                                <h3 class="h4 fw-bold text-light mb-3">Fácil de usar</h3>
+                                <p class="text-light">Interfaz intuitiva y amigable, ideal para turistas y locales.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
             
         <!-- Sección ventajas -->
-        <section class="benefits-section">
+        <section class="py-5" style="background-color: #F5EFE6;">
             <div class="container">
-                <h2>Ventajas de viajar con nosotros</h2>
-                <p>Rutas Arequipa te ofrece una experiencia de viaje superior.</p>
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h2 class="display-4 fw-bold text-dark mb-4">Ventajas de viajar con nosotros</h2>
+                        <p class="fs-5 text-secondary mb-5 mx-auto" style="max-width: 600px;">
+                            Rutas Arequipa te ofrece una experiencia de viaje superior.
+                        </p>
+                    </div>
+                </div>
                 
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">💰</div>
-                        <h3>Ahorra dinero</h3>
-                        <p>Viaja en bus por una fracción del costo de un taxi y ahorra para lo que de verdad importa.</p>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card bg-white border-0 rounded-3 shadow h-100 text-center p-4">
+                            <div class="card-body">
+                                <div class="display-1 mb-3 bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" 
+                                     style="width: 80px; height: 80px; color: #DD6B20;">💰</div>
+                                <h3 class="h4 fw-bold text-dark mb-3">Ahorra dinero</h3>
+                                <p class="text-dark">Viaja en bus por una fracción del costo de un taxi y ahorra para lo que de verdad importa.</p>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🗺️</div>
-                        <h3>Rutas rápidas</h3>
-                        <p>Planifica tus viajes de forma eficiente y sin complicaciones para no perderte de nada.</p>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card bg-white border-0 rounded-3 shadow h-100 text-center p-4">
+                            <div class="card-body">
+                                <div class="display-1 mb-3 bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" 
+                                     style="width: 80px; height: 80px; color: #DD6B20;">🗺️</div>
+                                <h3 class="h4 fw-bold text-dark mb-3">Rutas rápidas</h3>
+                                <p class="text-dark">Planifica tus viajes de forma eficiente y sin complicaciones para no perderte de nada.</p>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="benefit-card">
-                        <div class="benefit-icon">👥</div>
-                        <h3>Para todos</h3>
-                        <p>Explora Arequipa como un local, sin perderte ni gastar de más. Ideal para turistas y residentes.</p>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card bg-white border-0 rounded-3 shadow h-100 text-center p-4">
+                            <div class="card-body">
+                                <div class="display-1 mb-3 bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" 
+                                     style="width: 80px; height: 80px; color: #DD6B20;">👥</div>
+                                <h3 class="h4 fw-bold text-dark mb-3">Para todos</h3>
+                                <p class="text-dark">Explora Arequipa como un local, sin perderte ni gastar de más. Ideal para turistas y residentes.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Sección testimonios -->
-        <section class="testimonials-section">
+        <section class="bg-dark text-light py-5">
             <div class="container">
-                <h2>Lo que dicen nuestros usuarios</h2>
-                <div class="testimonial">
-                    <blockquote>"¡Rutas Arequipa me ha salvado! Como turista, me era muy difícil moverme en bus. Ahora puedo explorar la ciudad sin problemas y sin gastar una fortuna."</blockquote>
-                    <cite>- Sofia Ramirez, Turista</cite>
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h2 class="display-4 fw-bold text-light mb-5">Lo que dicen nuestros usuarios</h2>
+                        <div>
+                            <blockquote class="fs-4 fst-italic text-light mb-4 lh-base">
+                                "¡Rutas Arequipa me ha salvado! Como turista, me era muy difícil moverme en bus. Ahora puedo explorar la ciudad sin problemas y sin gastar una fortuna."
+                            </blockquote>
+                            <cite class="fw-semibold text-muted">- Sofia Ramirez, Turista</cite>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Sección registro -->
-        <section class="signup-section">
+        <section class="py-5" style="background-color: #F5EFE6;">
             <div class="container">
-                <div class="signup-box">
-                    <h2>Sé el primero en probar Enroute AQP</h2>
-                    <p>Regístrate para recibir acceso anticipado a nuestra app y empieza a explorar Arequipa de forma inteligente.</p>
-                    
-                    <form class="signup-form">
-                        <input type="email" placeholder="Tu correo electrónico" class="email-input">
-                        <button type="submit" class="btn-signup">Recibir acceso anticipado</button>
-                    </form>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="bg-dark rounded-3 p-5 text-center text-light">
+                            <h2 class="display-5 fw-bold text-light mb-4">Sé el primero en probar Enroute AQP</h2>
+                            <p class="fs-5 text-muted mb-4">
+                                Regístrate para recibir acceso anticipado a nuestra app y empieza a explorar Arequipa de forma inteligente.
+                            </p>
+                            
+                            <form class="row g-3 justify-content-center">
+                                <div class="col-md-6">
+                                    <input type="email" placeholder="Tu correo electrónico" 
+                                           class="form-control form-control-lg bg-secondary text-light border-secondary">
+                                </div>
+                                <div class="col-md-auto">
+                                    <button type="submit" class="btn btn-warning btn-lg rounded-pill px-4 fw-bold">
+                                        Recibir acceso anticipado
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Pie de página -->
-    <footer class="footer">
+    <footer class="bg-dark text-muted py-4 border-top border-secondary">
         <div class="container">
-            <p>© 2024 Rutas Arequipa. Todos los derechos reservados.</p>
-            <nav class="footer-nav">
-                <a href="#">Términos de servicio</a>
-                <a href="#">Política de privacidad</a>
-            </nav>
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <p class="mb-3">© 2024 Rutas Arequipa. Todos los derechos reservados.</p>
+                    <nav class="d-flex justify-content-center gap-4">
+                        <a href="#" class="text-muted text-decoration-none">Términos de servicio</a>
+                        <a href="#" class="text-muted text-decoration-none">Política de privacidad</a>
+                    </nav>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
