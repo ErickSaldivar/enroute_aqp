@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class DaoParada_Impl implements DaoParada{
 
     @Override
-    public void registrar(Parada parada) throws SQLException {
+    public void registrar(Parada parada) throws Exception {
         
         String sql = "INSERT INTO paradas(nombre_parada, latitud, longitud, referencia) VALUES(?, ?, ?, ?)";
 
@@ -35,7 +35,7 @@ public class DaoParada_Impl implements DaoParada{
     }
 
     @Override
-    public void modificar(int id, Parada parada) throws SQLException {
+    public void modificar(int id, Parada parada) throws Exception {
         String sql = "UPDATE paradas SET nombre_parada = ?, latitud = ?, longitud = ?, referencia = ? WHERE id_parada = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -54,7 +54,7 @@ public class DaoParada_Impl implements DaoParada{
     }
 
     @Override
-    public void eliminar(int id) throws SQLException {
+    public void eliminar(int id) throws Exception {
         String sql = "DELETE FROM paradas WHERE id_parada = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -69,7 +69,7 @@ public class DaoParada_Impl implements DaoParada{
 
    
     @Override
-    public List<Parada> listarPorRuta(int idRuta) throws SQLException {
+    public List<Parada> listarPorRuta(int idRuta) throws Exception {
         List<Parada> paradas = new ArrayList<>();
         // Se unen las tablas 'paradas' (p) y 'rutas_paradas' (rp)
         String sql = "SELECT p.id_parada, p.nombre_parada, p.latitud, p.longitud, p.referencia " +

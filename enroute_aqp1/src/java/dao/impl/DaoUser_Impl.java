@@ -28,11 +28,11 @@ public class DaoUser_Impl implements DaoUser{
             usuario = new Pasajero();
         }
 
-        usuario.setId(rs.getString("")); 
+        usuario.setId(rs.getString("id_usuario")); 
         usuario.setNombre(rs.getString("nombre"));
         usuario.setApellido(rs.getString("apellido"));
         usuario.setEmail(rs.getString("email"));
-        usuario.setPassword(rs.getString("password"));
+        usuario.setPassword(rs.getString("password_hash"));
         usuario.setRol(rol);
         
         return usuario;

@@ -17,14 +17,13 @@ import java.util.ArrayList;
 public class DaoRuta_Impl implements DaoRuta{
 
        @Override
-    public void registrar(Ruta ruta) throws SQLException {
-        String sql = "INSERT INTO rutas(nombre_ruta, descripcion, punto_inicio, punto_fin, tiempo_estimado) VALUES(?, ?, ?, ?, ?)";
+    public void registrar(Ruta ruta) throws Exception {
+        String sql = "INSERT INTO rutas(nombre_ruta, tiempo_estimado) VALUES(?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, ruta.getNombre());
-           
             ps.setInt(2, ruta.getTiempoEstimado());
 
             ps.executeUpdate();
@@ -34,7 +33,7 @@ public class DaoRuta_Impl implements DaoRuta{
     }
 
     @Override
-    public void modificar(int id, Ruta ruta) throws SQLException {
+    public void modificar(int id, Ruta ruta) throws Exception {
         String sql = "UPDATE rutas SET nombre_ruta = ?, tiempo_estimado = ? WHERE id_ruta = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -51,7 +50,7 @@ public class DaoRuta_Impl implements DaoRuta{
     }
 
     @Override
-    public void eliminar(int id) throws SQLException {
+    public void eliminar(int id) throws Exception {
         String sql = "DELETE FROM rutas WHERE id_ruta = ?";
 
         try (Connection conn = DBConnection.getConnection();
@@ -66,7 +65,7 @@ public class DaoRuta_Impl implements DaoRuta{
 
    
     @Override
-    public List<Ruta> listarParadas() throws SQLException {
+    public List<Ruta> listarParadas() throws Exception {
         List<Ruta> rutas = new ArrayList<>();
         String sql = "SELECT id_ruta, nombre_ruta, tiempo_estimado FROM rutas";
 

@@ -69,7 +69,7 @@ public class DaoBus_Impl implements DaoBus{
     @Override
     public List<Bus> findByRuta(int idRuta) throws Exception {
         List<Bus> buses = new ArrayList<>();
-        String sql = "SELECT * FROM buses WHERE linea=?";
+        String sql = "SELECT * FROM buses WHERE id_ruta=?";
         
         try (Connection conn = DBConnection.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -80,7 +80,7 @@ public class DaoBus_Impl implements DaoBus{
                 while (rs.next()) {
                     Bus bus = new Bus();
                     bus.setId(rs.getString("id"));
-                    bus.setLinea(rs.getString("linea"));
+                    bus.setLinea(rs.getString("id_ruta"));
                     bus.setCapacidad(rs.getInt("capacidad"));
                     buses.add(bus);
                 }
