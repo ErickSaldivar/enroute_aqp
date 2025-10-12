@@ -59,7 +59,7 @@ public class RegisterServlet extends HttpServlet {
             String hashedPassword = hashPassword(registerBean.getPassword());
             
             // Insertar usuario en la base de datos
-            String sql = "INSERT INTO usuarios (nombre, apellido, email, password, fecha_registro) VALUES(?, ?, ?, ?, NOW())";
+            String sql = "INSERT INTO usuarios (nombre, apellido, email, password_hash, fecha_registro) VALUES(?, ?, ?, ?, NOW())";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, registerBean.getNombre());
             pstmt.setString(2, registerBean.getApellido());

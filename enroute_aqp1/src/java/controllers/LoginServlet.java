@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
             // Hash de la contraseña para comparar
             String hashedPassword = hashPassword(loginBean.getPassword());
             
-            String sql = "SELECT id_usuario, nombre, apellido FROM usuarios WHERE email = ? AND password = ?";
+            String sql = "SELECT id_usuario, nombre, apellido FROM usuarios WHERE email = ? AND password_hash = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, loginBean.getEmail());
             pstmt.setString(2, hashedPassword);
