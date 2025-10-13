@@ -1,0 +1,234 @@
+<%-- 
+    Document   : historial
+    Created on : 12 oct. 2025, 18:57:43
+    Author     : User
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="components/DsInicio.jsp" %>
+
+        <!-- Main Content Area -->
+        <div class="flex-grow-1 bg-light overflow-auto">
+            <!-- Mobile Header -->
+            <div class="d-lg-none bg-white shadow-sm p-3 border-bottom">
+                <h2 class="mb-0 fw-bold text-dark">Historial de Rutas</h2>
+            </div>
+            
+            <!-- Desktop and Mobile Content -->
+            <div class="container-fluid p-4">
+                <!-- Page Title and Search (Desktop) -->
+                <div class="d-none d-lg-block mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h1 class="fw-bold text-dark mb-0">Historial de Rutas</h1>
+                        <div class="position-relative" style="width: 300px;">
+                            <input type="text" class="form-control bg-white border-0 shadow-sm ps-5" 
+                                   placeholder="Buscar en el historial..." id="searchHistory">
+                            <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Search -->
+                <div class="d-lg-none mb-4">
+                    <div class="position-relative">
+                        <input type="text" class="form-control bg-white border-0 shadow-sm ps-5" 
+                               placeholder="Buscar en el historial..." id="searchHistoryMobile">
+                        <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                    </div>
+                </div>
+                
+                <!-- History Content -->
+                <div class="row g-4">
+                    <!-- Today Section -->
+                    <div class="col-12">
+                        <div class="bg-white rounded-3 shadow-sm p-4">
+                            <h3 class="fw-bold text-dark mb-4">Hoy</h3>
+                            
+                            <!-- Route 102 -->
+                            <div class="border rounded-3 p-3 mb-3 bg-light">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center flex-grow-1">
+                                        <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;">
+                                            <i class="bi bi-bus-front text-white fs-5"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="mb-1 fw-bold text-dark">Ruta 102</h5>
+                                            <p class="mb-0 text-muted small">Origen: Plaza de Armas, Destino: Universidad Nacional de San Agustín</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <small class="text-muted">10:45 AM</small>
+                                        <div class="mt-1">
+                                            <button class="btn btn-outline-primary btn-sm me-1">
+                                                <i class="bi bi-arrow-repeat"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success btn-sm">
+                                                <i class="bi bi-heart"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Route 204 -->
+                            <div class="border rounded-3 p-3 mb-0 bg-light">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center flex-grow-1">
+                                        <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;">
+                                            <i class="bi bi-bus-front text-white fs-5"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="mb-1 fw-bold text-dark">Ruta 204</h5>
+                                            <p class="mb-0 text-muted small">Origen: Hospital Regional Honorio Delgado, Destino: Mall Aventura Plaza</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <small class="text-muted">09:12 AM</small>
+                                        <div class="mt-1">
+                                            <button class="btn btn-outline-primary btn-sm me-1">
+                                                <i class="bi bi-arrow-repeat"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success btn-sm">
+                                                <i class="bi bi-heart"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Yesterday Section -->
+                    <div class="col-12">
+                        <div class="bg-white rounded-3 shadow-sm p-4">
+                            <h3 class="fw-bold text-dark mb-4">Ayer</h3>
+                            
+                            <!-- Route 301 -->
+                            <div class="border rounded-3 p-3 mb-3 bg-light">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center flex-grow-1">
+                                        <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;">
+                                            <i class="bi bi-bus-front text-white fs-5"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="mb-1 fw-bold text-dark">Ruta 301</h5>
+                                            <p class="mb-0 text-muted small">Origen: Terminal Terrestre, Destino: Cerro Colorado</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <small class="text-muted">3:30 PM</small>
+                                        <div class="mt-1">
+                                            <button class="btn btn-outline-primary btn-sm me-1">
+                                                <i class="bi bi-arrow-repeat"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success btn-sm">
+                                                <i class="bi bi-heart"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Route 405 -->
+                            <div class="border rounded-3 p-3 mb-0 bg-light">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center flex-grow-1">
+                                        <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;">
+                                            <i class="bi bi-bus-front text-white fs-5"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="mb-1 fw-bold text-dark">Ruta 405</h5>
+                                            <p class="mb-0 text-muted small">Origen: Parque Industrial, Destino: Paucarpata</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <small class="text-muted">11:20 AM</small>
+                                        <div class="mt-1">
+                                            <button class="btn btn-outline-primary btn-sm me-1">
+                                                <i class="bi bi-arrow-repeat"></i>
+                                            </button>
+                                            <button class="btn btn-outline-success btn-sm">
+                                                <i class="bi bi-heart"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Statistics Section -->
+                    <div class="col-12">
+                        <div class="bg-white rounded-3 shadow-sm p-4">
+                            <h4 class="fw-bold text-dark mb-4">Estadísticas del Mes</h4>
+                            
+                            <div class="row g-3">
+                                <div class="col-6 col-md-3">
+                                    <div class="text-center p-3 bg-light rounded-3">
+                                        <i class="bi bi-bus-front fs-2 mb-2 d-block" style="color: #DD6B20;"></i>
+                                        <h5 class="fw-bold text-dark mb-1">24</h5>
+                                        <small class="text-muted">Rutas Usadas</small>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="text-center p-3 bg-light rounded-3">
+                                        <i class="bi bi-clock fs-2 text-info mb-2 d-block"></i>
+                                        <h5 class="fw-bold text-dark mb-1">15h</h5>
+                                        <small class="text-muted">Tiempo Total</small>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="text-center p-3 bg-light rounded-3">
+                                        <i class="bi bi-currency-dollar fs-2 text-success mb-2 d-block"></i>
+                                        <h5 class="fw-bold text-dark mb-1">S/. 48</h5>
+                                        <small class="text-muted">Gasto Estimado</small>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="text-center p-3 bg-light rounded-3">
+                                        <i class="bi bi-geo-alt fs-2 text-danger mb-2 d-block"></i>
+                                        <h5 class="fw-bold text-dark mb-1">8</h5>
+                                        <small class="text-muted">Destinos Únicos</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="col-12">
+                        <div class="bg-white rounded-3 shadow-sm p-4">
+                            <h4 class="fw-bold text-dark mb-3">Acciones Rápidas</h4>
+                            <div class="row g-3">
+                                <div class="col-6 col-md-3">
+                                    <button class="btn btn-outline-primary w-100 py-3 rounded-3">
+                                        <i class="bi bi-download fs-4 d-block mb-2"></i>
+                                        <small class="fw-medium">Exportar Historial</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <button class="btn btn-outline-danger w-100 py-3 rounded-3">
+                                        <i class="bi bi-trash fs-4 d-block mb-2"></i>
+                                        <small class="fw-medium">Limpiar Historial</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <button class="btn btn-outline-info w-100 py-3 rounded-3">
+                                        <i class="bi bi-graph-up fs-4 d-block mb-2"></i>
+                                        <small class="fw-medium">Ver Estadísticas</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <button class="btn btn-outline-success w-100 py-3 rounded-3">
+                                        <i class="bi bi-filter fs-4 d-block mb-2"></i>
+                                        <small class="fw-medium">Filtrar Rutas</small>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<%@include file="components/DsFin.jsp" %>

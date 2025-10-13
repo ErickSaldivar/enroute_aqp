@@ -47,7 +47,7 @@
             <!-- Logo -->
             <div class="p-4 border-bottom border-secondary">
                 <div class="d-flex align-items-center">
-                    <i class="bi bi-geo-alt-fill text-warning me-2 fs-4"></i>
+                    <img src="${pageContext.request.contextPath}/img/icon_img.png" alt="Logo" style="height: 40px" class="me-2">
                     <h4 class="mb-0 fw-bold text-white">Enroute AQP</h4>
                 </div>
             </div>
@@ -56,31 +56,31 @@
             <nav class="flex-grow-1 py-3">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item mb-2">
-                        <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3">
-                            <i class="bi bi-person me-3"></i>
+                        <a href="mapa.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                            <i class="bi bi-bus-front me-3"></i>
                             <span>Viajar</span>
                         </a>
                     </li>
                     <li class="nav-item mb-2">
-                        <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                        <a href="perfil.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
                             <i class="bi bi-person me-3"></i>
                             <span>Mi Perfil</span>
                         </a>
                     </li>
                     <li class="nav-item mb-2">
-                        <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                        <a href="favoritos.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
                             <i class="bi bi-heart me-3"></i>
                             <span>Favoritos</span>
                         </a>
                     </li>
                     <li class="nav-item mb-2">
-                        <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                        <a href="historial.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
                             <i class="bi bi-clock-history me-3"></i>
                             <span>Historial</span>
                         </a>
                     </li>
                     <li class="nav-item mb-2">
-                        <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                        <a href="rutas.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
                             <i class="bi bi-map me-3"></i>
                             <span>Rutas Disponibles</span>
                         </a>
@@ -124,31 +124,31 @@
                 <nav class="py-3">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
-                                <i class="bi bi-person me-3"></i>
+                            <a href="mapa.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
+                                <i class="bi bi-bus-front me-3"></i>
                                 <span>Viajar</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
+                            <a href="perfil.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
                                 <i class="bi bi-person me-3"></i>
                                 <span>Mi Perfil</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
+                            <a href="favoritos.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
                                 <i class="bi bi-heart me-3"></i>
                                 <span>Favoritos</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
+                            <a href="historial.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
                                 <i class="bi bi-clock-history me-3"></i>
                                 <span>Historial</span>
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
+                            <a href="rutas.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" data-bs-dismiss="offcanvas">
                                 <i class="bi bi-map me-3"></i>
                                 <span>Rutas Disponibles</span>
                             </a>

@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-2">
-                        <button class="btn btn-warning btn-lg w-100 fw-bold" onclick="buscarRuta()">
+                        <button class="btn btn-lg w-100 fw-bold" style="background-color: #DD6B20; color: white;" onclick="buscarRuta()">
                             <i class="bi bi-search me-2"></i>
                             <span class="d-none d-sm-inline">Buscar</span>
                             <span class="d-sm-none">🔍</span>

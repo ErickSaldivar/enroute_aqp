@@ -4,7 +4,7 @@
     Author     : User
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
 <head>
     <meta charset="UTF-8">

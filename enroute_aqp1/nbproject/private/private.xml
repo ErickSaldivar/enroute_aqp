@@ -3,17 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/src/java/dao/impl/DaoUser_Impl.java</file>
-            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/src/java/controllers/RegisterServlet.java</file>
-            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/dashboard.jsp</file>
+            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/historial.jsp</file>
+            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/mapa.jsp</file>
             <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/index.html</file>
             <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/login.jsp</file>
-            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/src/java/dao/DBConnection.java</file>
+            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/favoritos.jsp</file>
             <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/src/java/controllers/LoginServlet.java</file>
-            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/src/java/dao/DaoUser.java</file>
             <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/components/DsFin.jsp</file>
+            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/rutas.jsp</file>
             <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/register.jsp</file>
             <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/components/DsInicio.jsp</file>
+            <file>file:/D:/Erick/Documentos/UTP/web%20integrado/enroute_aqp/enroute_aqp1/web/pages/perfil.jsp</file>
         </group>
     </open-files>
 </project-private>
