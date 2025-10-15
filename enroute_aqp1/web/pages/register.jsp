@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -44,27 +45,30 @@
                             </div>
                             
                             <!-- Error Messages -->
-                            <% String error = request.getParameter("error"); %>
-                            <% if (error != null) { %>
+                            <c:if test="${not empty param.error}">
                                 <div class="alert alert-danger text-center mb-3" role="alert">
-                                    <% if ("empty".equals(error)) { %>
-                                        Todos los campos son obligatorios.
-                                    <% } else if ("duplicate".equals(error)) { %>
-                                        Este correo electrónico ya está registrado.
-                                    <% } else if ("database".equals(error)) { %>
-                                        Error en la base de datos. Inténtalo de nuevo.
-                                    <% } else { %>
-                                        Error desconocido. Inténtalo de nuevo.
-                                    <% } %>
+                                    <c:choose>
+                                        <c:when test="${param.error eq 'empty'}">
+                                            Todos los campos son obligatorios.
+                                        </c:when>
+                                        <c:when test="${param.error eq 'duplicate'}">
+                                            Este correo electrónico ya está registrado.
+                                        </c:when>
+                                        <c:when test="${param.error eq 'database'}">
+                                            Error en la base de datos. Inténtalo de nuevo.
+                                        </c:when>
+                                        <c:otherwise>
+                                            Error desconocido. Inténtalo de nuevo.
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
-                            <% } %>
+                            </c:if>
                             
-                            <% String errorAttr = (String) request.getAttribute("error"); %>
-                            <% if (errorAttr != null) { %>
+                            <c:if test="${not empty requestScope.error}">
                                 <div class="alert alert-danger text-center mb-3" role="alert">
-                                    <%= errorAttr %>
+                                    <c:out value="${requestScope.error}" />
                                 </div>
-                            <% } %>
+                            </c:if>
 
                             <!-- Registration Form -->
                             <form action="${pageContext.request.contextPath}/RegisterServlet" method="POST">

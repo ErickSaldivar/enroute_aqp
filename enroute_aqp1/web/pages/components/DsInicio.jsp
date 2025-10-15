@@ -6,15 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-    // Verificar si el usuario está logueado
-    String userEmail = (String) session.getAttribute("userEmail");
-    if (userEmail == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
-%>
+<c:if test="${empty sessionScope.userEmail}">
+    <c:redirect url="login.jsp" />
+</c:if>
 <!DOCTYPE html>
 <html lang="es">
 <head>
