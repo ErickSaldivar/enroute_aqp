@@ -1,10 +1,11 @@
 <%-- 
-    Document   : register
+    Document   : login
     Created on : 10 set. 2025, 22:42:44
     Author     : erick
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,20 +32,18 @@
                         <h2 class="h4 fw-bold mb-4 text-dark">Iniciar Sesión</h2>
                         
                         <!-- Error Messages -->
-                        <% String error = (String) request.getAttribute("error"); %>
-                        <% if (error != null) { %>
+                        <c:if test="${not empty requestScope.error}">
                             <div class="alert alert-danger text-center mb-3" role="alert">
-                                <%= error %>
+                                <c:out value="${requestScope.error}" />
                             </div>
-                        <% } %>
+                        </c:if>
                         
                         <!-- Success Messages -->
-                        <% String registration = request.getParameter("registration"); %>
-                        <% if ("success".equals(registration)) { %>
+                        <c:if test="${param.registration eq 'success'}">
                             <div class="alert alert-success text-center mb-3" role="alert">
                                 ¡Registro exitoso! Ahora puedes iniciar sesión.
                             </div>
-                        <% } %>
+                        </c:if>
                         
                         <!-- Login Form -->
                         <form method="post" action="${pageContext.request.contextPath}/LoginServlet">
