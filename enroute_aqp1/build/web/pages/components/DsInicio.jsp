@@ -6,11 +6,44 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
+<%
+    // Verificar si el usuario está logueado
+    if (session.getAttribute("userId") == null) {
+        response.sendRedirect("../login.jsp");
+        return;
+    }
+    
+    // Obtener información del usuario
+    String userName = (String) session.getAttribute("userName");
+    String userLastName = (String) session.getAttribute("userLastName");
+    String userEmail = (String) session.getAttribute("userEmail");
+    Boolean isAdminObj = (Boolean) session.getAttribute("isAdmin");
+    
+    // Debug: Imprimir el valor booleano del admin
+    System.out.println("DEBUG DsInicio.jsp - Email: " + userEmail + ", Es Admin: " + isAdminObj);
+    
+    // Verificación doble para administradores
+    boolean isAdmin = false;
+    
+    // Estrategia 1: Verificar por email específico (alternativa robusta)
+    if (userEmail != null) {
+        String emailLower = userEmail.toLowerCase();
+        if ("jordi@admin.com".equals(emailLower) || "admin@enroute.com".equals(emailLower)) {
+            isAdmin = true;
+            System.out.println("DEBUG DsInicio.jsp - Usuario admin detectado por email: " + emailLower);
+        }
+    }
+    
+    // Estrategia 2: Verificar por valor de sesión si no se detectó por email
+    if (!isAdmin && isAdminObj != null) {
+        isAdmin = isAdminObj.booleanValue();
+        System.out.println("DEBUG DsInicio.jsp - Usuario admin detectado por sesión: " + isAdmin);
+    }
+    
+    // Debug: Imprimir el resultado de la validación doble
+    System.out.println("DEBUG DsInicio.jsp - isAdmin final (verificación doble): " + isAdmin);
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<c:if test="${empty sessionScope.userEmail}">
-    <c:redirect url="login.jsp" />
-</c:if>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -49,46 +82,52 @@
             </div>
             
             <!-- Navigation Menu -->
-            <nav class="flex-grow-1 py-3">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="dashboard.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
-                            <i class="bi bi-speedometer2 me-3"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="mapa.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
-                            <i class="bi bi-bus-front me-3"></i>
-                            <span>Viajar</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="perfil.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
-                            <i class="bi bi-person me-3"></i>
-                            <span>Mi Perfil</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="favoritos.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
-                            <i class="bi bi-heart me-3"></i>
-                            <span>Favoritos</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="historial.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
-                            <i class="bi bi-clock-history me-3"></i>
-                            <span>Historial</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="rutas.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
-                            <i class="bi bi-map me-3"></i>
-                            <span>Rutas Disponibles</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <nav class="py-3">
+                    <ul class="nav nav-pills flex-column">
+                        <!-- Menú común para todos los usuarios -->
+                        <% if (isAdmin) { %>
+                        <!-- Opción especial para Administradores: Dashboard -->
+                        <li class="nav-item mb-2">
+                            <a href="dashboard.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                                <i class="bi bi-speedometer2 me-3"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <% } %>
+                        <!-- Opciones comunes para todos -->
+                        <li class="nav-item mb-2">
+                            <a href="mapa.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                                <i class="bi bi-bus-front me-3"></i>
+                                <span>Viajar</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="favoritos.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                                <i class="bi bi-heart me-3"></i>
+                                <span>Favoritos</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="historial.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                                <i class="bi bi-clock-history me-3"></i>
+                                <span>Historial</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="rutas.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                                <i class="bi bi-map me-3"></i>
+                                <span>Rutas Disponibles</span>
+                            </a>
+                        </li>
+                        <!-- Perfil disponible para todos -->
+                        <li class="nav-item mb-2">
+                            <a href="perfil.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
+                                <i class="bi bi-person me-3"></i>
+                                <span>Mi Perfil</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             
             <!-- User Profile -->
             <div class="p-4 border-top border-secondary">
@@ -125,24 +164,17 @@
             <div class="offcanvas-body p-0">
                 <nav class="py-3">
                     <ul class="nav nav-pills flex-column">
+                        <!-- Menú móvil común para todos los usuarios -->
+                        <% if (isAdmin) { %>
+                        <!-- Opción especial para Administradores: Dashboard -->
                         <li class="nav-item mb-2">
-                            <a href="dashboard.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" onclick="window.location.href='dashboard.jsp'; return false;">
+                            <a href="dashboard.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3">
                                 <i class="bi bi-speedometer2 me-3"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-item mb-2">
-                            <a href="mapa.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" onclick="window.location.href='mapa.jsp'; return false;">
-                                <i class="bi bi-bus-front me-3"></i>
-                                <span>Viajar</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="perfil.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" onclick="window.location.href='perfil.jsp'; return false;">
-                                <i class="bi bi-person me-3"></i>
-                                <span>Mi Perfil</span>
-                            </a>
-                        </li>
+                        <% } %>
+                        <!-- Opciones móviles comunes para todos -->
                         <li class="nav-item mb-2">
                             <a href="favoritos.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" onclick="window.location.href='favoritos.jsp'; return false;">
                                 <i class="bi bi-heart me-3"></i>
@@ -159,6 +191,13 @@
                             <a href="rutas.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" onclick="window.location.href='rutas.jsp'; return false;">
                                 <i class="bi bi-map me-3"></i>
                                 <span>Rutas Disponibles</span>
+                            </a>
+                        </li>
+                        <!-- Perfil disponible para todos -->
+                        <li class="nav-item mb-2">
+                            <a href="perfil.jsp" class="nav-link text-white d-flex align-items-center px-4 py-3" onclick="window.location.href='perfil.jsp'; return false;">
+                                <i class="bi bi-person me-3"></i>
+                                <span>Mi Perfil</span>
                             </a>
                         </li>
                     </ul>
