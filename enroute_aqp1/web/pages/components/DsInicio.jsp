@@ -28,7 +28,8 @@
     // Estrategia 1: Verificar por email específico (alternativa robusta)
     if (userEmail != null) {
         String emailLower = userEmail.toLowerCase();
-        if ("jordi@admin.com".equals(emailLower) || "admin@enroute.com".equals(emailLower)) {
+        if ("jordi@admin.com".equals(emailLower) || "erick@admin.com".equals(emailLower) || 
+            "andre@admin.com".equals(emailLower) || "admin@enroute.com".equals(emailLower)) {
             isAdmin = true;
             System.out.println("DEBUG DsInicio.jsp - Usuario admin detectado por email: " + emailLower);
         }
@@ -61,13 +62,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
-<body style="font-family: 'Plus Jakarta Sans', sans-serif; height: 100vh; overflow: hidden;">
+<body style="font-family: 'Plus Jakarta Sans', sans-serif; height: 100vh; overflow-y: auto;">
 
     <div class="d-flex h-100">
         <!-- Mobile Menu Toggle Button -->
-        <button class="btn btn-dark d-lg-none position-fixed top-0 start-0 m-3 z-3" 
+        <button class="d-lg-none position-fixed top-0 start-0 m-3" 
                 type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" 
-                style="z-index: 1050;">
+                style="z-index: 1050; background: #343a40; color: white; border: none; box-shadow: none; padding: 8px 12px; border-radius: 6px;">
             <i class="bi bi-list fs-4"></i>
         </button>
 

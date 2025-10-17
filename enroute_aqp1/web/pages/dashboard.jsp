@@ -1,224 +1,77 @@
+<%-- 
+    ========== DASHBOARD PRINCIPAL - PÁGINA JSP ==========
+    
+    Esta página JSP implementa el dashboard principal del sistema aplicando
+    los conceptos y patrones vistos en clase:
+    
+    CONCEPTOS JSP IMPLEMENTADOS:
+    - Directivas JSP: @page, @include para modularización
+    - Inclusión de archivos JSP para reutilización de código
+    - Integración con Bootstrap como framework frontend
+    - Separación de responsabilidades (MVC)
+    
+    PATRONES APLICADOS:
+    - MVC: Esta página actúa como VISTA del patrón MVC
+    - Modularización: Uso de includes para separar lógica de protección
+    - Reutilización: Componentes JSP reutilizables (DsInicio.jsp)
+    
+    FUNCIONALIDADES CORE DEL NEGOCIO:
+    - Dashboard principal con KPIs del sistema
+    - Visualización de métricas de usuarios y rutas
+    - Gráficos interactivos con Chart.js
+    - Control de acceso solo para administradores
+    
+    INTEGRACIÓN CON FRAMEWORKS FRONTEND:
+    - Bootstrap 5 para diseño responsivo
+    - Chart.js para visualización de datos
+    - Bootstrap Icons para iconografía
+    
+    @author Equipo EnRoute AQP
+    @version 2.0 - Segundo Avance del Proyecto Final
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%-- ========== INCLUSIÓN DE PROTECCIÓN DE ACCESO ========== --%>
+<%-- Incluye la lógica de verificación de sesión y permisos de administrador --%>
 <%@include file = "dashboard-protection.jsp" %>
+
+<%-- ========== INCLUSIÓN DEL COMPONENTE PRINCIPAL ========== --%>
+<%-- Incluye el componente principal del dashboard con la estructura HTML --%>
 <%@include file = "components/DsInicio.jsp" %>
 
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Custom Styles -->
+<link rel="stylesheet" href="../css/custom-styles.css">
+
         <!-- Main Content -->
         <div class="flex-grow-1 d-flex flex-column">
-            <!-- Mobile Header with Menu Button -->
+            <!-- Mobile Header -->
             <div class="bg-white d-lg-none p-3 shadow-sm">
-                <div class="d-flex align-items-center">
-                    <button class="btn btn-outline-dark me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
-                        <i class="bi bi-list"></i>
-                    </button>
+                <div class="d-flex align-items-center justify-content-center">
                     <div class="d-flex align-items-center">
-                        <i class="bi bi-speedometer2 text-primary me-2"></i>
+                        <i class="bi bi-speedometer2 text-primary-custom me-2"></i>
                         <h5 class="mb-0 fw-bold">Dashboard</h5>
                     </div>
                 </div>
             </div>
 
             <!-- Dashboard Content -->
-            <div class="dashboard-container p-3 p-lg-4">
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <h2 class="fw-bold text-dark mb-1">Dashboard</h2>
-                        <p class="text-muted">Bienvenido, <%= session.getAttribute("userName") %></p>
-                    </div>
-                </div>
-        
-        <style>
-        .dashboard-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .kpi-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-        }
-        
-        .kpi-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-        }
-        
-        .kpi-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-        
-        .kpi-card:hover::before {
-            transform: translateX(100%);
-        }
-        
-        .kpi-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .kpi-label {
-            font-size: 1rem;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Chart Cards con Bootstrap */
-        .chart-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-        }
-        
-        .chart-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .chart-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-        }
-        
-        .chart-container {
-            position: relative;
-            height: 300px;
-        }
-        
-        /* Dashboard Cards con Bootstrap */
-        .dashboard-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-        }
-        
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .icon-circle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin: 0 auto 20px auto;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .dashboard-card h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .dashboard-card p {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .btn-custom {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 12px 25px;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        .btn-custom:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            color: white;
-        }
-        
-        .btn-logout {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 12px 25px;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        .btn-logout:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-            color: white;
-        }
-        
-        /* Navbar personalizada */
-        .navbar-custom {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar-brand {
-            color: white !important;
-            font-weight: bold;
-        }
-        
-        .navbar-text {
-            color: white !important;
-        }
-        
-        /* Iconos Bootstrap */
-        .bi {
-            font-size: 2rem;
-            color: white;
-        }
-    </style>
-</head>
-<body>
+            <div class="container-fluid p-3 p-lg-4">
+
     <!-- Navbar con Bootstrap -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-custom mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <i class="bi bi-geo-alt-fill me-2"></i>
                 EnRoute AQP
             </a>
-            <div class="navbar-nav ms-auto">
-                <span class="navbar-text">
-                    <i class="bi bi-person-circle me-2"></i>
-                    Bienvenido, <strong><c:out value="${sessionScope.userName}"/></strong>
-                </span>
-            </div>
         </div>
     </nav>
 
-    <div class="dashboard-container">
-        <!-- KPI Section con Bootstrap Grid -->
-        <div class="row g-4 mb-4">
+    <!-- KPI Section con Bootstrap Grid -->
+    <div class="row g-4 mb-4">
             <div class="col-lg-3 col-md-6">
                 <div class="card kpi-card h-100">
                     <div class="card-body text-center p-4">
@@ -276,70 +129,17 @@
                 </div>
             </div>
         </div>
-
-        <!-- Dashboard Cards con Bootstrap Grid -->
-        <div class="row g-4">
-            <div class="col-lg-3 col-md-6">
-                <div class="card dashboard-card h-100">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-circle">
-                            <i class="bi bi-map"></i>
-                        </div>
-                        <h3 class="card-title">Rutas Disponibles</h3>
-                        <p class="card-text">Explora las rutas turísticas más populares de Arequipa</p>
-                        <a href="rutas.jsp" class="btn btn-custom">Ver Rutas</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card dashboard-card h-100">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-circle">
-                            <i class="bi bi-person"></i>
-                        </div>
-                        <h3 class="card-title">Mi Perfil</h3>
-                        <p class="card-text">Gestiona tu información personal y preferencias</p>
-                        <a href="perfil.jsp" class="btn btn-custom">Editar Perfil</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card dashboard-card h-100">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-circle">
-                            <i class="bi bi-heart"></i>
-                        </div>
-                        <h3 class="card-title">Favoritos</h3>
-                        <p class="card-text">Revisa tus rutas y lugares favoritos guardados</p>
-                        <a href="favoritos.jsp" class="btn btn-custom">Ver Favoritos</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card dashboard-card h-100">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-circle">
-                            <i class="bi bi-clock-history"></i>
-                        </div>
-                        <h3 class="card-title">Historial</h3>
-                        <p class="card-text">Consulta tu historial de rutas visitadas</p>
-                        <a href="historial.jsp" class="btn btn-custom">Ver Historial</a>
-                    </div>
-                </div>
-            </div>
-        </div>
         
         <!-- Logout Button -->
         <div class="text-center mt-5">
-            <a href="../LogoutServlet" class="btn btn-logout btn-lg">
+            <a href="LogoutServlet" class="btn btn-logout btn-lg">
                 <i class="bi bi-box-arrow-right me-2"></i>
                 Cerrar Sesión
             </a>
         </div>
     </div>
-
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+    </div>
 
     <!-- Chart.js Scripts -->
     <script>
@@ -479,11 +279,5 @@
             document.getElementById('totalTrips').textContent = (8932 + tripIncrease).toLocaleString();
         }, 30000);
     </script>
-            </div>
-        </div>
-    </div>
 
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<%@include file = "components/DsFin.jsp" %>
