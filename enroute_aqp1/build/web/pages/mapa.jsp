@@ -1,5 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file = "components/DsInicio.jsp" %>
+<%-- Incluir layout según estado de sesión: invitados no deben ser redirigidos --%>
+<%
+    Object uid = session.getAttribute("userId");
+    if (uid == null) {
+%>
+    <jsp:include page="components/DsInicioGuest.jsp" />
+<%
+    } else {
+%>
+    <jsp:include page="components/DsInicio.jsp" />
+<%
+    }
+%>
         
         <!-- Main Content -->
         <div class="flex-grow-1 d-flex flex-column">
@@ -34,7 +46,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-2">
-                        <button class="btn btn-lg w-100 fw-bold" style="background-color: #DD6B20; color: white;" onclick="buscarRuta()">
+                        <button id="btn-buscar" type="button" class="btn btn-lg w-100 fw-bold" style="background-color: #DD6B20; color: white;" onclick="buscarRuta()">
                             <i class="bi bi-search me-2"></i>
                             <span class="d-none d-sm-inline">Buscar</span>
                             <span class="d-sm-none">🔍</span>

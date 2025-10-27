@@ -9,7 +9,8 @@
 <%
     // Verificar si el usuario está logueado
     if (session.getAttribute("userId") == null) {
-        response.sendRedirect("../login.jsp");
+        // Redirigir correctamente al login dentro de la carpeta /pages
+        response.sendRedirect("login.jsp");
         return;
     }
     
