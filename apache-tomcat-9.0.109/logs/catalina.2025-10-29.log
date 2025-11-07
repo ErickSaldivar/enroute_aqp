@@ -1,0 +1,183 @@
+29-Oct-2025 23:01:34.078 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Nombre de la versión del servidor: Apache Tomcat/9.0.109
+29-Oct-2025 23:01:34.083 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:                      Sep 1 2025 12:15:33 UTC
+29-Oct-2025 23:01:34.083 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:     9.0.109.0
+29-Oct-2025 23:01:34.083 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:                           Windows 11
+29-Oct-2025 23:01:34.083 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Versión de Systema Operativo:      10.0
+29-Oct-2025 23:01:34.083 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Arquitectura:                      amd64
+29-Oct-2025 23:01:34.083 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:                         C:\Program Files\Java\jdk-21
+29-Oct-2025 23:01:34.085 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:                       21.0.7+8-LTS-245
+29-Oct-2025 23:01:34.085 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Vededor JVM:                       Oracle Corporation
+29-Oct-2025 23:01:34.085 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:                     D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109
+29-Oct-2025 23:01:34.085 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:                     D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109
+29-Oct-2025 23:01:34.092 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang=ALL-UNNAMED
+29-Oct-2025 23:01:34.092 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+29-Oct-2025 23:01:34.092 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+29-Oct-2025 23:01:34.092 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.io=ALL-UNNAMED
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util=ALL-UNNAMED
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.config.file=D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\logging.properties
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djdk.tls.ephemeralDHKeySize=2048
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dsun.io.useCanonCaches=false
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dignore.endorsed.dirs=
+29-Oct-2025 23:01:34.093 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.base=D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109
+29-Oct-2025 23:01:34.148 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Dcatalina.home=D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109
+29-Oct-2025 23:01:34.148 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument:             -Djava.io.tmpdir=D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\temp
+29-Oct-2025 23:01:34.154 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [C:\Program Files\Java\jdk-21\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk-21\bin;C:\apache-tomcat-9.0.109\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\User\AppData\Local\Microsoft\WindowsApps;C:\Users\User\AppData\Local\GitHubDesktop\bin;C:\Users\User\AppData\Local\Programs\Microsoft VS Code\bin;C:\dev\flutter\bin;.]
+29-Oct-2025 23:01:34.422 INFO [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-8080"]
+
+29-Oct-2025 23:01:34.447 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [550] milliseconds
+29-Oct-2025 23:01:34.501 INFO [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+29-Oct-2025 23:01:34.502 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.109]
+29-Oct-2025 23:01:34.508 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\enroute_aqp.xml]
+29-Oct-2025 23:01:34.526 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/enroute_aqp] in deployment descriptor [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\enroute_aqp.xml] has been ignored
+29-Oct-2025 23:01:34.554 SEVERE [main] org.apache.catalina.startup.HostConfig.deployDescriptor Error durante el despliegue del descriptor de configuración [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\enroute_aqp.xml]
+	java.lang.IllegalStateException: Error starting child
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:602)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:571)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:604)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:680)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1839)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:575)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:466)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1579)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:312)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:776)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:722)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:211)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:412)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:874)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:739)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:476)
+	Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@2fba3fc4]
+		at org.apache.catalina.util.LifecycleBase.handleSubClassException(LifecycleBase.java:404)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:179)
+		at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4172)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4294)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:599)
+		... 35 more
+	Caused by: java.lang.IllegalArgumentException: The main resource set specified [D:\UTP-8\WebIntegrado\enroute_aqp\enroute_aqp\build\web] is not a directory or war file, or is not readable (it does not exist or permissions to access it are missing)
+		at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:758)
+		at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:715)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		... 39 more
+29-Oct-2025 23:01:34.562 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\enroute_aqp.xml] has finished in [52] ms
+29-Oct-2025 23:01:34.562 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\enroute_aqp1.xml]
+29-Oct-2025 23:01:34.564 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/enroute_aqp1] in deployment descriptor [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\enroute_aqp1.xml] has been ignored
+29-Oct-2025 23:01:35.351 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+29-Oct-2025 23:01:35.454 INFO [main] com.sun.faces.config.ConfigureListener.contextInitialized Inicializando Mojarra 2.2.20 ( 20190731-0757 59754ac80c05d61848a08939ddd11a324f2345ac) para el contexto '/enroute_aqp1'
+29-Oct-2025 23:01:35.540 INFO [main] com.sun.faces.spi.InjectionProviderFactory.createInstance JSF1048: hay presentes anotaciones PostConstruct/PreDestroy.  Los métodos de beans administrados marcados con estas anotaciones procesarán dichas anotaciones.
+29-Oct-2025 23:01:35.903 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\enroute_aqp1.xml] has finished in [1.341] ms
+29-Oct-2025 23:01:35.904 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\Test1.xml]
+29-Oct-2025 23:01:35.905 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Test1] in deployment descriptor [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\Test1.xml] has been ignored
+29-Oct-2025 23:01:35.905 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor Se ha especificado un docBase [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\home\erick\NetBeansProjects\Test1\build\web] dentro del appBase de la máquina y será ignorado
+29-Oct-2025 23:01:35.909 SEVERE [main] org.apache.catalina.startup.HostConfig.deployDescriptor Error durante el despliegue del descriptor de configuración [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\Test1.xml]
+	java.lang.IllegalStateException: Error starting child
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:602)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:571)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:604)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:680)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1839)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:575)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:466)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1579)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:312)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:776)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:722)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:211)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:412)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:874)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:739)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:476)
+	Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@7df6d663]
+		at org.apache.catalina.util.LifecycleBase.handleSubClassException(LifecycleBase.java:404)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:179)
+		at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4172)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4294)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:599)
+		... 35 more
+	Caused by: java.lang.IllegalArgumentException: The main resource set specified [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\Test1] is not a directory or war file, or is not readable (it does not exist or permissions to access it are missing)
+		at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:758)
+		at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:715)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		... 39 more
+29-Oct-2025 23:01:35.963 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\Test1.xml] has finished in [59] ms
+29-Oct-2025 23:01:35.964 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\docs] de la aplicación web
+29-Oct-2025 23:01:35.996 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\docs] has finished in [32] ms
+29-Oct-2025 23:01:35.996 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\examples] de la aplicación web
+29-Oct-2025 23:01:36.697 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\examples] has finished in [700] ms
+29-Oct-2025 23:01:36.697 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\host-manager] de la aplicación web
+29-Oct-2025 23:01:36.727 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\host-manager] has finished in [30] ms
+29-Oct-2025 23:01:36.727 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\manager] de la aplicación web
+29-Oct-2025 23:01:36.760 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\manager] has finished in [33] ms
+29-Oct-2025 23:01:36.760 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\ROOT] de la aplicación web
+29-Oct-2025 23:01:36.781 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\webapps\ROOT] has finished in [21] ms
+29-Oct-2025 23:01:36.787 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+29-Oct-2025 23:01:36.811 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [2363] milliseconds
+29-Oct-2025 23:01:38.485 INFO [http-nio-8080-exec-9] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\LinkDJ.xml]
+29-Oct-2025 23:01:38.488 WARNING [http-nio-8080-exec-9] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/LinkDJ] in deployment descriptor [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\LinkDJ.xml] has been ignored
+29-Oct-2025 23:01:38.865 INFO [http-nio-8080-exec-9] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+29-Oct-2025 23:01:38.927 INFO [http-nio-8080-exec-9] com.sun.faces.config.ConfigureListener.contextInitialized Inicializando Mojarra 2.2.20 ( 20190731-0757 59754ac80c05d61848a08939ddd11a324f2345ac) para el contexto '/LinkDJ'
+29-Oct-2025 23:01:38.981 INFO [http-nio-8080-exec-9] com.sun.faces.spi.InjectionProviderFactory.createInstance JSF1048: hay presentes anotaciones PostConstruct/PreDestroy.  Los métodos de beans administrados marcados con estas anotaciones procesarán dichas anotaciones.
+29-Oct-2025 23:01:39.227 INFO [http-nio-8080-exec-9] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [D:\Erick\Documentos\UTP\web integrado\enroute_aqp\apache-tomcat-9.0.109\conf\Catalina\localhost\LinkDJ.xml] has finished in [742] ms
+29-Oct-2025 23:01:39.231 INFO [http-nio-8080-exec-10] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/LinkDJ]] after start() had already been called. The second call will be ignored.
+29-Oct-2025 23:24:13.821 WARNING [http-nio-8080-exec-5] com.sun.faces.config.ConfigureListener.contextDestroyed Unexpected state during contextDestroyed: no ConfigManager instance in current ServletContext but one is expected to exist.
+29-Oct-2025 23:24:14.450 INFO [http-nio-8080-exec-8] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+29-Oct-2025 23:24:14.517 INFO [http-nio-8080-exec-8] com.sun.faces.config.ConfigureListener.contextInitialized Inicializando Mojarra 2.2.20 ( 20190731-0757 59754ac80c05d61848a08939ddd11a324f2345ac) para el contexto '/LinkDJ'
+29-Oct-2025 23:24:14.564 INFO [http-nio-8080-exec-8] com.sun.faces.spi.InjectionProviderFactory.createInstance JSF1048: hay presentes anotaciones PostConstruct/PreDestroy.  Los métodos de beans administrados marcados con estas anotaciones procesarán dichas anotaciones.
+29-Oct-2025 23:24:18.365 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/LinkDJ]
+29-Oct-2025 23:24:18.366 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/LinkDJ]
+29-Oct-2025 23:24:18.636 INFO [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+29-Oct-2025 23:24:18.674 INFO [Catalina-utility-2] com.sun.faces.config.ConfigureListener.contextInitialized Inicializando Mojarra 2.2.20 ( 20190731-0757 59754ac80c05d61848a08939ddd11a324f2345ac) para el contexto '/LinkDJ'
+29-Oct-2025 23:24:18.715 INFO [Catalina-utility-2] com.sun.faces.spi.InjectionProviderFactory.createInstance JSF1048: hay presentes anotaciones PostConstruct/PreDestroy.  Los métodos de beans administrados marcados con estas anotaciones procesarán dichas anotaciones.
+29-Oct-2025 23:24:18.913 INFO [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+29-Oct-2025 23:50:10.763 INFO [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+29-Oct-2025 23:50:10.764 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+29-Oct-2025 23:50:10.773 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+29-Oct-2025 23:50:10.782 WARNING [main] com.sun.faces.config.ConfigureListener.contextDestroyed Unexpected state during contextDestroyed: no ConfigManager instance in current ServletContext but one is expected to exist.
+29-Oct-2025 23:50:10.794 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+29-Oct-2025 23:50:10.806 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]

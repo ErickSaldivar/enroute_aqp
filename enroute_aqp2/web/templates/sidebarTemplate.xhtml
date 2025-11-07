@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+  <h:head>
+    <title><ui:insert name="pageTitle">Enroute AQP</ui:insert></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --sidebar-bg: #1f2937; /* slate-800 */
+        --sidebar-text: #e5e7eb; /* gray-200 */
+        --sidebar-muted: #9ca3af; /* gray-400 */
+        --brand-accent: #f59e0b; /* amber-500 */
+        --page-bg: #f5efe6; /* warm light */
+        --card-bg: #ffffff;
+        --card-border: #e5e7eb;
+      }
+      body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--page-bg); }
+      /* Fixed-width sidebar so active state doesn't change layout */
+      .sidebar { width: 260px; min-width: 260px; max-width: 260px; flex: 0 0 260px; min-height: 100vh; background: var(--sidebar-bg); color: var(--sidebar-text); }
+      .sidebar .brand-title { line-height: 1; }
+      /* Ensure links occupy full width and keep consistent box sizing */
+      .sidebar .nav-link { color: var(--sidebar-text); border-radius: 10px; display: flex; align-items: center; width: 100%; box-sizing: border-box; padding-left: .75rem; padding-right: .75rem; }
+      .sidebar .nav-link .bi { width: 22px; text-align: center; margin-right: .75rem; flex: 0 0 22px; }
+      /* Prevent active class from changing link size — only change background and color */
+      .sidebar .nav-link.active { background: var(--brand-accent); color: #fff; }
+      .sidebar .nav-link:hover { background: rgba(255,255,255,.06); color: #fff; }
+      .sidebar .nav-link.active { background: var(--brand-accent); color: #fff; }
+      .sidebar .section-title { color: var(--sidebar-muted); font-size: .9rem; letter-spacing: .02em; }
+      .user-mini { color: var(--sidebar-text); }
+      .content-wrap { min-height: 100vh; }
+      /* Mobile header button */
+      .mobile-toggle { position: fixed; top: 14px; left: 14px; z-index: 1051; }
+      /* Avoid toggle button overlapping page titles on small screens */
+      @media (max-width: 991.98px) {
+        /* For specific pages reserve space on their page titles so the fixed toggle doesn't overlap */
+        main.content-wrap[data-active="mapa"] h2,
+        main.content-wrap[data-active="favoritos"] h2,
+        main.content-wrap[data-active="historial"] h2,
+        main.content-wrap[data-active="perfil"] h2,
+        main.content-wrap[data-active="rutas"] h2,
+        main.content-wrap[data-active="config"] h2 {
+          /* push the title down so the fixed toggle doesn't cover it */
+          margin-left: 50px !important;
+          padding-top: 0; /* avoid double spacing if h2 has padding */
+        }
+        /* Slightly adjust toggle to sit inside safe area */
+        .mobile-toggle { top: 28px; left: 25px; }
+      }
+      /* Make offcanvas (mobile) nav links match desktop sidebar styles */
+      .offcanvas .nav-link { color: var(--sidebar-text); border-radius: 10px; display: flex; align-items: center; width: 100%; box-sizing: border-box; padding-left: .75rem; padding-right: .75rem; }
+      .offcanvas .nav-link .bi { width: 22px; text-align: center; margin-right: .75rem; flex: 0 0 22px; }
+      .offcanvas .nav-link:hover { background: rgba(255,255,255,.06); color: #fff; }
+      .offcanvas .nav-link.active { background: var(--brand-accent); color: #fff; }
+    </style>
+  </h:head>
+  <h:body>
+
+    <!-- Mobile toggle button -->
+    <button class="btn btn-light d-lg-none mobile-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="d-flex">
+      <!-- Sidebar (Desktop) -->
+      <aside class="sidebar d-none d-lg-flex flex-column p-3 gap-3">
+        <!-- Brand -->
+        <div class="d-flex align-items-center gap-2 px-2 pt-1">
+          <img class="align-items-center" src="#{facesContext.externalContext.requestContextPath}/img/icon_img.png" alt="Logo EnrouteAQP" style="width: 40px; height: 40px; object-fit: cover;" />
+          <div class="brand-title">
+            <div class="fw-bold text-white">Rutas</div>
+            <div class="fw-bold text-white">Arequipa</div>
+          </div>
+        </div>
+
+        <!-- Nav -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills flex-column gap-2">
+            <li class="nav-item">
+              <h:link outcome="mapa" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'mapa' ? 'active' : ''}">
+                <i class="bi bi-bus-front"></i>
+                <span>Viajar</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="favoritos" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
+                <i class="bi bi-heart"></i>
+                <span>Favoritos</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="historial" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'historial' ? 'active' : ''}">
+                <i class="bi bi-clock-history"></i>
+                <span>Historial</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="rutas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'rutas' ? 'active' : ''}">
+                <i class="bi bi-geo"></i>
+                <span>Rutas Disponibles</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="perfil" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'perfil' ? 'active' : ''}">
+                <i class="bi bi-person-circle"></i>
+                <span>Mi Perfil</span>
+              </h:link>
+            </li>
+            <!-- Admin-only links (mobile) -->
+            <li class="nav-item">
+              <h:link outcome="metricas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'metricas' ? 'active' : ''}"
+                      rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
+                <i class="bi bi-bar-chart"></i>
+                <span>Métricas</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="administrar" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'administrar' ? 'active' : ''}"
+                      rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
+                <i class="bi bi-shield-lock"></i>
+                <span>Administrar Usuarios</span>
+              </h:link>
+            </li>
+            <!-- Admin-only links -->
+            <li class="nav-item">
+              <h:link outcome="metricas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'metricas' ? 'active' : ''}"
+                      rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
+                <i class="bi bi-bar-chart"></i>
+                <span>Métricas</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="administrar" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'administrar' ? 'active' : ''}"
+                      rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
+                <i class="bi bi-shield-lock"></i>
+                <span>Administrar Usuarios</span>
+              </h:link>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="mt-auto">
+          <h:link outcome="configuracion" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'configuracion' ? 'active' : ''}">
+                <i class="bi bi-gear"></i>
+                <span>Configuración</span>
+          </h:link>
+          <div class="d-flex align-items-center gap-2 mt-3 px-2 user-mini">
+            <img src="https://i.pravatar.cc/100?img=5" alt="Usuario" class="rounded-circle" style="width:40px;height:40px;object-fit:cover;" />
+            <div class="flex-grow-1">
+              <div class="fw-semibold">#{empty sessionScope.userName ? 'Invitado' : sessionScope.userName}</div>
+              
+              <h:form>
+                <h:commandButton value="Cerrar sesión" action="#{logoutBean.logout}" styleClass="btn btn-sm btn-outline-light" />
+              </h:form>
+            
+            </div>
+            
+          </div>
+        </div>
+      </aside>
+
+      <!-- Offcanvas (Mobile) -->
+      <div class="offcanvas offcanvas-start text-bg-dark d-lg-none" tabindex="-1" id="mobileSidebar">
+        <div class="offcanvas-header justify-content-center position-relative">
+            <div class="d-flex align-items-center">
+              <img class="align-items-center" src="#{facesContext.externalContext.requestContextPath}/img/icon_img.png" alt="Logo EnrouteAQP" style="width: 40px; height: 40px; object-fit: cover;" />
+              <h5 class="offcanvas-title ms-2 mb-0">Rutas Arequipa</h5>
+            </div>
+            <button type="button" class="btn-close btn-close-white position-absolute end-0 me-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+        <div class="offcanvas-body">
+          <ul class="nav nav-pills flex-column gap-2">
+            <li class="nav-item">
+              <h:link outcome="mapa" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'mapa' ? 'active' : ''}">
+                <i class="bi bi-bus-front"></i>
+                <span>Viajar</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="favoritos" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
+                <i class="bi bi-heart"></i>
+                <span>Favoritos</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="historial" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'historial' ? 'active' : ''}">
+                <i class="bi bi-clock-history"></i>
+                <span>Historial</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="rutas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'rutas' ? 'active' : ''}">
+                <i class="bi bi-geo"></i>
+                <span>Rutas Disponibles</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="perfil" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'perfil' ? 'active' : ''}">
+                <i class="bi bi-person-circle"></i>
+                <span>Mi Perfil</span>
+              </h:link>
+            </li>
+          </ul>
+          <hr />
+          <h:link outcome="configuracion" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'configuracion' ? 'active' : ''}">
+                <i class="bi bi-gear"></i>
+                <span>Configuración</span>
+          </h:link>
+          <div class="mt-3">
+            <h:form>
+              <h:commandButton value="Cerrar sesión" action="#{logoutBean.logout}" styleClass="btn btn-sm btn-light w-100" />
+            </h:form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right content area -->
+      <main class="content-wrap flex-grow-1 p-3 p-lg-4" data-active="#{empty active ? '' : active}">
+        <ui:insert name="content">Contenido</ui:insert>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </h:body>
+</html>

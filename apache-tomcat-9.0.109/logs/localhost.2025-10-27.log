@@ -1,3 +1,84 @@
 27-Oct-2025 18:14:04.782 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
 27-Oct-2025 18:14:04.783 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
 27-Oct-2025 18:14:04.784 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@391d1e33')
+27-Oct-2025 18:47:31.668 SEVERE [http-nio-8080-exec-23] org.apache.catalina.core.StandardWrapperValve.invoke El Servlet.service() para el servlet [jsp] en el contexto con ruta [/enroute_aqp1] lanzó la excepción [org.apache.jasper.JasperException: javax.el.ELException: Failed to parse the expression [${}]] con causa raíz
+	org.apache.el.parser.ParseException: Encountered " "}" "} "" at line 1, column 3.
+Was expecting one of:
+    "{" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    "null" ...
+    "(" ...
+    "[" ...
+    "!" ...
+    "not" ...
+    "empty" ...
+    "-" ...
+    <IDENTIFIER> ...
+    <IDENTIFIER> ...
+    "(" ...
+    
+		at org.apache.el.parser.ELParser.generateParseException(ELParser.java:4222)
+		at org.apache.el.parser.ELParser.jj_consume_token(ELParser.java:4066)
+		at org.apache.el.parser.ELParser.Assignment(ELParser.java:346)
+		at org.apache.el.parser.ELParser.Semicolon(ELParser.java:222)
+		at org.apache.el.parser.ELParser.Expression(ELParser.java:215)
+		at org.apache.el.parser.ELParser.DynamicExpression(ELParser.java:176)
+		at org.apache.el.parser.ELParser.CompositeExpression(ELParser.java:48)
+		at org.apache.el.lang.ExpressionBuilder.createNodeInternal(ExpressionBuilder.java:108)
+		at org.apache.el.lang.ExpressionBuilder.build(ExpressionBuilder.java:167)
+		at org.apache.el.lang.ExpressionBuilder.createValueExpression(ExpressionBuilder.java:220)
+		at org.apache.el.ExpressionFactoryImpl.createValueExpression(ExpressionFactoryImpl.java:62)
+		at org.apache.jasper.compiler.Validator$ValidateVisitor.prepareExpression(Validator.java:1425)
+		at org.apache.jasper.compiler.Validator$ValidateVisitor.visit(Validator.java:661)
+		at org.apache.jasper.compiler.Node$ELExpression.accept(Node.java:885)
+		at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2241)
+		at org.apache.jasper.compiler.Node$Visitor.visitBody(Node.java:2297)
+		at org.apache.jasper.compiler.Node$Visitor.visit(Node.java:2303)
+		at org.apache.jasper.compiler.Node$Root.accept(Node.java:436)
+		at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2241)
+		at org.apache.jasper.compiler.Node$Visitor.visitBody(Node.java:2297)
+		at org.apache.jasper.compiler.Validator$ValidateVisitor.visit(Validator.java:449)
+		at org.apache.jasper.compiler.Node$IncludeDirective.accept(Node.java:599)
+		at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2241)
+		at org.apache.jasper.compiler.Node$Visitor.visitBody(Node.java:2297)
+		at org.apache.jasper.compiler.Node$Visitor.visit(Node.java:2303)
+		at org.apache.jasper.compiler.Node$Root.accept(Node.java:436)
+		at org.apache.jasper.compiler.Node$Nodes.visit(Node.java:2241)
+		at org.apache.jasper.compiler.Validator.validateExDirectives(Validator.java:1635)
+		at org.apache.jasper.compiler.Compiler.generateJava(Compiler.java:210)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:366)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:344)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:330)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:591)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:378)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:355)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:306)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:656)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:935)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1833)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1583)
+27-Oct-2025 22:39:57.911 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+27-Oct-2025 22:39:57.911 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()

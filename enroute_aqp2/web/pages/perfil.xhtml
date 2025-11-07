@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/sidebarTemplate.xhtml">
+
+  <ui:param name="active" value="perfil" />
+  <ui:define name="pageTitle">Mi Perfil - Enroute AQP</ui:define>
+
+  <ui:define name="content">
+    <!-- Main Content (mirrors perfil.jsp) -->
+    <div class="container-fluid px-0">
+      <!-- Mobile Header -->
+        <div class="d-lg-none bg-white shadow-sm p-3 border-bottom mb-3">
+            <h2 class="mb-0 fw-bold text-dark">Viajar</h2>
+        </div>
+
+      <!-- Desktop Title -->
+      <div class="d-none d-lg-block mb-4">
+        <h1 class="fw-bold text-dark mb-0">Mi Perfil</h1>
+      </div>
+
+      <div class="row g-4">
+        <!-- Personal Data Section -->
+        <div class="col-12">
+          <div class="bg-white rounded-3 shadow-sm p-4">
+            <h3 class="fw-bold mb-4" style="color: #DD6B20;">
+              <i class="bi bi-person-circle me-2"></i>
+              Datos Personales
+            </h3>
+
+            <form>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="nombre" class="form-label fw-medium text-dark">Nombre</label>
+                  <input type="text" class="form-control form-control-lg bg-light border-0"
+                         id="nombre" name="nombre" placeholder="Tu nombre"
+                         value="#{sessionScope.userName}" />
+                </div>
+
+                <div class="col-12">
+                  <label for="email" class="form-label fw-medium text-dark">Correo electrónico</label>
+                  <input type="email" class="form-control form-control-lg bg-light border-0"
+                         id="email" name="email" placeholder="tu@correo.com"
+                         value="#{sessionScope.userEmail}" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Additional Options -->
+        <div class="col-12">
+          <div class="bg-white rounded-3 shadow-sm p-4">
+            <h4 class="fw-bold text-dark mb-4">Otras Opciones</h4>
+            <div class="row g-3">
+              <div class="col-6 col-md-3">
+                <button class="btn btn-outline-primary w-100 py-3 rounded-3">
+                  <i class="bi bi-shield-lock fs-4 d-block mb-2"></i>
+                  <small class="fw-medium">Cambiar Contraseña</small>
+                </button>
+              </div>
+              <div class="col-6 col-md-3">
+                <button class="btn btn-outline-info w-100 py-3 rounded-3">
+                  <i class="bi bi-download fs-4 d-block mb-2"></i>
+                  <small class="fw-medium">Exportar Datos</small>
+                </button>
+              </div>
+              <div class="col-6 col-md-3">
+                <button class="btn btn-outline-secondary w-100 py-3 rounded-3">
+                  <i class="bi bi-question-circle fs-4 d-block mb-2"></i>
+                  <small class="fw-medium">Ayuda</small>
+                </button>
+              </div>
+              <div class="col-6 col-md-3">
+                <button class="btn btn-outline-danger w-100 py-3 rounded-3">
+                  <i class="bi bi-trash fs-4 d-block mb-2"></i>
+                  <small class="fw-medium">Eliminar Cuenta</small>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="col-12">
+          <div class="d-grid">
+            <button type="submit" class="btn btn-warning btn-lg py-3 fw-bold text-white rounded-3" style="background-color: #DD6B20;">
+              <i class="bi bi-check-circle me-2"></i>
+              Guardar Cambios
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      /* Small adjustments to match app look */
+      .bg-light { background-color: #f8f9fa !important; }
+    </style>
+  </ui:define>
+
+</ui:composition>

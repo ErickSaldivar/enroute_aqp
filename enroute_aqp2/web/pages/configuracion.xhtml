@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/sidebarTemplate.xhtml">
+
+  <ui:param name="active" value="config" />
+  <ui:define name="pageTitle">Configuración - Enroute AQP</ui:define>
+
+  <ui:define name="content">
+    <div class="container-fluid px-0">
+      <!-- Mobile Header -->
+      <div class="d-lg-none bg-white shadow-sm p-3 border-bottom mb-3">
+        <h2 class="mb-0 fw-bold text-dark">Configuración</h2>
+      </div>
+
+      <!-- Desktop Title -->
+      <div class="d-none d-lg-block mb-4">
+        <h1 class="fw-bold text-dark mb-0">Configuración</h1>
+      </div>
+
+      <div class="row g-4">
+        <!-- Route Preferences -->
+        <div class="col-12">
+          <div class="bg-white rounded-3 shadow-sm p-4">
+            <h4 class="fw-bold text-dark mb-4">Preferencias de Ruta</h4>
+            <div class="row g-3">
+              <div class="col-12">
+                <div class="form-check d-flex align-items-center p-3 bg-light rounded-3">
+                  <input class="form-check-input me-3" type="checkbox" id="evitarTransbordos" name="evitarTransbordos" checked="checked" style="transform: scale(1.2);" />
+                  <div>
+                    <label class="form-check-label fw-medium text-dark" for="evitarTransbordos">Evitar transbordos</label>
+                    <p class="mb-0 small text-muted">Priorizar rutas directas sin cambios de bus</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check d-flex align-items-center p-3 bg-light rounded-3">
+                  <input class="form-check-input me-3" type="checkbox" id="rutasRapidas" name="rutasRapidas" style="transform: scale(1.2);" />
+                  <div>
+                    <label class="form-check-label fw-medium text-dark" for="rutasRapidas">Rutas más rápidas</label>
+                    <p class="mb-0 small text-muted">Mostrar primero las opciones de menor tiempo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="col-12">
+          <div class="bg-white rounded-3 shadow-sm p-4">
+            <h4 class="fw-bold text-dark mb-4">Configuración de Notificaciones</h4>
+            <div class="row g-3">
+              <div class="col-12">
+                <div class="form-check d-flex align-items-center p-3 bg-light rounded-3">
+                  <input class="form-check-input me-3" type="checkbox" id="notificacionesCambios" name="notificacionesCambios" checked="checked" style="transform: scale(1.2);" />
+                  <div>
+                    <label class="form-check-label fw-medium text-dark" for="notificacionesCambios">Notificaciones de cambios en rutas</label>
+                    <p class="mb-0 small text-muted">Recibir alertas sobre modificaciones en tus rutas favoritas</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check d-flex align-items-center p-3 bg-light rounded-3">
+                  <input class="form-check-input me-3" type="checkbox" id="actualizacionesServicio" name="actualizacionesServicio" style="transform: scale(1.2);" />
+                  <div>
+                    <label class="form-check-label fw-medium text-dark" for="actualizacionesServicio">Actualizaciones del servicio</label>
+                    <p class="mb-0 small text-muted">Información sobre mejoras y nuevas funcionalidades</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check d-flex align-items-center p-3 bg-light rounded-3">
+                  <input class="form-check-input me-3" type="checkbox" id="alertasTrafico" name="alertasTrafico" style="transform: scale(1.2);" />
+                  <div>
+                    <label class="form-check-label fw-medium text-dark" for="alertasTrafico">Alertas de tráfico</label>
+                    <p class="mb-0 small text-muted">Notificaciones sobre congestión y retrasos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      /* Small adjustments to match app look */
+      .bg-light { background-color: #f8f9fa !important; }
+    </style>
+  </ui:define>
+
+</ui:composition>

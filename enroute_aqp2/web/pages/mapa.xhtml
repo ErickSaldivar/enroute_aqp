@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/sidebarTemplate.xhtml">
+
+    <ui:param name="active" value="mapa" />
+    <ui:define name="pageTitle">Mapa - Enroute AQP</ui:define>
+
+    <ui:define name="content">
+        <div class="container-fluid px-0 py-0">
+
+            <!--Mobile Header-->
+            <div class="d-lg-none bg-white shadow-sm p-3 border-bottom mb-3">
+                <h2 class="mb-0 fw-bold text-dark">Viajar</h2>
+            </div>
+            
+            <!-- Search / Controls -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body">
+                    <div class="row g-2 g-lg-3">
+                        <div class="col-12 col-lg-5">
+                            <div class="position-relative">
+                                <input type="text" class="form-control form-control-lg ps-5" placeholder="Lugar de inicio" id="origen" />
+                                <i class="bi bi-geo-alt position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-5">
+                            <div class="position-relative">
+                                <input type="text" class="form-control form-control-lg ps-5" placeholder="Lugar de destino" id="destino" />
+                                <i class="bi bi-geo-alt-fill position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-2 d-grid">
+                            <button id="btn-buscar" type="button" class="btn btn-lg fw-bold" style="background-color: #DD6B20; color: white;" onclick="buscarRuta()">
+                                <i class="bi bi-search me-2"></i>
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map area -->
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-0" style="min-height:720px;">
+                    <div id="map" style="width:100%; height:100%; min-height:720px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            #map { min-height: 480px; }
+        </style>
+
+        <!-- Leaflet + Routing dependencies (required by js/mapa.js) -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.min.js"></script>
+
+        <!-- App map logic -->
+        <script src="#{facesContext.externalContext.requestContextPath}/js/mapa.js"></script>
+    </ui:define>
+
+</ui:composition>
