@@ -9,6 +9,7 @@ import dao.DaoUser;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import models.User;
@@ -50,12 +51,54 @@ public class DaoUser_Impl implements DaoUser {
 
     @Override
     public void modificarUsuario(User user) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder sql = new StringBuilder("UPDATE usuarios SET nombre = ?, apellido = ?");
+        boolean updatePassword = user.getPassword() != null && !user.getPassword().isEmpty();
+        if (updatePassword) {
+            sql.append(", password_hash = ?");
+        }
+        sql.append(" WHERE id_usuario = ?");
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql.toString())) {
+
+            ps.setString(1, user.getNombre());
+            ps.setString(2, user.getApellido());
+            int idx = 3;
+            if (updatePassword) {
+                ps.setString(idx++, hashPassword(user.getPassword()));
+            }
+            ps.setInt(idx, user.getId());
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException("Error al modificar el usuario: " + e.getMessage(), e);
+        }
     }
 
     @Override
     public User obtenerUsuarioPorId(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT id_usuario, nombre, apellido, email, password_hash, es_admin, fecha_registro FROM usuarios WHERE id_usuario = ? LIMIT 1";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    User u = new User();
+                    u.setId(rs.getInt("id_usuario"));
+                    u.setNombre(rs.getString("nombre"));
+                    u.setApellido(rs.getString("apellido"));
+                    u.setEmail(rs.getString("email"));
+                    u.setPassword(rs.getString("password_hash"));
+                    u.setRol(rs.getBoolean("es_admin"));
+                    u.setFechaRegistro(rs.getString("fecha_registro"));
+                    return u;
+                }
+            }
+        } catch (SQLException e) {
+            throw new SQLException("Error obteniendo usuario por id: " + e.getMessage(), e);
+        }
+        return null;
     }
 
     @Override

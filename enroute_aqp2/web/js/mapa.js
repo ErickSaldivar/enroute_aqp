@@ -21,6 +21,15 @@
                     lat >= AQP_BOUNDS.bottom && lat <= AQP_BOUNDS.top
                 );
             }
+            // Iconos SVG embebidos (pequeños) para marcadores - definidos en ámbito superior
+            const busSvg = `<?xml version="1.0" encoding="UTF-8"?><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'><rect x='2' y='6' width='20' height='10' rx='2' ry='2' fill='%231E88E5'/><circle cx='7' cy='17' r='1.5' fill='%23ffffff'/><circle cx='17' cy='17' r='1.5' fill='%23ffffff'/><rect x='4' y='8' width='4' height='4' fill='%23ffffff'/><rect x='16' y='8' width='2' height='4' fill='%23ffffff'/></svg>`;
+            const originSvg = `<?xml version="1.0" encoding="UTF-8"?><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='28' height='28'><path d='M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z' fill='%2334A853'/><circle cx='12' cy='9' r='2.2' fill='%23ffffff'/></svg>`;
+            const destSvg = `<?xml version="1.0" encoding="UTF-8"?><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='28' height='28'><path d='M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z' fill='%23EA4335'/><circle cx='12' cy='9' r='2.2' fill='%23ffffff'/></svg>`;
+            function svgToDataUrl(svg){ return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg); }
+
+            const busIconSmall = L.icon({ iconUrl: svgToDataUrl(busSvg), iconSize: [20,20], iconAnchor: [10,10], popupAnchor: [0,-10] });
+            const originIcon = L.icon({ iconUrl: svgToDataUrl(originSvg), iconSize: [28,28], iconAnchor: [14,28], popupAnchor: [0,-28] });
+            const destIcon = L.icon({ iconUrl: svgToDataUrl(destSvg), iconSize: [28,28], iconAnchor: [14,28], popupAnchor: [0,-28] });
             
             function initMap() {
                 // Centrar el mapa en Arequipa, Perú
@@ -33,6 +42,8 @@
                 
                 // Instrucciones mínimas
                 addHelpControl();
+
+                // (icons are defined in upper scope)
 
                 // Click para elegir origen/destino
                 map.on('click', onMapClick);
@@ -84,7 +95,7 @@
                     if (!originMarker) originMarker = createDraggableMarker(originLatLng, 'Origen'); else originMarker.setLatLng(originLatLng);
                     if (!destMarker) destMarker = createDraggableMarker(destLatLng, 'Destino'); else destMarker.setLatLng(destLatLng);
 
-                    // Centrar vista entre ambos
+                    // Centrar vista entre ambos (mantener por ahora, bus plan ajustará también)
                     try {
                         const group = L.featureGroup([originMarker, destMarker]);
                         map.fitBounds(group.getBounds().pad(0.2));
@@ -95,7 +106,8 @@
                         alert('Alguno de los puntos esta fuera de los limites de Arequipa.');
                         return;
                     }
-                    drawRoute();
+                    // Planificar con segmentos a pie por calles + línea de bus
+                    planTransitRoute(true, false);
                 } catch (err) {
                     console.error('Error en buscarRuta:', err);
                     alert('Ocurrio un error buscando la ruta. Reintenta.');
@@ -145,7 +157,8 @@
                     originMarker = createDraggableMarker(e.latlng, 'Origen');
                 } else if (!destMarker) {
                     destMarker = createDraggableMarker(e.latlng, 'Destino');
-                    drawRoute();
+                    // Al definir destino, dibujar segmentos a pie (calles) + línea de bus
+                    planTransitRoute(true, false);
                 } else {
                     resetRoute();
                     originMarker = createDraggableMarker(e.latlng, 'Origen');
@@ -153,11 +166,16 @@
             }
 
             function createDraggableMarker(latlng, label) {
-                const marker = L.marker(latlng, { draggable: true }).addTo(map).bindPopup(label).openPopup();
+                // Elegir icono según tipo
+                let options = { draggable: true };
+                if (label === 'Origen') options.icon = originIcon;
+                else if (label === 'Destino') options.icon = destIcon;
+                const marker = L.marker(latlng, options).addTo(map).bindPopup(label).openPopup();
                 markers.push(marker);
                 marker.on('dragend', function() {
                     if (originMarker && destMarker) {
-                        updateRouteWaypoints();
+                        // Recalcular incluyendo segmentos a pie por calles
+                        planTransitRoute(true, false);
                     }
                 });
                 return marker;
@@ -207,6 +225,7 @@
                 });
 
                 routeControl.addTo(map);
+                // Ya no usamos OSRM para la vista principal; esta función queda para compatibilidad si se invoca manualmente.
             }
 
             function updateRouteWaypoints() {
@@ -226,6 +245,8 @@
                 // Limpiar array auxiliar si se usa
                 markers.forEach(m => { try { map.removeLayer(m); } catch (_) {} });
                 markers = [];
+                // Limpiar capas de transporte público
+                try { clearTransitLayers(); } catch(_) {}
                 // Limpiar info de ruta
                 const infoEl = document.getElementById('route-info');
                 if (infoEl) infoEl.innerText = '';
@@ -256,18 +277,247 @@
                             </div>
                             <div id="route-info" style="font-size:12px; margin-bottom:6px; color:#333;"></div>
                             <button id="btn-clear-route" class="btn btn-sm btn-outline-secondary w-100">Limpiar ruta</button>
+                            <button id="btn-transit-route" class="btn btn-sm btn-outline-primary w-100">Transporte público</button>
                         `;
                         // Evitar que el mapa capture clics sobre el control
                         L.DomEvent.disableClickPropagation(div);
                         setTimeout(() => {
                             const btn = document.getElementById('btn-clear-route');
                             if (btn) btn.addEventListener('click', resetRoute);
+                            const transitBtn = document.getElementById('btn-transit-route');
+                            if (transitBtn) transitBtn.addEventListener('click', () => { try { planTransitRoute(true, false); } catch(e){ console.error(e); } });
                         }, 0);
                         return div;
                     }
                 });
                 map.addControl(new HelpControl());
             }
+
+            // ========================= LÓGICA DE TRANSPORTE PÚBLICO =========================
+            let transitLayers = []; // capas dibujadas (walking fallback + bus)
+            let transitRoutingControls = []; // controles de rutas a pie (OSRM)
+
+            function clearTransitLayers(){
+                transitLayers.forEach(l => { try { map.removeLayer(l); } catch(_){} });
+                transitLayers = [];
+                transitRoutingControls.forEach(c => { try { map.removeControl(c); } catch(_){} });
+                transitRoutingControls = [];
+            }
+
+            function addWalkingRouteViaStreets(startLatLng, endLatLng){
+                if (!startLatLng || !endLatLng) return;
+                try {
+                    const ctrl = L.Routing.control({
+                        waypoints: [startLatLng, endLatLng],
+                        router: L.Routing.osrmv1({ serviceUrl: 'https://router.project-osrm.org/route/v1', profile: 'foot' }),
+                        show: false,
+                        addWaypoints: false,
+                        draggableWaypoints: false,
+                        routeWhileDragging: false,
+                        fitSelectedRoutes: false,
+                        lineOptions: {
+                            styles: [
+                                { color: '#000000', opacity: 0.10, weight: 10 },
+                                { color: '#666666', opacity: 1.0, weight: 4, dashArray: '4,6' }
+                            ]
+                        }
+                    });
+                    ctrl.on('routingerror', () => {
+                        // Fallback: línea recta si OSRM caminando no está disponible
+                        const fallback = L.polyline([startLatLng, endLatLng], {color:'#666', weight:4, dashArray:'4,6'}).addTo(map);
+                        transitLayers.push(fallback);
+                    });
+                    ctrl.addTo(map);
+                    transitRoutingControls.push(ctrl);
+                } catch (e) {
+                    // Fallback ante cualquier error
+                    const fallback = L.polyline([startLatLng, endLatLng], {color:'#666', weight:4, dashArray:'4,6'}).addTo(map);
+                    transitLayers.push(fallback);
+                }
+            }
+
+            function haversine(lat1, lon1, lat2, lon2){
+                function toRad(d){ return d * Math.PI / 180; }
+                const R = 6371000; // m
+                const dLat = toRad(lat2 - lat1);
+                const dLon = toRad(lon2 - lon1);
+                const a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)*Math.sin(dLon/2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                return R * c; // metros
+            }
+
+            // Encuentra la paradero más cercano a un punto para una línea dada
+            function nearestParadero(linea, point){
+                if (!linea || !linea.paraderos || linea.paraderos.length === 0) return null;
+                let best = null; let bestDist = Infinity;
+                for (const p of linea.paraderos){
+                    const dist = haversine(point.lat, point.lng, p.lat, p.lng);
+                    if (dist < bestDist){ bestDist = dist; best = { paradero: p, dist }; }
+                }
+                return best; // {paradero, dist}
+            }
+
+            // Calcula distancia sobre la secuencia de paraderos entre dos índices (inclusive)
+            function busSegmentDistance(paraderos, idxA, idxB){
+                if (idxA === idxB) return 0;
+                let dist = 0;
+                const step = idxA < idxB ? 1 : -1;
+                for (let i = idxA; i !== idxB; i += step){
+                    const p1 = paraderos[i];
+                    const p2 = paraderos[i+step];
+                    dist += haversine(p1.lat, p1.lng, p2.lat, p2.lng);
+                }
+                return dist;
+            }
+
+            // Construye array de paraderos que forman el trayecto en bus
+            function buildBusSegment(paraderos, idxA, idxB){
+                const segment = [];
+                const step = idxA < idxB ? 1 : -1;
+                for (let i = idxA; ; i += step){
+                    segment.push(paraderos[i]);
+                    if (i === idxB) break;
+                }
+                return segment;
+            }
+
+            // Planificar ruta de transporte público.
+            // forceButton: mostrar feedback aunque la caminata sea grande.
+            // busOnly: cuando true dibuja solo el segmento de la línea (sin tramos caminando ni paraderos extra).
+            function planTransitRoute(forceButton, busOnly){
+                if (!originMarker || !destMarker) return;
+                if (!window.ROUTES || !Array.isArray(window.ROUTES.lineas)) return;
+                const origin = originMarker.getLatLng();
+                const dest = destMarker.getLatLng();
+                const lineas = window.ROUTES.lineas;
+
+                let bestPlan = null;
+                for (const linea of lineas){
+                    const nOrigin = nearestParadero(linea, origin);
+                    const nDest = nearestParadero(linea, dest);
+                    if (!nOrigin || !nDest) continue;
+                    // Indices dentro del array de paraderos (según orden ya viene preordenado del backend)
+                    const paraderos = linea.paraderos;
+                    const idxO = paraderos.findIndex(p => p.id === nOrigin.paradero.id);
+                    const idxD = paraderos.findIndex(p => p.id === nDest.paradero.id);
+                    if (idxO === -1 || idxD === -1) continue;
+                    const busDist = busSegmentDistance(paraderos, idxO, idxD); // metros
+                    const walkingDist = nOrigin.dist + nDest.dist; // metros
+                    // Costo simple: priorizar menor caminata, penalizar bus menos
+                    const cost = walkingDist + busDist * 0.3;
+                    if (!bestPlan || cost < bestPlan.cost){
+                        bestPlan = {
+                            linea,
+                            originParadero: nOrigin.paradero,
+                            destParadero: nDest.paradero,
+                            walkingDist,
+                            busDist,
+                            cost,
+                            busSegment: buildBusSegment(paraderos, idxO, idxD)
+                        };
+                    }
+                }
+
+                if (!bestPlan){
+                    if (forceButton){
+                        const infoEl = document.getElementById('route-info');
+                        if (infoEl) infoEl.innerText = 'Sin coincidencia de lineas cercanas.';
+                    }
+                    return;
+                }
+
+                // Si no es llamada forzada y la caminata supera 2km podemos ignorar (excepto busOnly que siempre se muestra si hay coincidencia)
+                if (!forceButton && !busOnly && bestPlan.walkingDist > 2000) return;
+                drawTransitPlan(bestPlan, !!busOnly);
+            }
+
+            function drawTransitPlan(plan, busOnly){
+                clearTransitLayers();
+                const infoEl = document.getElementById('route-info');
+                const walkKm = (plan.walkingDist / 1000).toFixed(2);
+                const busKm = (plan.busDist / 1000).toFixed(2);
+                if (infoEl){
+                    infoEl.innerText = 'Linea sugerida: ' + plan.linea.nombre + (busOnly ? '' : (' | Caminata: ' + walkKm + ' km')) + ' | Bus: ' + busKm + ' km | Paraderos: ' + plan.busSegment.length;
+                }
+
+                // Segmento caminando origen -> paradero origen
+                const o = originMarker.getLatLng();
+                const pO = L.latLng(plan.originParadero.lat, plan.originParadero.lng);
+                const d = destMarker.getLatLng();
+                const pD = L.latLng(plan.destParadero.lat, plan.destParadero.lng);
+
+                if (!busOnly){
+                    // Rutas caminando por calles usando OSRM perfil 'foot'
+                    addWalkingRouteViaStreets(o, pO);
+                    addWalkingRouteViaStreets(pD, d);
+                }
+
+                // Trayecto en bus (intentar seguir calles via OSRM; fallback a polilínea entre paraderos)
+                let busControl = null;
+                try {
+                    const waypoints = plan.busSegment.map(p => L.latLng(p.lat, p.lng));
+                    busControl = L.Routing.control({
+                        waypoints: waypoints,
+                        router: L.Routing.osrmv1({ serviceUrl: 'https://router.project-osrm.org/route/v1' }),
+                        show: false,
+                        addWaypoints: false,
+                        draggableWaypoints: false,
+                        routeWhileDragging: false,
+                        fitSelectedRoutes: false,
+                        lineOptions: {
+                            styles: [
+                                { color: '#000000', opacity: 0.12, weight: 10 },
+                                { color: '#1E88E5', opacity: 1.0, weight: 6 }
+                            ]
+                        }
+                    });
+                    busControl.on('routingerror', function() {
+                        // fallback: trazo directo entre paraderos
+                        const fallback = L.polyline(waypoints.map(w => [w.lat, w.lng]), {color:'#1E88E5', weight:6}).addTo(map);
+                        transitLayers.push(fallback);
+                    });
+                    busControl.addTo(map);
+                    transitRoutingControls.push(busControl);
+                } catch (e) {
+                    // fallback inmediato
+                    const fallback = L.polyline(plan.busSegment.map(p => [p.lat, p.lng]), {color:'#1E88E5', weight:6}).addTo(map);
+                    transitLayers.push(fallback);
+                }
+
+                // Marcadores de paraderos: marcador pequeño (icono bus) para cada paradero
+                const paraderoMarkers = [];
+                try {
+                    for (let i = 0; i < plan.busSegment.length; i++){
+                        const p = plan.busSegment[i];
+                        const m = L.marker([p.lat, p.lng], { icon: busIconSmall }).addTo(map);
+                        paraderoMarkers.push(m);
+                        transitLayers.push(m);
+                    }
+                    // Etiquetas permanentes sobre el paradero de inicio y fin
+                    if (paraderoMarkers.length > 0){
+                        const first = paraderoMarkers[0];
+                        const last = paraderoMarkers[paraderoMarkers.length - 1];
+                        first.bindTooltip(plan.originParadero.nombre || 'Paradero', {permanent:true, direction:'top', offset:[0,-8]});
+                        last.bindTooltip(plan.destParadero.nombre || 'Paradero', {permanent:true, direction:'top', offset:[0,-8]});
+                    }
+                } catch(e){ console.warn('paradero markers error', e); }
+
+                // Asegurar que todo se vea
+                try {
+                    // Ajustar usando puntos clave y la línea de bus; los tramos a pie se trazan como controles aparte
+                    const tempMarkers = [o, pO, pD, d].map(ll => L.marker(ll));
+                    // Usar marcadores de paradero creados para bounds si existen
+                    const groupItems = [originMarker, destMarker];
+                    if (typeof paraderoMarkers !== 'undefined' && paraderoMarkers.length > 0) groupItems.push(...paraderoMarkers);
+                    groupItems.push(...tempMarkers);
+                    const g = L.featureGroup(groupItems);
+                    map.fitBounds(g.getBounds().pad(0.2));
+                    tempMarkers.forEach(m => { try { map.removeLayer(m); } catch(_){ } });
+                } catch(e){ /* noop */ }
+            }
+
+            // Exponer para depuración (walking + bus)
+            try { window.planTransitRoute = () => planTransitRoute(true, false); } catch(_){ }
             
             // Inicializar el mapa cuando cargue la página
             document.addEventListener('DOMContentLoaded', function() {

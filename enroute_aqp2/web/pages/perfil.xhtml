@@ -3,6 +3,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
                 template="/templates/sidebarTemplate.xhtml">
 
   <ui:param name="active" value="perfil" />
@@ -22,6 +23,11 @@
       </div>
 
       <div class="row g-4">
+            <h:form prependId="false">
+              <!-- Mensajes globales (éxito/errores) mostrados con clases de Bootstrap -->
+              <div class="mb-3">
+                <h:messages globalOnly="true" layout="list" infoClass="alert alert-success" errorClass="alert alert-danger" warnClass="alert alert-warning"/>
+              </div>
         <!-- Personal Data Section -->
         <div class="col-12">
           <div class="bg-white rounded-3 shadow-sm p-4">
@@ -30,23 +36,58 @@
               Datos Personales
             </h3>
 
-            <form>
+            
               <div class="row g-3">
                 <div class="col-12">
                   <label for="nombre" class="form-label fw-medium text-dark">Nombre</label>
-                  <input type="text" class="form-control form-control-lg bg-light border-0"
-                         id="nombre" name="nombre" placeholder="Tu nombre"
-                         value="#{sessionScope.userName}" />
+                  <h:inputText id="nombre" styleClass="form-control form-control-lg bg-light border-0"
+                               value="#{userBean.nombreInput}">
+                    <f:passThroughAttribute name="placeholder" value="#{userBean.nombre}" />
+                  </h:inputText>
+                </div>
+
+                <div class="col-12">
+                  <label for="apellido" class="form-label fw-medium text-dark">Apellido</label>
+                  <h:inputText id="apellido" styleClass="form-control form-control-lg bg-light border-0"
+                               value="#{userBean.apellidoInput}">
+                    <f:passThroughAttribute name="placeholder" value="#{userBean.apellido}" />
+                  </h:inputText>
                 </div>
 
                 <div class="col-12">
                   <label for="email" class="form-label fw-medium text-dark">Correo electrónico</label>
-                  <input type="email" class="form-control form-control-lg bg-light border-0"
-                         id="email" name="email" placeholder="tu@correo.com"
-                         value="#{sessionScope.userEmail}" />
+                  <h:inputText id="email" styleClass="form-control form-control-lg bg-light border-0"
+                               value="#{userBean.email}" readonly="true" />
+                </div>
+
+                <div class="col-12">
+                  <label for="fechaRegistro" class="form-label fw-medium text-dark">Fecha de registro</label>
+                  <h:inputText id="fechaRegistro" styleClass="form-control form-control-lg bg-light border-0"
+                               value="#{userBean.fechaRegistro}" readonly="true" />
                 </div>
               </div>
-            </form>
+
+              <!-- Password change collapse kept inside the same JSF form -->
+              <div class="collapse mt-3" id="changePwdCollapse">
+                <div class="card card-body">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label for="newPwd" class="form-label fw-medium text-dark">Nueva contraseña</label>
+                      <h:inputSecret id="newPwd" styleClass="form-control form-control-lg bg-light border-0"
+                                     value="#{userBean.newPassword}" />
+                    </div>
+                    <div class="col-12">
+                      <label for="confirmPwd" class="form-label fw-medium text-dark">Confirmar contraseña</label>
+                      <h:inputSecret id="confirmPwd" styleClass="form-control form-control-lg bg-light border-0"
+                                     value="#{userBean.confirmPassword}" />
+                    </div>
+                    <div class="col-12">
+                      <h:commandButton value="Confirmar cambio" styleClass="btn btn-primary"
+                                       action="#{userBean.changePassword}" />
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
 
@@ -54,15 +95,17 @@
         <div class="col-12">
           <div class="bg-white rounded-3 shadow-sm p-4">
             <h4 class="fw-bold text-dark mb-4">Otras Opciones</h4>
-            <div class="row g-3">
+              <div class="row g-3">
               <div class="col-6 col-md-3">
-                <button class="btn btn-outline-primary w-100 py-3 rounded-3">
+                <!-- Toggle la sección de cambio de contraseña -->
+                <button type="button" class="btn btn-outline-primary w-100 py-3 rounded-3" data-bs-toggle="collapse" data-bs-target="#changePwdCollapse" aria-expanded="false" aria-controls="changePwdCollapse">
                   <i class="bi bi-shield-lock fs-4 d-block mb-2"></i>
                   <small class="fw-medium">Cambiar Contraseña</small>
                 </button>
               </div>
               <div class="col-6 col-md-3">
-                <button class="btn btn-outline-info w-100 py-3 rounded-3">
+                <!-- Exportar Datos deshabilitado por indicación del usuario -->
+                <button class="btn btn-outline-info w-100 py-3 rounded-3" disabled="disabled" title="Exportar datos deshabilitado">
                   <i class="bi bi-download fs-4 d-block mb-2"></i>
                   <small class="fw-medium">Exportar Datos</small>
                 </button>
@@ -83,15 +126,13 @@
           </div>
         </div>
 
-        <!-- Save Button -->
+        <!-- Save Button: envia a userBean.updateProfile -->
         <div class="col-12">
           <div class="d-grid">
-            <button type="submit" class="btn btn-warning btn-lg py-3 fw-bold text-white rounded-3" style="background-color: #DD6B20;">
-              <i class="bi bi-check-circle me-2"></i>
-              Guardar Cambios
-            </button>
+            <h:commandButton value="Guardar Cambios" styleClass="btn btn-warning btn-lg py-3 fw-bold text-white rounded-3" action="#{userBean.updateProfile}" />
           </div>
         </div>
+        </h:form>
       </div>
     </div>
 

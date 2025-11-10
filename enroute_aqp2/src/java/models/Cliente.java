@@ -4,7 +4,7 @@
  */
 package models;
 
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 
 /**
  *

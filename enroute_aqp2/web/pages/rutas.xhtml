@@ -32,65 +32,22 @@
               </div>
             </div>
 
-            <!-- Available Routes -->
+            <!-- Available Routes (dynamic) -->
             <div class="flex-grow-1">
               <h4 class="fw-bold text-dark mb-3">Rutas Encontradas</h4>
-
-              <!-- Route examples -->
-              <div class="border rounded-3 p-3 mb-3 bg-light route-card" style="cursor: pointer;" data-route="C-13" onclick="selectRoute('C-13')">
-                <div class="d-flex align-items-center">
-                  <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;"><i class="bi bi-bus-front text-white fs-5"></i></div>
-                  <div class="flex-grow-1">
-                    <h5 class="mb-1 fw-bold text-warning">Ruta C-13</h5>
-                    <p class="mb-0 text-muted small">Paucarpata - Centro</p>
+              <ui:repeat value="#{rutasBean.lineas}" var="ln">
+       <div class="border rounded-3 p-3 mb-3 bg-light route-card" style="cursor: pointer;"
+         data-linea="#{ln.id}">
+                  <div class="d-flex align-items-center">
+                    <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;"><i class="bi bi-bus-front text-white fs-5"></i></div>
+                    <div class="flex-grow-1">
+                      <h5 class="mb-1 fw-bold text-warning">#{ln.nombre}</h5>
+                      <p class="mb-0 text-muted small">#{ln.descripcion}</p>
+                    </div>
+                    <div class="text-end"><span class="badge bg-success">Activa</span></div>
                   </div>
-                  <div class="text-end"><span class="badge bg-success">Activa</span></div>
                 </div>
-              </div>
-
-              <div class="border rounded-3 p-3 mb-3 bg-light route-card" style="cursor: pointer;" data-route="A-38" onclick="selectRoute('A-38')">
-                <div class="d-flex align-items-center">
-                  <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;"><i class="bi bi-bus-front text-white fs-5"></i></div>
-                  <div class="flex-grow-1">
-                    <h5 class="mb-1 fw-bold text-warning">Ruta A-38</h5>
-                    <p class="mb-0 text-muted small">Cerro Colorado - Yanahuara</p>
-                  </div>
-                  <div class="text-end"><span class="badge bg-success">Activa</span></div>
-                </div>
-              </div>
-
-              <div class="border rounded-3 p-3 mb-3 bg-light route-card" style="cursor: pointer;" data-route="T-2" onclick="selectRoute('T-2')">
-                <div class="d-flex align-items-center">
-                  <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;"><i class="bi bi-bus-front text-white fs-5"></i></div>
-                  <div class="flex-grow-1">
-                    <h5 class="mb-1 fw-bold text-warning">Ruta T-2</h5>
-                    <p class="mb-0 text-muted small">Miraflores - Sachaca</p>
-                  </div>
-                  <div class="text-end"><span class="badge bg-success">Activa</span></div>
-                </div>
-              </div>
-
-              <div class="border rounded-3 p-3 mb-3 bg-light route-card" style="cursor: pointer;" data-route="B-15" onclick="selectRoute('B-15')">
-                <div class="d-flex align-items-center">
-                  <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;"><i class="bi bi-bus-front text-white fs-5"></i></div>
-                  <div class="flex-grow-1">
-                    <h5 class="mb-1 fw-bold text-warning">Ruta B-15</h5>
-                    <p class="mb-0 text-muted small">Alto Selva Alegre - Plaza de Armas</p>
-                  </div>
-                  <div class="text-end"><span class="badge bg-success">Activa</span></div>
-                </div>
-              </div>
-
-              <div class="border rounded-3 p-3 mb-3 bg-light route-card" style="cursor: pointer;" data-route="D-25" onclick="selectRoute('D-25')">
-                <div class="d-flex align-items-center">
-                  <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;"><i class="bi bi-bus-front text-white fs-5"></i></div>
-                  <div class="flex-grow-1">
-                    <h5 class="mb-1 fw-bold text-warning">Ruta D-25</h5>
-                    <p class="mb-0 text-muted small">Characato - Mall Aventura</p>
-                  </div>
-                  <div class="text-end"><span class="badge bg-warning text-dark">Limitada</span></div>
-                </div>
-              </div>
+              </ui:repeat>
             </div>
 
             <!-- Search Button -->
@@ -105,12 +62,9 @@
 
         <!-- Right Panel - Map -->
         <div class="col-12 col-lg-7 position-relative">
-          <div class="h-100" id="routesMap" style="min-height: 500px; background: #f8f9fa;">
-            <div class="d-flex align-items-center justify-content-center h-100">
-              <div class="text-center">
-                <div class="spinner-border text-warning mb-3" role="status"><span class="visually-hidden">Cargando mapa...</span></div>
-                <p class="text-muted">Cargando mapa de rutas...</p>
-              </div>
+          <div class="card shadow-sm border-0 h-100">
+            <div class="card-body p-0 h-100">
+              <div id="routesLeafletMap" style="width:100%; height:100%; min-height:600px;"></div>
             </div>
           </div>
 
@@ -136,45 +90,27 @@
     </div>
 
     <script>
-      let selectedRoute = null;
-      function selectRoute(routeId) {
-        document.querySelectorAll('.route-card').forEach(card => {
-          card.classList.remove('border-warning', 'bg-warning-subtle');
-          card.classList.add('bg-light');
-        });
-        const selectedCard = document.querySelector(`[data-route="${routeId}"]`);
-        if (selectedCard) {
-          selectedCard.classList.remove('bg-light');
-          selectedCard.classList.add('border-warning', 'bg-warning-subtle');
-        }
-        selectedRoute = routeId;
-        console.log('Selected route:', routeId);
-        showRouteOnMap(routeId);
-      }
+      // Expose routes JSON from bean to JS
+      window.ROUTES = <h:outputText value="#{rutasBean.routesJson}" escape="false"/>;
+      // attach click handlers to route cards
+      document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('.route-card[data-linea]')
+          .forEach(function(el){
+            el.addEventListener('click', function(){
+              var id = parseInt(this.getAttribute('data-linea'));
+              if (!isNaN(id)) mostrarRuta(id);
+            });
+          });
+      });
       function searchRoutes() {
         const searchTerm = document.getElementById('routeSearch').value;
-        if (searchTerm.trim()) { console.log('Searching for routes:', searchTerm); alert('Buscando rutas para: ' + searchTerm); }
-        else { alert('Por favor, ingresa un origen y destino'); }
-      }
-      function showRouteOnMap(routeId) {
-        console.log('Showing route on map:', routeId);
-        const mapElement = document.getElementById('routesMap');
-        mapElement.innerHTML = `\n                    <div class="d-flex align-items-center justify-content-center h-100">\n                        <div class="text-center">\n                            <i class="bi bi-map text-warning fs-1 mb-3"></i>\n                            <h5 class="text-dark">Mostrando ${routeId}</h5>\n                            <p class="text-muted">Visualizando ruta en el mapa...</p>\n                        </div>\n                    </div>\n                `;
-      }
-      function zoomIn() { console.log('Zoom in'); }
-      function zoomOut() { console.log('Zoom out'); }
-      document.addEventListener('DOMContentLoaded', function() {
-        console.log('Initializing routes map...');
-        setTimeout(() => {
-          const mapElement = document.getElementById('routesMap');
-          mapElement.innerHTML = `\n                        <div class="d-flex align-items-center justify-content-center h-100">\n                            <div class="text-center">\n                                <i class="bi bi-geo-alt text-warning fs-1 mb-3"></i>\n                                <h5 class="text-dark">Mapa de Rutas Arequipa</h5>\n                                <p class="text-muted">Selecciona una ruta para ver su recorrido</p>\n                            </div>\n                        </div>\n                    `;
-        }, 800);
-      });
-      const routeSearchEl = document.getElementById('routeSearch');
-      if (routeSearchEl) {
-        routeSearchEl.addEventListener('keypress', function(e) { if (e.key === 'Enter') searchRoutes(); });
+        if (searchTerm.trim()) alert('Buscando rutas para: ' + searchTerm);
+        else alert('Por favor, ingresa un origen y destino');
       }
     </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="#{facesContext.externalContext.requestContextPath}/js/rutas.js"></script>
     <style>
       .bg-light { background-color: #f8f9fa !important; }
     </style>

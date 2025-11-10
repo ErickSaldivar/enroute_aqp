@@ -18,6 +18,7 @@ public class User implements Serializable{
     protected String email;     // Email único para autenticación
     protected String password;  // Contraseña encriptada
     protected boolean rol;      // Rol de usuario (admin/cliente);
+    protected String fechaRegistro; // Fecha de registro tal como viene de la BD
 
     public User() {
     }
@@ -29,6 +30,14 @@ public class User implements Serializable{
         this.email = email;
         this.password = password;
         this.rol = rol;
+    }
+
+    public String getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(String fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
     public int getId() {
