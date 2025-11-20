@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/sidebarTemplate.xhtml">
+
+    <ui:param name="active" value="usermng" />
+    <ui:define name="pageTitle">Administrar Usuarios - Enroute AQP</ui:define>
+
+    <ui:define name="content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2 class="fw-bold">Gestión de Usuarios</h2>
+                    <p class="text-muted">Listado de usuarios registrados en la base de datos. Usa el filtro en la columna "Nombre" para buscar.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h:form id="usersForm">
+                        <p:dataTable id="usersTable" value="#{usersMngBean.users}" var="u" paginator="true" rows="10" 
+                                     emptyMessage="No hay usuarios registrados" widgetVar="usersTableWV">
+                            <p:column headerText="ID" style="width:80px; text-align:center;">
+                                <h:outputText value="#{u.id}" />
+                            </p:column>
+
+                            <p:column headerText="Nombre" filterBy="#{u.nombre}" filterMatchMode="contains">
+                                <h:outputText value="#{u.nombre}" />
+                            </p:column>
+
+                            <p:column headerText="Apellido">
+                                <h:outputText value="#{u.apellido}" />
+                            </p:column>
+
+                            <p:column headerText="Email">
+                                <h:outputText value="#{u.email}" />
+                            </p:column>
+
+                            <p:column headerText="Rol" style="width:120px; text-align:center;">
+                                <h:outputText value="#{u.rol ? 'Admin' : 'Cliente'}" />
+                            </p:column>
+
+                            <p:column headerText="Fecha registro">
+                                <h:outputText value="#{u.fechaRegistro}" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

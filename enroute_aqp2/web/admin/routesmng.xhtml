@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                                xmlns:p="http://primefaces.org/ui"
+                                template="/templates/sidebarTemplate.xhtml">
+
+    <ui:param name="active" value="routesmng" />
+    <ui:define name="pageTitle">Administrar Rutas - Enroute AQP</ui:define>
+
+    <ui:define name="content">
+        <div class="container-fluid p-0 h-100">
+            <div class="row g-0 h-100">
+                <!-- Left Panel: Routes table -->
+                <div class="col-12 col-lg-5 bg-white border-end">
+                    <div class="p-4 h-100 d-flex flex-column">
+                        <div class="d-none d-lg-block mb-4">
+                            <h1 class="fw-bold text-dark mb-0">Administrar Rutas</h1>
+                        </div>
+                        <h:form id="routesForm" style="flex:1; display:flex; flex-direction:column;">
+                    <p:growl id="msgs" showDetail="true" life="4000" />
+                    <p:dataTable id="routesTable" value="#{routesMngBean.lineas}" var="ln" paginator="true" rows="9"
+                                 emptyMessage="No hay rutas registradas" widgetVar="routesTbl">
+                        <p:column style="width:40px; text-align:center;">
+                            <p:rowToggler />
+                        </p:column>
+                        <p:column headerText="ID" style="width:70px; text-align:center;">
+                            <h:outputText value="#{ln.id}" />
+                        </p:column>
+                        <p:column headerText="Nombre" sortBy="#{ln.nombre}" filterBy="#{ln.nombre}" filterMatchMode="contains">
+                            <h:outputText value="#{ln.nombre}" />
+                        </p:column>
+                        <p:column headerText="Descripción">
+                            <h:outputText value="#{ln.descripcion}" />
+                        </p:column>
+                        <p:column headerText="Acciones" style="width:220px; text-align:center;">
+                            <p:commandButton type="button" value="Ver" onclick="drawRoute('#{ln.id}');" styleClass="btn btn-sm btn-outline-primary me-2" />
+                            <h:link outcome="/admin/editroute.xhtml" styleClass="btn btn-sm btn-outline-secondary me-2">
+                                <i class="bi bi-pencil"></i>
+                                <span class="ms-1">Editar</span>
+                                <f:param name="id" value="#{ln.id}" />
+                            </h:link>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" />
+                            <p:commandButton value="Borrar" styleClass="btn btn-sm btn-outline-danger" update=":routesForm:routesTable :routesForm:msgs"
+                                             actionListener="#{routesMngBean.deleteLinea(ln.id)}">
+                                <p:confirm header="Confirmar" message="¿Eliminar la ruta #{ln.nombre}?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </p:column>
+
+                        <p:rowExpansion>
+                            <div class="p-2">
+                                <strong>Paraderos:</strong>
+                                <p:dataTable value="#{routesMngBean.paraderos(ln.id)}" var="p" rows="6" paginator="true">
+                                    <p:column headerText="#" style="width:60px; text-align:center;">
+                                        <h:outputText value="#{p.orden}" />
+                                    </p:column>
+                                    <p:column headerText="Nombre">
+                                        <h:outputText value="#{p.nombre}" />
+                                    </p:column>
+                                    <p:column headerText="Lat">
+                                        <h:outputText value="#{p.latitud}" />
+                                    </p:column>
+                                    <p:column headerText="Lng">
+                                        <h:outputText value="#{p.longitud}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                        </p:rowExpansion>
+                    </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Map -->
+                <div class="col-12 col-lg-7 position-relative">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-body p-0 h-100">
+                            <div id="adminRoutesLeafletMap" style="width:100%; height:100%; min-height:600px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Add Route Button -->
+        <div class="position-fixed" style="right: 24px; bottom: 24px; z-index: 1050;">
+            <h:link outcome="/admin/editroute.xhtml" styleClass="btn btn-lg btn-primary rounded-pill shadow d-flex align-items-center px-3">
+                <i class="bi bi-plus-lg me-2"></i>
+                <span>Agregar Ruta</span>
+            </h:link>
+        </div>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script>
+        window.ROUTES_ALL = <h:outputText value="#{routesMngBean.routesJson}" escape="false"/>;
+        var adminMap, adminLayers = {};
+        function initAdminMap(){
+            if(!document.getElementById('adminRoutesLeafletMap')) return;
+            adminMap = L.map('adminRoutesLeafletMap').setView([-16.4090, -71.5375], 12);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(adminMap);
+        }
+        function clearLayers(){
+            Object.keys(adminLayers).forEach(function(k){ try{ adminMap.removeLayer(adminLayers[k]); }catch(e){} });
+            adminLayers = {};
+        }
+        function drawRoute(id){
+            if(!adminMap || !window.ROUTES_ALL) return;
+            var idNum = parseInt(id,10); if(isNaN(idNum)) return;
+            clearLayers();
+            var linea = (window.ROUTES_ALL.lineas||[]).filter(function(l){ return l.id === idNum; })[0];
+            if(!linea || !linea.paraderos || linea.paraderos.length===0) return;
+            var coords = linea.paraderos.sort(function(a,b){return a.orden-b.orden;}).map(function(p){ return [p.lat, p.lng]; });
+            var poly = L.polyline(coords, {color:'#DD6B20', weight:5}).addTo(adminMap);
+            adminLayers.poly = poly;
+            linea.paraderos.forEach(function(p, idx){
+                var m = L.marker([p.lat, p.lng]).addTo(adminMap).bindPopup('<strong>'+p.nombre+'</strong><br/>Orden: '+p.orden);
+                adminLayers['m'+idx] = m;
+            });
+            try{ adminMap.fitBounds(poly.getBounds().pad(0.2)); }catch(e){}
+        }
+        document.addEventListener('DOMContentLoaded', initAdminMap);
+        </script>
+    </ui:define>
+
+</ui:composition>

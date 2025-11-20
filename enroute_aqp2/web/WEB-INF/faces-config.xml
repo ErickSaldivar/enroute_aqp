@@ -6,15 +6,28 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
     <!-- Navigation rules: use outcomes to navigate between views -->
+    <!-- Specific rule for RegisterClient view: some JSF impls resolve navigation
+         differently when the outcome originates from a specific view (and
+         sometimes the flash/navigation stack). Add this narrowly-scoped rule
+         so that returning 'mapa' from /client/RegisterClient.xhtml reliably
+         navigates to /pages/mapa.xhtml. -->
+    <navigation-rule>
+        <from-view-id>/client/RegisterClient.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>mapa</from-outcome>
+            <to-view-id>/pages/mapa.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <navigation-case>
-            <from-outcome>LoginClient</from-outcome>
+            <from-outcome>loginClient</from-outcome>
             <to-view-id>/client/LoginClient.xhtml</to-view-id>
             <redirect />
         </navigation-case>
         
         <navigation-case>
-            <from-outcome>RegisterClient</from-outcome>
+            <from-outcome>registerclient</from-outcome>
             <to-view-id>/client/RegisterClient.xhtml</to-view-id>
             <redirect />
         </navigation-case>
@@ -43,6 +56,18 @@
             <to-view-id>/pages/configuracion.xhtml</to-view-id>
             <redirect />
         </navigation-case>
+        <navigation-case>
+            <from-outcome>usermng</from-outcome>
+            <to-view-id>/admin/usersmng.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>routesmng</from-outcome>
+            <to-view-id>/admin/routesmng.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
     </navigation-rule>
+    
 
 </faces-config>

@@ -12,12 +12,14 @@ function initRutasMap() {
 
 function mostrarRuta(idLinea) {
   if (!window.ROUTES || !rutasMap) return;
+  var idNum = parseInt(idLinea, 10);
+  if (isNaN(idNum)) return;
   // Limpiar capa previa
   Object.values(rutasLayers).forEach(layer => {
     try { rutasMap.removeLayer(layer); } catch(e) {}
   });
   rutasLayers = {};
-  const linea = window.ROUTES.lineas.find(l => l.id === idLinea);
+  const linea = window.ROUTES.lineas.find(l => l.id === idNum);
   if (!linea) return;
   const coords = linea.paraderos.sort((a,b)=> a.orden - b.orden).map(p => [p.lat, p.lng]);
   const poly = L.polyline(coords, { color: '#DD6B20', weight: 5 }).addTo(rutasMap);

@@ -10,6 +10,51 @@
 <project name="enroute_aqp2" default="default" basedir=".">
     <description>Builds, tests, and runs the project enroute_aqp2.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <!-- Ensure JSTL dependency is available for runtime. If lib/jstl-1.2.jar
+         is missing, the -pre-init target will download it from Maven Central.
+         This keeps the project runnable without manual jar copying. -->
+    <target name="-pre-init">
+        <mkdir dir="lib" />
+        <available file="lib/jstl-1.2.jar" property="jstl.exists"/>
+        
+    </target>
+
+    <target name="download-jstl">
+        <echo message="Downloading jstl-1.2.jar into lib/ (from Maven Central) ..."/>
+        <get src="https://repo1.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar"
+             dest="lib/jstl-1.2.jar"
+             usetimestamp="true"/>
+    </target>
+
+    <!-- Download JAXB (for Java 11+ runtime where javax.xml.bind is removed) -->
+    <target name="download-jaxb">
+        <mkdir dir="lib" />
+        <available file="lib/jaxb-api-2.3.1.jar" property="jaxb.api.exists"/>
+        <available file="lib/jaxb-impl-2.3.3.jar" property="jaxb.impl.exists"/>
+        <available file="lib/activation-1.1.1.jar" property="activation.exists"/>
+        <antcall target="fetch-jaxb" unless="jaxb.api.exists"/>
+        <antcall target="fetch-jaxb-impl" unless="jaxb.impl.exists"/>
+        <antcall target="fetch-activation" unless="activation.exists"/>
+    </target>
+
+    <target name="fetch-jaxb">
+        <echo message="Downloading jaxb-api-2.3.1.jar into lib/ ..."/>
+        <get src="https://repo1.maven.org/maven2/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar"
+             dest="lib/jaxb-api-2.3.1.jar" usetimestamp="true"/>
+    </target>
+
+    <target name="fetch-jaxb-impl">
+        <echo message="Downloading jaxb-impl-2.3.3.jar into lib/ ..."/>
+        <get src="https://repo1.maven.org/maven2/com/sun/xml/bind/jaxb-impl/2.3.3/jaxb-impl-2.3.3.jar"
+             dest="lib/jaxb-impl-2.3.3.jar" usetimestamp="true"/>
+    </target>
+
+    <target name="fetch-activation">
+        <echo message="Downloading activation-1.1.1.jar into lib/ ..."/>
+        <get src="https://repo1.maven.org/maven2/javax/activation/activation/1.1.1/activation-1.1.1.jar"
+             dest="lib/activation-1.1.1.jar" usetimestamp="true"/>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 

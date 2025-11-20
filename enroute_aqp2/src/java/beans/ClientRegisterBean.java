@@ -73,10 +73,36 @@ public class ClientRegisterBean implements Serializable {
             DaoUser dao = new DaoUser_Impl();
             dao.agregarUsuario(u);
 
-            // Keep messages across redirect
-            fc.getExternalContext().getFlash().setKeepMessages(true);
-            fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso", "Cuenta creada correctamente. Por favor inicia sesión."));
-            return "loginClient?faces-redirect=true";
+            // After successful registration, authenticate the user automatically
+            DaoUser daoAuth = new DaoUser_Impl();
+            models.User logged = daoAuth.autenticarUsuario(email, password);
+            if (logged != null) {
+                // Put session values (same keys used in ClientLoginBean)
+                fc.getExternalContext().getSessionMap().put("userId", logged.getId());
+                fc.getExternalContext().getSessionMap().put("userName", logged.getNombre());
+                fc.getExternalContext().getSessionMap().put("userEmail", logged.getEmail());
+                fc.getExternalContext().getSessionMap().put("isAdmin", logged.isRol());
+
+                // Add info message and perform a programmatic redirect to avoid
+                // any navigation-case resolution issues coming from some JSF impls.
+                fc.getExternalContext().getFlash().setKeepMessages(true);
+                fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso", "Cuenta creada y autenticada. Bienvenido."));
+                try {
+                    String ctx = fc.getExternalContext().getRequestContextPath();
+                    fc.getExternalContext().redirect(ctx + "/pages/mapa.xhtml");
+                } catch (java.io.IOException ioe) {
+                    // If redirect fails, fall back to navigation outcome
+                    ioe.printStackTrace();
+                    return "mapa?faces-redirect=true";
+                }
+                // We've already redirected
+                return null;
+            } else {
+                // Shouldn't happen, but fallback to explicit login page
+                fc.getExternalContext().getFlash().setKeepMessages(true);
+                fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso", "Cuenta creada correctamente. Por favor inicia sesión."));
+                return "loginClient?faces-redirect=true";
+            }
 
         } catch (Exception ex) {
             // Log full stack trace to server logs for diagnosis

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                                xmlns:p="http://primefaces.org/ui"
+                                template="/templates/sidebarTemplate.xhtml">
+
+    <ui:param name="active" value="routesmng" />
+    <ui:define name="pageTitle">Editar Ruta - Enroute AQP</ui:define>
+
+    <ui:define name="content">
+        <h:form id="editForm">
+        <div class="row g-3">
+            <div class="col-12 col-lg-6">
+                    <p:growl id="msgs" showDetail="true" life="3500" />
+                      <h:outputText id="routeJson" value="#{editRouteBean.routeJson}" escape="false" style="display:none;" />
+                                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" />
+
+
+                    <div class="card shadow-sm mb-3">
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-3">Datos de la Ruta</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Nombre</label>
+                                <h:inputText value="#{editRouteBean.nombre}" styleClass="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Descripción</label>
+                                <h:inputTextarea value="#{editRouteBean.descripcion}" styleClass="form-control" rows="3" />
+                            </div>
+                              <p:commandButton value="Guardar cambios" actionListener="#{editRouteBean.saveLinea}"
+                                               update=":editForm:msgs :editForm:routeJson"
+                                               oncomplete="refreshEditRouteFromHidden();drawEditRoute();"
+                                               styleClass="btn btn-primary" />
+                              <h:link outcome="/admin/routesmng.xhtml" styleClass="btn btn-outline-secondary ms-2">Regresar</h:link>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm mb-3">
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-3">Paraderos</h5>
+                            <p:dataTable id="stopsTable" value="#{editRouteBean.paraderos}" var="p" paginator="true" rows="7"
+                                         selection="#{editRouteBean.selectedParadero}" rowKey="#{p.id}" selectionMode="single">
+                                <p:ajax event="rowSelect" listener="#{editRouteBean.onRowSelect}" update=":editForm:newNombre :editForm:newDireccion :editForm:newLat :editForm:newLng" />
+                                <p:column headerText="#" style="width:60px; text-align:center;">
+                                    <h:outputText value="#{p.orden}" />
+                                </p:column>
+                                <p:column headerText="Nombre">
+                                    <h:outputText value="#{p.nombre}" />
+                                </p:column>
+                                <p:column headerText="Dirección">
+                                    <h:outputText value="#{p.direccion}" />
+                                </p:column>
+                                <p:column headerText="Lat">
+                                    <h:outputText value="#{p.latitud}" />
+                                </p:column>
+                                <p:column headerText="Lng">
+                                    <h:outputText value="#{p.longitud}" />
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+
+                    
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body p-0 h-100">
+                        <div id="editRouteMap" style="width:100%; height: 600px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card shadow-sm mt-3">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-3">Paradero</h5>
+                            <div class="row g-2">
+                                <div class="col-12">
+                                    <label class="form-label">Nombre</label>
+                                    <h:inputText id="newNombre" value="#{editRouteBean.newNombre}" styleClass="form-control" />
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Dirección (opcional)</label>
+                                    <h:inputText id="newDireccion" value="#{editRouteBean.newDireccion}" styleClass="form-control" />
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Latitud</label>
+                                    <h:inputText id="newLat" value="#{editRouteBean.newLat}" styleClass="form-control" />
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Longitud</label>
+                                    <h:inputText id="newLng" value="#{editRouteBean.newLng}" styleClass="form-control" />
+                                </div>
+                            </div>
+                        <div class="mt-3 d-flex gap-2">
+                            <p:commandButton value="Agregar" actionListener="#{editRouteBean.addParadero}" update=":editForm:msgs :editForm:stopsTable :editForm:routeJson" oncomplete="refreshEditRouteFromHidden();drawEditRoute();" styleClass="btn btn-success" />
+                                <p:commandButton value="Actualizar datos" actionListener="#{editRouteBean.updateParadero}" update=":editForm:msgs :editForm:stopsTable :editForm:routeJson" oncomplete="refreshEditRouteFromHidden();drawEditRoute();" styleClass="btn btn-secondary" />
+                                <p:commandButton id="openDeleteDlgBtn" type="button" value="Eliminar paradero" styleClass="btn btn-danger" onclick="(function(){var m=bootstrap.Modal.getOrCreateInstance(document.getElementById('bsDeleteModal')); m.show();})(); return false;" />
+                            <button type="button" class="btn btn-outline-primary" onclick="enableMapPick()">
+                                <i class="bi bi-geo"></i> Elegir en mapa
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                                <!-- Bootstrap modal fallback for delete confirmation -->
+                                <p:remoteCommand name="rcDeleteParadero" actionListener="#{editRouteBean.deleteParadero}" update=":editForm:msgs :editForm:stopsTable :editForm:routeJson" oncomplete="(function(){var m=bootstrap.Modal.getOrCreateInstance(document.getElementById('bsDeleteModal')); try{m.hide();}catch(e){}; refreshEditRouteFromHidden(); drawEditRoute(); })();" />
+
+                                <div class="modal fade" id="bsDeleteModal" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Confirmar</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¿Eliminar el paradero seleccionado?</p>
+                                                <h:outputText value="#{not empty editRouteBean.selectedParadero ? editRouteBean.selectedParadero.nombre : ''}" styleClass="fw-bold" />
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                                <button type="button" class="btn btn-danger" onclick="rcDeleteParadero();">Sí</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+            </div>
+        </div>
+
+        <p:remoteCommand name="rcUpdateCoord" actionListener="#{editRouteBean.rcUpdateCoords}" />
+        </h:form>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script>
+            window.EDIT_ROUTE = <h:outputText value="#{editRouteBean.routeJson}" escape="false"/>;
+            var editMap, editMarkers = {}, editPoly, pickingMode=false;
+            function refreshEditRouteFromHidden(){
+                var el = document.getElementById('editForm:routeJson');
+                if (el) {
+                    try { window.EDIT_ROUTE = JSON.parse(el.textContent || el.innerText); } catch(e){}
+                }
+            }
+
+
+            function initEditMap(){
+                if (!document.getElementById('editRouteMap')) return;
+                if (editMap) { try { editMap.remove(); } catch(e){} editMap = null; }
+                editMap = L.map('editRouteMap').setView([-16.4090, -71.5375], 12);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(editMap);
+            }
+
+            function clearEditLayers(){
+                if (editPoly) { try{ editMap.removeLayer(editPoly);}catch(e){} editPoly = null; }
+                Object.keys(editMarkers).forEach(function(k){ try{ editMap.removeLayer(editMarkers[k]); }catch(e){} });
+                editMarkers = {};
+            }
+
+            function drawEditRoute(){
+                if (!editMap || !window.EDIT_ROUTE || !window.EDIT_ROUTE.paraderos) return;
+                clearEditLayers();
+                var ps = window.EDIT_ROUTE.paraderos.slice().sort(function(a,b){ return a.orden-b.orden; });
+                if (ps.length === 0) return;
+                var coords = ps.map(function(p){ return [p.lat, p.lng]; });
+                editPoly = L.polyline(coords, {color:'#DD6B20', weight: 5}).addTo(editMap);
+                ps.forEach(function(p, idx){
+                    var m = L.marker([p.lat, p.lng], {draggable: true}).addTo(editMap).bindPopup('<strong>'+p.nombre+'</strong>');
+                    m.on('dragend', function(ev){
+                        var latlng = ev.target.getLatLng();
+                        rcUpdateCoord([{name:'paraderoId', value: p.id}, {name:'lat', value: latlng.lat}, {name:'lng', value: latlng.lng}]);
+                        // update local JSON and polyline
+                        p.lat = latlng.lat; p.lng = latlng.lng; drawEditRoute();
+                    });
+                    editMarkers['m'+p.id] = m;
+                });
+                try { editMap.fitBounds(editPoly.getBounds().pad(0.2)); } catch(e){}
+            }
+
+            function enableMapPick(){
+                pickingMode = true;
+                alert('Haz clic en el mapa para elegir las coordenadas del nuevo paradero');
+                editMap.once('click', function(e){
+                    pickingMode = false;
+                    var lat = e.latlng.lat, lng = e.latlng.lng;
+                    try{
+                        document.getElementById('editForm:newLat').value = lat;
+                        document.getElementById('editForm:newLng').value = lng;
+                    }catch(err){}
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function(){
+                try{ window.EDIT_ROUTE = JSON.parse(JSON.stringify(window.EDIT_ROUTE)); }catch(e){}
+                initEditMap();
+                drawEditRoute();
+            });
+        </script>
+        <style>
+            /* Reduce map height to allow Add Stop section to fit below */
+            @media (max-width: 991.98px) {
+                #editRouteMap { height: 360px !important; }
+            }
+        </style>
+    </ui:define>
+</ui:composition>

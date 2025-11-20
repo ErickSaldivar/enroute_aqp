@@ -48,18 +48,17 @@ public class ClientLoginBean implements Serializable {
         DaoUser dao = new DaoUser_Impl();
         try {
             User u = dao.autenticarUsuario(email, password);
-            if (u != null && !u.isRol()) { // rol=false -> cliente
+            if (u != null) {
                 this.user = u;
-                // store in session map
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userId", u.getId());
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userName", u.getNombre());
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userEmail", u.getEmail());
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("isAdmin", u.isRol());
-                // Redirect clients to the client dashboard. Admins should use the admin login flow.
+                // store user info and role in session map so views can render accordingly
+                FacesContext ctx = FacesContext.getCurrentInstance();
+                ctx.getExternalContext().getSessionMap().put("userId", u.getId());
+                ctx.getExternalContext().getSessionMap().put("userName", u.getNombre());
+                ctx.getExternalContext().getSessionMap().put("userEmail", u.getEmail());
+                ctx.getExternalContext().getSessionMap().put("isAdmin", u.isRol());
+                ctx.getExternalContext().getSessionMap().put("userRole", u.isRol() ? "admin" : "client");
+                // Redirect all authenticated users to the main map page; sidebar will show admin links when isAdmin=true
                 return "mapa";
-            } else if (u != null && u.isRol()) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Acceso denegado", "Este login es sólo para clientes."));
-                return null;
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Credenciales inválidas", "Correo o contraseña incorrectos."));
                 return null;

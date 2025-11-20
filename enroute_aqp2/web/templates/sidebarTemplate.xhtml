@@ -20,9 +20,11 @@
         --card-bg: #ffffff;
         --card-border: #e5e7eb;
       }
-      body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--page-bg); }
+      html, body { height:100%; }
+      body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--page-bg); margin:0; }
       /* Fixed-width sidebar so active state doesn't change layout */
-      .sidebar { width: 260px; min-width: 260px; max-width: 260px; flex: 0 0 260px; min-height: 100vh; background: var(--sidebar-bg); color: var(--sidebar-text); }
+      .layout-root { height:100vh; }
+      .sidebar { width: 260px; min-width: 260px; max-width: 260px; flex: 0 0 260px; background: var(--sidebar-bg); color: var(--sidebar-text); overflow-y:auto; }
       .sidebar .brand-title { line-height: 1; }
       /* Ensure links occupy full width and keep consistent box sizing */
       .sidebar .nav-link { color: var(--sidebar-text); border-radius: 10px; display: flex; align-items: center; width: 100%; box-sizing: border-box; padding-left: .75rem; padding-right: .75rem; }
@@ -33,7 +35,8 @@
       .sidebar .nav-link.active { background: var(--brand-accent); color: #fff; }
       .sidebar .section-title { color: var(--sidebar-muted); font-size: .9rem; letter-spacing: .02em; }
       .user-mini { color: var(--sidebar-text); }
-      .content-wrap { min-height: 100vh; }
+      .content-wrap { display:flex; flex-direction:column; height:100vh; overflow:hidden; }
+      .content-scroll { flex:1; overflow-y:auto; }
       /* Mobile header button */
       .mobile-toggle { position: fixed; top: 14px; left: 14px; z-index: 1051; }
       /* Avoid toggle button overlapping page titles on small screens */
@@ -66,7 +69,7 @@
       <i class="bi bi-list"></i>
     </button>
 
-    <div class="d-flex">
+    <div class="d-flex layout-root">
       <!-- Sidebar (Desktop) -->
       <aside class="sidebar d-none d-lg-flex flex-column p-3 gap-3">
         <!-- Brand -->
@@ -88,13 +91,13 @@
               </h:link>
             </li>
             <li class="nav-item">
-              <h:link outcome="favoritos" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
+              <h:link outcome="/pages/favoritos.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
                 <i class="bi bi-heart"></i>
                 <span>Favoritos</span>
               </h:link>
             </li>
             <li class="nav-item">
-              <h:link outcome="historial" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'historial' ? 'active' : ''}">
+              <h:link outcome="/pages/historial.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'historial' ? 'active' : ''}">
                 <i class="bi bi-clock-history"></i>
                 <span>Historial</span>
               </h:link>
@@ -111,34 +114,20 @@
                 <span>Mi Perfil</span>
               </h:link>
             </li>
-            <!-- Admin-only links (mobile) -->
+            
+            <!-- Admin-only links -->            
             <li class="nav-item">
-              <h:link outcome="metricas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'metricas' ? 'active' : ''}"
-                      rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
-                <i class="bi bi-bar-chart"></i>
-                <span>Métricas</span>
-              </h:link>
-            </li>
-            <li class="nav-item">
-              <h:link outcome="administrar" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'administrar' ? 'active' : ''}"
+              <h:link outcome="usermng" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'usermng' ? 'active' : ''}"
                       rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
                 <i class="bi bi-shield-lock"></i>
                 <span>Administrar Usuarios</span>
               </h:link>
             </li>
-            <!-- Admin-only links -->
             <li class="nav-item">
-              <h:link outcome="metricas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'metricas' ? 'active' : ''}"
-                      rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
-                <i class="bi bi-bar-chart"></i>
-                <span>Métricas</span>
-              </h:link>
-            </li>
-            <li class="nav-item">
-              <h:link outcome="administrar" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'administrar' ? 'active' : ''}"
+              <h:link outcome="routesmng" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'routesmng' ? 'active' : ''}"
                       rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
                 <i class="bi bi-shield-lock"></i>
-                <span>Administrar Usuarios</span>
+                <span>Administrar Rutas</span>
               </h:link>
             </li>
           </ul>
@@ -180,13 +169,13 @@
               </h:link>
             </li>
             <li class="nav-item">
-              <h:link outcome="favoritos" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
+              <h:link outcome="/pages/favoritos.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
                 <i class="bi bi-heart"></i>
                 <span>Favoritos</span>
               </h:link>
             </li>
             <li class="nav-item">
-              <h:link outcome="historial" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'historial' ? 'active' : ''}">
+              <h:link outcome="/pages/historial.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'historial' ? 'active' : ''}">
                 <i class="bi bi-clock-history"></i>
                 <span>Historial</span>
               </h:link>
@@ -201,6 +190,21 @@
               <h:link outcome="perfil" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'perfil' ? 'active' : ''}">
                 <i class="bi bi-person-circle"></i>
                 <span>Mi Perfil</span>
+              </h:link>
+            </li>
+            <!-- Admin-only links (mobile) -->            
+            <li class="nav-item">
+              <h:link outcome="usermng" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'usermng' ? 'active' : ''}"
+                      rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
+                <i class="bi bi-shield-lock"></i>
+                <span>Administrar Usuarios</span>
+              </h:link>
+            </li>
+            <li class="nav-item">
+              <h:link outcome="routesmng" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'routesmng' ? 'active' : ''}"
+                      rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
+                <i class="bi bi-shield-lock"></i>
+                <span>Administrar Rutas</span>
               </h:link>
             </li>
           </ul>
@@ -218,8 +222,10 @@
       </div>
 
       <!-- Right content area -->
-      <main class="content-wrap flex-grow-1 p-3 p-lg-4" data-active="#{empty active ? '' : active}">
-        <ui:insert name="content">Contenido</ui:insert>
+      <main class="content-wrap flex-grow-1" data-active="#{empty active ? '' : active}">
+        <div class="content-scroll p-3 p-lg-4">
+          <ui:insert name="content">Contenido</ui:insert>
+        </div>
       </main>
     </div>
 

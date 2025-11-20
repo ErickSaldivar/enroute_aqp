@@ -103,7 +103,27 @@ public class DaoUser_Impl implements DaoUser {
 
     @Override
     public List<User> listarUsuarios() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT id_usuario, nombre, apellido, email, password_hash, es_admin, fecha_registro FROM usuarios ORDER BY id_usuario";
+        java.util.List<User> lista = new java.util.ArrayList<>();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                User u = new User();
+                u.setId(rs.getInt("id_usuario"));
+                u.setNombre(rs.getString("nombre"));
+                u.setApellido(rs.getString("apellido"));
+                u.setEmail(rs.getString("email"));
+                u.setPassword(rs.getString("password_hash"));
+                u.setRol(rs.getBoolean("es_admin"));
+                u.setFechaRegistro(rs.getString("fecha_registro"));
+                lista.add(u);
+            }
+            return lista;
+        } catch (SQLException e) {
+            throw new SQLException("Error listando usuarios: " + e.getMessage(), e);
+        }
     }
 
     @Override

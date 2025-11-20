@@ -3,6 +3,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
                 template="/templates/sidebarTemplate.xhtml">
 
   <ui:param name="active" value="rutas" />
@@ -24,38 +25,22 @@
               <h1 class="fw-bold text-dark mb-0">Rutas Disponibles</h1>
             </div>
 
-            <!-- Search Box -->
-            <div class="mb-4">
-              <div class="position-relative">
-                <input type="text" class="form-control form-control-lg bg-light border-0 ps-5" placeholder="Ingresa tu origen y destino" id="routeSearch" />
-                <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted fs-5"></i>
-              </div>
-            </div>
-
-            <!-- Available Routes (dynamic) -->
-            <div class="flex-grow-1">
-              <h4 class="fw-bold text-dark mb-3">Rutas Encontradas</h4>
-              <ui:repeat value="#{rutasBean.lineas}" var="ln">
-       <div class="border rounded-3 p-3 mb-3 bg-light route-card" style="cursor: pointer;"
-         data-linea="#{ln.id}">
-                  <div class="d-flex align-items-center">
-                    <div class="rounded-2 p-2 me-3" style="background-color: #DD6B20;"><i class="bi bi-bus-front text-white fs-5"></i></div>
-                    <div class="flex-grow-1">
-                      <h5 class="mb-1 fw-bold text-warning">#{ln.nombre}</h5>
-                      <p class="mb-0 text-muted small">#{ln.descripcion}</p>
-                    </div>
-                    <div class="text-end"><span class="badge bg-success">Activa</span></div>
-                  </div>
-                </div>
-              </ui:repeat>
-            </div>
-
-            <!-- Search Button -->
-            <div class="mt-4">
-              <button class="btn w-100 py-3 fw-bold text-white" style="background-color: #DD6B20;" onclick="searchRoutes()">
-                <i class="bi bi-search me-2"></i>
-                Buscar Ruta
-              </button>
+            <!-- Available Routes (paginated) -->
+            <div class="flex-grow-1 d-flex flex-column">
+              <h:form style="flex:1; display:flex; flex-direction:column;">
+                <p:dataTable value="#{rutasBean.lineas}" var="ln" paginator="true" rows="9" styleClass="table-sm" style="flex:1;"
+                             emptyMessage="No hay rutas disponibles" widgetVar="rutasTbl">                  
+                  <p:column headerText="Nombre" sortBy="#{ln.nombre}" filterBy="#{ln.nombre}" filterMatchMode="contains">
+                    <h:outputText value="#{ln.nombre}" />
+                  </p:column>
+                  <p:column headerText="Descripción" filterBy="#{ln.descripcion}" filterMatchMode="contains">
+                    <h:outputText value="#{ln.descripcion}" />
+                  </p:column>
+                  <p:column headerText="Acción" style="width:110px; text-align:center;">
+                    <a href="#" onclick="mostrarRuta('#{ln.id}');return false;" class="btn btn-sm btn-outline-primary">Ver</a>
+                  </p:column>
+                </p:dataTable>
+              </h:form>
             </div>
           </div>
         </div>
