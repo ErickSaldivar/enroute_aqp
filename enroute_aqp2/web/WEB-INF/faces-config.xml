@@ -11,6 +11,18 @@
          sometimes the flash/navigation stack). Add this narrowly-scoped rule
          so that returning 'mapa' from /client/RegisterClient.xhtml reliably
          navigates to /pages/mapa.xhtml. -->
+    <application>
+        <resource-bundle>
+            <base-name>i18n.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        <locale-config>
+            <default-locale>es</default-locale>
+            <supported-locale>es</supported-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+    </application>
+    
     <navigation-rule>
         <from-view-id>/client/RegisterClient.xhtml</from-view-id>
         <navigation-case>

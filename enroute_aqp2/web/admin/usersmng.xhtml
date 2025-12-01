@@ -6,13 +6,13 @@
                 template="/templates/sidebarTemplate.xhtml">
 
     <ui:param name="active" value="usermng" />
-    <ui:define name="pageTitle">Administrar Usuarios - Enroute AQP</ui:define>
+    <ui:define name="pageTitle">#{msg['admin.users.title']} - Enroute AQP</ui:define>
 
     <ui:define name="content">
         <div class="container-fluid">
             <div class="row mb-4">
                 <div class="col-12">
-                    <h2 class="fw-bold">Gestión de Usuarios</h2>
+                    <h2 class="fw-bold">#{msg['admin.users.title']}</h2>
                     <p class="text-muted">Listado de usuarios registrados en la base de datos. Usa el filtro en la columna "Nombre" para buscar.</p>
                 </div>
             </div>
@@ -21,28 +21,28 @@
                 <div class="col-12">
                     <h:form id="usersForm">
                         <p:dataTable id="usersTable" value="#{usersMngBean.users}" var="u" paginator="true" rows="10" 
-                                     emptyMessage="No hay usuarios registrados" widgetVar="usersTableWV">
+                                     emptyMessage="#{msg['table.users.empty']}" widgetVar="usersTableWV">
                             <p:column headerText="ID" style="width:80px; text-align:center;">
                                 <h:outputText value="#{u.id}" />
                             </p:column>
 
-                            <p:column headerText="Nombre" filterBy="#{u.nombre}" filterMatchMode="contains">
+                            <p:column headerText="#{msg['table.name']}" filterBy="#{u.nombre}" filterMatchMode="contains">
                                 <h:outputText value="#{u.nombre}" />
                             </p:column>
 
-                            <p:column headerText="Apellido">
+                            <p:column headerText="#{msg['table.lastname']}">
                                 <h:outputText value="#{u.apellido}" />
                             </p:column>
 
-                            <p:column headerText="Email">
+                            <p:column headerText="#{msg['table.email']}">
                                 <h:outputText value="#{u.email}" />
                             </p:column>
 
-                            <p:column headerText="Rol" style="width:120px; text-align:center;">
+                            <p:column headerText="#{msg['table.role']}" style="width:120px; text-align:center;">
                                 <h:outputText value="#{u.rol ? 'Admin' : 'Cliente'}" />
                             </p:column>
 
-                            <p:column headerText="Fecha registro">
+                            <p:column headerText="#{msg['table.registeredAt']}">
                                 <h:outputText value="#{u.fechaRegistro}" />
                             </p:column>
                         </p:dataTable>

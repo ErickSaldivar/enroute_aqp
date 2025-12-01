@@ -87,31 +87,31 @@
             <li class="nav-item">
               <h:link outcome="mapa" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'mapa' ? 'active' : ''}">
                 <i class="bi bi-bus-front"></i>
-                <span>Viajar</span>
+                <span>#{msg['nav.viajar']}</span>
               </h:link>
             </li>
             <li class="nav-item">
               <h:link outcome="/pages/favoritos.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
                 <i class="bi bi-heart"></i>
-                <span>Favoritos</span>
+                <span>#{msg['nav.favoritos']}</span>
               </h:link>
             </li>
             <li class="nav-item">
               <h:link outcome="/pages/historial.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'historial' ? 'active' : ''}">
                 <i class="bi bi-clock-history"></i>
-                <span>Historial</span>
+                <span>#{msg['nav.historial']}</span>
               </h:link>
             </li>
             <li class="nav-item">
               <h:link outcome="rutas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'rutas' ? 'active' : ''}">
                 <i class="bi bi-geo"></i>
-                <span>Rutas Disponibles</span>
+                <span>#{msg['nav.rutas']}</span>
               </h:link>
             </li>
             <li class="nav-item">
               <h:link outcome="perfil" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'perfil' ? 'active' : ''}">
                 <i class="bi bi-person-circle"></i>
-                <span>Mi Perfil</span>
+                <span>#{msg['nav.perfil']}</span>
               </h:link>
             </li>
             
@@ -120,14 +120,14 @@
               <h:link outcome="usermng" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'usermng' ? 'active' : ''}"
                       rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
                 <i class="bi bi-shield-lock"></i>
-                <span>Administrar Usuarios</span>
+                <span>#{msg['nav.admin.users']}</span>
               </h:link>
             </li>
             <li class="nav-item">
               <h:link outcome="routesmng" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'routesmng' ? 'active' : ''}"
                       rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
                 <i class="bi bi-shield-lock"></i>
-                <span>Administrar Rutas</span>
+                <span>#{msg['nav.admin.routes']}</span>
               </h:link>
             </li>
           </ul>
@@ -136,7 +136,7 @@
         <div class="mt-auto">
           <h:link outcome="configuracion" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'configuracion' ? 'active' : ''}">
                 <i class="bi bi-gear"></i>
-                <span>Configuración</span>
+                <span>#{msg['nav.config']}</span>
           </h:link>
           <div class="d-flex align-items-center gap-2 mt-3 px-2 user-mini">
             <img src="https://i.pravatar.cc/100?img=5" alt="Usuario" class="rounded-circle" style="width:40px;height:40px;object-fit:cover;" />
@@ -144,7 +144,9 @@
               <div class="fw-semibold">#{empty sessionScope.userName ? 'Invitado' : sessionScope.userName}</div>
               
               <h:form rendered="#{not empty sessionScope.userName}">
-                <h:commandButton value="Cerrar sesión" action="#{logoutBean.logout}" styleClass="btn btn-sm btn-outline-light" />
+                  <h:commandLink action="#{localeBean.change('es')}" value="ES" styleClass="btn btn-sm btn-outline-light me-2" />
+                  <h:commandLink action="#{localeBean.change('en')}" value="EN" styleClass="btn btn-sm btn-outline-light" />
+                  <h:commandButton value="#{msg['button.logout']}" action="#{logoutBean.logout}" styleClass="btn btn-sm btn-outline-light" />
               </h:form>            
             </div>            
           </div>
@@ -156,7 +158,7 @@
         <div class="offcanvas-header justify-content-center position-relative">
             <div class="d-flex align-items-center">
               <img class="align-items-center" src="#{facesContext.externalContext.requestContextPath}/img/icon_img.png" alt="Logo EnrouteAQP" style="width: 40px; height: 40px; object-fit: cover;" />
-              <h5 class="offcanvas-title ms-2 mb-0">Rutas Arequipa</h5>
+              <h5 class="offcanvas-title ms-2 mb-0">#{msg['brand.title']}</h5>
             </div>
             <button type="button" class="btn-close btn-close-white position-absolute end-0 me-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
@@ -165,31 +167,31 @@
             <li class="nav-item">
               <h:link outcome="mapa" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'mapa' ? 'active' : ''}">
                 <i class="bi bi-bus-front"></i>
-                <span>Viajar</span>
+                <span>#{msg['nav.viajar']}</span>
               </h:link>
             </li>
             <li class="nav-item">
               <h:link outcome="/pages/favoritos.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
                 <i class="bi bi-heart"></i>
-                <span>Favoritos</span>
+                <span>#{msg['nav.favoritos']}</span>
               </h:link>
             </li>
             <li class="nav-item">
               <h:link outcome="/pages/historial.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'historial' ? 'active' : ''}">
                 <i class="bi bi-clock-history"></i>
-                <span>Historial</span>
+                <span>#{msg['nav.historial']}</span>
               </h:link>
             </li>
             <li class="nav-item">
               <h:link outcome="rutas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'rutas' ? 'active' : ''}">
                 <i class="bi bi-geo"></i>
-                <span>Rutas Disponibles</span>
+                <span>#{msg['nav.rutas']}</span>
               </h:link>
             </li>
             <li class="nav-item">
               <h:link outcome="perfil" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'perfil' ? 'active' : ''}">
                 <i class="bi bi-person-circle"></i>
-                <span>Mi Perfil</span>
+                <span>#{msg['nav.perfil']}</span>
               </h:link>
             </li>
             <!-- Admin-only links (mobile) -->            
@@ -204,19 +206,21 @@
               <h:link outcome="routesmng" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'routesmng' ? 'active' : ''}"
                       rendered="#{not empty sessionScope.isAdmin and sessionScope.isAdmin}">
                 <i class="bi bi-shield-lock"></i>
-                <span>Administrar Rutas</span>
+                <span>#{msg['nav.admin.routes']}</span>
               </h:link>
             </li>
           </ul>
           <hr />
           <h:link outcome="configuracion" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'configuracion' ? 'active' : ''}">
                 <i class="bi bi-gear"></i>
-                <span>Configuración</span>
+                <span>#{msg['nav.config']}</span>
           </h:link>
           <div class="mt-3">
-            <h:form rendered="#{not empty sessionScope.userName}">
-              <h:commandButton value="Cerrar sesión" action="#{logoutBean.logout}" styleClass="btn btn-sm btn-light w-100" />
-            </h:form>
+              <h:form rendered="#{not empty sessionScope.userName}">
+                  <h:commandLink action="#{localeBean.change('es')}" value="ES" styleClass="btn btn-sm btn-outline-light me-2" />
+                  <h:commandLink action="#{localeBean.change('en')}" value="EN" styleClass="btn btn-sm btn-outline-light" />
+                  <h:commandButton value="#{msg['button.logout']}" action="#{logoutBean.logout}" styleClass="btn btn-sm btn-light w-100" />
+              </h:form>
           </div>
         </div>
       </div>

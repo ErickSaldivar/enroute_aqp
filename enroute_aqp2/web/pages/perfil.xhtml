@@ -7,7 +7,7 @@
                 template="/templates/sidebarTemplate.xhtml">
 
   <ui:param name="active" value="perfil" />
-  <ui:define name="pageTitle">Mi Perfil - Enroute AQP</ui:define>
+  <ui:define name="pageTitle">#{msg['page.profile.title']} - Enroute AQP</ui:define>
 
   <ui:define name="content">
     <!-- Main Content (mirrors perfil.jsp) -->
@@ -19,7 +19,7 @@
 
       <!-- Desktop Title -->
       <div class="d-none d-lg-block mb-4">
-        <h1 class="fw-bold text-dark mb-0">Mi Perfil</h1>
+        <h1 class="fw-bold text-dark mb-0">#{msg['page.profile.title']}</h1>
       </div>
 
       <div class="row g-4">
@@ -33,13 +33,13 @@
           <div class="bg-white rounded-3 shadow-sm p-4">
             <h3 class="fw-bold mb-4" style="color: #DD6B20;">
               <i class="bi bi-person-circle me-2"></i>
-              Datos Personales
+              #{msg['profile.personalData']}
             </h3>
 
             
               <div class="row g-3">
                 <div class="col-12">
-                  <label for="nombre" class="form-label fw-medium text-dark">Nombre</label>
+                  <label for="nombre" class="form-label fw-medium text-dark">#{msg['label.name']}</label>
                   <h:inputText id="nombre" styleClass="form-control form-control-lg bg-light border-0"
                                value="#{userBean.nombreInput}">
                     <f:passThroughAttribute name="placeholder" value="#{userBean.nombre}" />
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="col-12">
-                  <label for="apellido" class="form-label fw-medium text-dark">Apellido</label>
+                  <label for="apellido" class="form-label fw-medium text-dark">#{msg['label.lastName']}</label>
                   <h:inputText id="apellido" styleClass="form-control form-control-lg bg-light border-0"
                                value="#{userBean.apellidoInput}">
                     <f:passThroughAttribute name="placeholder" value="#{userBean.apellido}" />
@@ -55,13 +55,13 @@
                 </div>
 
                 <div class="col-12">
-                  <label for="email" class="form-label fw-medium text-dark">Correo electrónico</label>
+                  <label for="email" class="form-label fw-medium text-dark">#{msg['label.email']}</label>
                   <h:inputText id="email" styleClass="form-control form-control-lg bg-light border-0"
                                value="#{userBean.email}" readonly="true" />
                 </div>
 
                 <div class="col-12">
-                  <label for="fechaRegistro" class="form-label fw-medium text-dark">Fecha de registro</label>
+                  <label for="fechaRegistro" class="form-label fw-medium text-dark">#{msg['label.registeredAt']}</label>
                   <h:inputText id="fechaRegistro" styleClass="form-control form-control-lg bg-light border-0"
                                value="#{userBean.fechaRegistro}" readonly="true" />
                 </div>
@@ -72,17 +72,17 @@
                 <div class="card card-body">
                   <div class="row g-3">
                     <div class="col-12">
-                      <label for="newPwd" class="form-label fw-medium text-dark">Nueva contraseña</label>
+                      <label for="newPwd" class="form-label fw-medium text-dark">#{msg['label.newPassword']}</label>
                       <h:inputSecret id="newPwd" styleClass="form-control form-control-lg bg-light border-0"
                                      value="#{userBean.newPassword}" />
                     </div>
                     <div class="col-12">
-                      <label for="confirmPwd" class="form-label fw-medium text-dark">Confirmar contraseña</label>
+                      <label for="confirmPwd" class="form-label fw-medium text-dark">#{msg['label.confirmPassword']}</label>
                       <h:inputSecret id="confirmPwd" styleClass="form-control form-control-lg bg-light border-0"
                                      value="#{userBean.confirmPassword}" />
                     </div>
                     <div class="col-12">
-                      <h:commandButton value="Confirmar cambio" styleClass="btn btn-primary"
+                      <h:commandButton value="#{msg['button.confirmChange']}" styleClass="btn btn-primary"
                                        action="#{userBean.changePassword}" />
                     </div>
                   </div>
@@ -94,32 +94,32 @@
         <!-- Additional Options -->
         <div class="col-12">
           <div class="bg-white rounded-3 shadow-sm p-4">
-            <h4 class="fw-bold text-dark mb-4">Otras Opciones</h4>
+            <h4 class="fw-bold text-dark mb-4">#{msg['profile.otherOptions']}</h4>
               <div class="row g-3">
               <div class="col-6 col-md-3">
                 <!-- Toggle la sección de cambio de contraseña -->
                 <button type="button" class="btn btn-outline-primary w-100 py-3 rounded-3" data-bs-toggle="collapse" data-bs-target="#changePwdCollapse" aria-expanded="false" aria-controls="changePwdCollapse">
                   <i class="bi bi-shield-lock fs-4 d-block mb-2"></i>
-                  <small class="fw-medium">Cambiar Contraseña</small>
+                  <small class="fw-medium">#{msg['button.changePassword']}</small>
                 </button>
               </div>
               <div class="col-6 col-md-3">
                 <!-- Exportar Datos deshabilitado por indicación del usuario -->
                 <button class="btn btn-outline-info w-100 py-3 rounded-3" disabled="disabled" title="Exportar datos deshabilitado">
                   <i class="bi bi-download fs-4 d-block mb-2"></i>
-                  <small class="fw-medium">Exportar Datos</small>
+                  <small class="fw-medium">#{msg['button.exportData']}</small>
                 </button>
               </div>
               <div class="col-6 col-md-3">
                 <button class="btn btn-outline-secondary w-100 py-3 rounded-3">
                   <i class="bi bi-question-circle fs-4 d-block mb-2"></i>
-                  <small class="fw-medium">Ayuda</small>
+                  <small class="fw-medium">#{msg['button.help']}</small>
                 </button>
               </div>
               <div class="col-6 col-md-3">
                 <button class="btn btn-outline-danger w-100 py-3 rounded-3">
                   <i class="bi bi-trash fs-4 d-block mb-2"></i>
-                  <small class="fw-medium">Eliminar Cuenta</small>
+                  <small class="fw-medium">#{msg['button.deleteAccount']}</small>
                 </button>
               </div>
             </div>
@@ -129,7 +129,7 @@
         <!-- Save Button: envia a userBean.updateProfile -->
         <div class="col-12">
           <div class="d-grid">
-            <h:commandButton value="Guardar Cambios" styleClass="btn btn-warning btn-lg py-3 fw-bold text-white rounded-3" action="#{userBean.updateProfile}" />
+            <h:commandButton value="#{msg['button.saveChanges']}" styleClass="btn btn-warning btn-lg py-3 fw-bold text-white rounded-3" action="#{userBean.updateProfile}" />
           </div>
         </div>
         </h:form>

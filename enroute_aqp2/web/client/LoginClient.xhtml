@@ -18,21 +18,21 @@
                     <div class="text-center mb-4">
                         <img src="#{facesContext.externalContext.requestContextPath}/img/icon_img.png" alt="logo" style="height:48px;" />
                         <h3 class="mt-3">Rutas Arequipa</h3>
-                        <h5 class="mt-1 text-muted">Iniciar Sesión</h5>
+                        <h5 class="mt-1 text-muted">#{msg['login.heading']}</h5>
                     </div>
 
                     <h:form class="mt-4">
                         <h:messages globalOnly="true" layout="list" styleClass="mb-3 text-danger" />
 
                         <div class="mb-3">
-                            <label for="email" class="form-label">Correo electrónico</label>
+                            <label for="email" class="form-label">#{msg['login.email.label']}</label>
                             <h:inputText id="email" value="#{clientLoginBean.email}" styleClass="form-control" required="true">
-                                <f:passThroughAttribute name="placeholder" value="ejemplo@mail.com" />
+                                <f:passThroughAttribute name="placeholder" value="#{msg['login.email.placeholder']}" />
                             </h:inputText>
                         </div>
 
                         <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
+                            <label for="password" class="form-label">#{msg['login.password.label']}</label>
                             <h:inputSecret id="password" value="#{clientLoginBean.password}" styleClass="form-control" required="true">
                                 <f:passThroughAttribute name="placeholder" value="********" />
                             </h:inputSecret>
@@ -44,7 +44,7 @@
                     </h:form>
 
                     <div class="text-center mt-4">
-                        <small class="text-muted">¿No tienes una cuenta? <h:link outcome="registerclient" value="Crear cuenta" /></small>
+                        <small class="text-muted">#{msg['login.noaccount']} <h:link outcome="registerclient" value="#{msg['login.createAccount']}" /></small>
                     </div>
                 </div>
             </div>

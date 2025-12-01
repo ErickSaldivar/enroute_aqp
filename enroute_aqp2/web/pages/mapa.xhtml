@@ -22,20 +22,20 @@
                     <div class="row g-2 g-lg-3">
                         <div class="col-12 col-lg-5">
                             <div class="position-relative">
-                                <input type="text" class="form-control form-control-lg ps-5" placeholder="Lugar de inicio" id="origen" />
+                                <input type="text" class="form-control form-control-lg ps-5" placeholder="#{msg['map.origin.placeholder']}" id="origen" />
                                 <i class="bi bi-geo-alt position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
                             </div>
                         </div>
                         <div class="col-12 col-lg-5">
                             <div class="position-relative">
-                                <input type="text" class="form-control form-control-lg ps-5" placeholder="Lugar de destino" id="destino" />
+                                <input type="text" class="form-control form-control-lg ps-5" placeholder="#{msg['map.dest.placeholder']}" id="destino" />
                                 <i class="bi bi-geo-alt-fill position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
                             </div>
                         </div>
                         <div class="col-12 col-lg-2 d-grid">
                             <button id="btn-buscar" type="button" class="btn btn-lg fw-bold" style="background-color: #DD6B20; color: white;" onclick="buscarRuta()">
                                 <i class="bi bi-search me-2"></i>
-                                Buscar
+                                #{msg['button.search']}
                             </button>
                         </div>
                     </div>
