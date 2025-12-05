@@ -28,111 +28,95 @@
               <div class="mb-3">
                 <h:messages globalOnly="true" layout="list" infoClass="alert alert-success" errorClass="alert alert-danger" warnClass="alert alert-warning"/>
               </div>
-        <!-- Personal Data Section -->
-        <div class="col-12">
-          <div class="bg-white rounded-3 shadow-sm p-4">
-            <h3 class="fw-bold mb-4" style="color: #DD6B20;">
-              <i class="bi bi-person-circle me-2"></i>
-              #{msg['profile.personalData']}
-            </h3>
+              
+              <div class="row g-4">
+                <!-- Personal Data Section - Left Column -->
+                <div class="col-12 col-lg-6">
+                  <div class="bg-white rounded-3 shadow-sm p-4 h-100">
+                    <h3 class="fw-bold mb-4" style="color: #DD6B20;">
+                      <i class="bi bi-person-circle me-2"></i>
+                      #{msg['profile.personalData']}
+                    </h3>
 
-            
-              <div class="row g-3">
-                <div class="col-12">
-                  <label for="nombre" class="form-label fw-medium text-dark">#{msg['label.name']}</label>
-                  <h:inputText id="nombre" styleClass="form-control form-control-lg bg-light border-0"
-                               value="#{userBean.nombreInput}">
-                    <f:passThroughAttribute name="placeholder" value="#{userBean.nombre}" />
-                  </h:inputText>
-                </div>
+                    <div class="row g-3">
+                      <div class="col-12">
+                        <label for="nombre" class="form-label fw-medium text-dark">#{msg['label.name']}</label>
+                        <h:inputText id="nombre" styleClass="form-control form-control-lg bg-light border-0"
+                                     value="#{empty userBean.nombreInput ? userBean.nombre : userBean.nombreInput}">
+                          
+                        </h:inputText>
+                      </div>
 
-                <div class="col-12">
-                  <label for="apellido" class="form-label fw-medium text-dark">#{msg['label.lastName']}</label>
-                  <h:inputText id="apellido" styleClass="form-control form-control-lg bg-light border-0"
-                               value="#{userBean.apellidoInput}">
-                    <f:passThroughAttribute name="placeholder" value="#{userBean.apellido}" />
-                  </h:inputText>
-                </div>
+                      <div class="col-12">
+                        <label for="apellido" class="form-label fw-medium text-dark">#{msg['label.lastName']}</label>
+                        <h:inputText id="apellido" styleClass="form-control form-control-lg bg-light border-0"
+                                     value="#{empty userBean.apellidoInput ? userBean.apellido : userBean.apellidoInput}">
+                          
+                        </h:inputText>
+                      </div>
 
-                <div class="col-12">
-                  <label for="email" class="form-label fw-medium text-dark">#{msg['label.email']}</label>
-                  <h:inputText id="email" styleClass="form-control form-control-lg bg-light border-0"
-                               value="#{userBean.email}" readonly="true" />
-                </div>
+                      <div class="col-12">
+                        <label for="email" class="form-label fw-medium text-dark">#{msg['label.email']}</label>
+                        <h:inputText id="email" styleClass="form-control form-control-lg bg-light border-0"
+                                     value="#{userBean.email}" readonly="true" />
+                      </div>
 
-                <div class="col-12">
-                  <label for="fechaRegistro" class="form-label fw-medium text-dark">#{msg['label.registeredAt']}</label>
-                  <h:inputText id="fechaRegistro" styleClass="form-control form-control-lg bg-light border-0"
-                               value="#{userBean.fechaRegistro}" readonly="true" />
-                </div>
-              </div>
-
-              <!-- Password change collapse kept inside the same JSF form -->
-              <div class="collapse mt-3" id="changePwdCollapse">
-                <div class="card card-body">
-                  <div class="row g-3">
-                    <div class="col-12">
-                      <label for="newPwd" class="form-label fw-medium text-dark">#{msg['label.newPassword']}</label>
-                      <h:inputSecret id="newPwd" styleClass="form-control form-control-lg bg-light border-0"
-                                     value="#{userBean.newPassword}" />
+                      <div class="col-12">
+                        <label for="fechaRegistro" class="form-label fw-medium text-dark">#{msg['label.registeredAt']}</label>
+                        <h:inputText id="fechaRegistro" styleClass="form-control form-control-lg bg-light border-0"
+                                     value="#{userBean.fechaRegistro}" readonly="true" />
+                      </div>
                     </div>
-                    <div class="col-12">
-                      <label for="confirmPwd" class="form-label fw-medium text-dark">#{msg['label.confirmPassword']}</label>
-                      <h:inputSecret id="confirmPwd" styleClass="form-control form-control-lg bg-light border-0"
-                                     value="#{userBean.confirmPassword}" />
+                  </div>
+                </div>
+
+                <!-- Additional Options - Right Column -->
+                <div class="col-12 col-lg-6">
+                  <div class="bg-white rounded-3 shadow-sm p-4 h-100">
+                    <h4 class="fw-bold text-dark mb-4">#{msg['profile.otherOptions']}</h4>
+                    
+                    <!-- Password change collapse -->
+                    <div class="collapse mb-3" id="changePwdCollapse">
+                      <div class="card card-body">
+                        <div class="row g-3">
+                          <div class="col-12">
+                            <label for="newPwd" class="form-label fw-medium text-dark">#{msg['label.newPassword']}</label>
+                            <h:inputSecret id="newPwd" styleClass="form-control form-control-lg bg-light border-0"
+                                           value="#{userBean.newPassword}" />
+                          </div>
+                          <div class="col-12">
+                            <label for="confirmPwd" class="form-label fw-medium text-dark">#{msg['label.confirmPassword']}</label>
+                            <h:inputSecret id="confirmPwd" styleClass="form-control form-control-lg bg-light border-0"
+                                           value="#{userBean.confirmPassword}" />
+                          </div>
+                          <div class="col-12">
+                            <h:commandButton value="#{msg['button.confirmChange']}" styleClass="btn btn-primary"
+                                             action="#{userBean.changePassword}" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-12">
-                      <h:commandButton value="#{msg['button.confirmChange']}" styleClass="btn btn-primary"
-                                       action="#{userBean.changePassword}" />
+                    
+                    <div class="row g-3">
+                      <div class="col-12">
+                        <!-- Toggle la sección de cambio de contraseña -->
+                        <button type="button" class="btn btn-outline-primary w-100 py-3 rounded-3" data-bs-toggle="collapse" data-bs-target="#changePwdCollapse" aria-expanded="false" aria-controls="changePwdCollapse">
+                          <i class="bi bi-shield-lock fs-4 d-block mb-2"></i>
+                          <small class="fw-medium">#{msg['button.changePassword']}</small>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-          </div>
-        </div>
 
-        <!-- Additional Options -->
-        <div class="col-12">
-          <div class="bg-white rounded-3 shadow-sm p-4">
-            <h4 class="fw-bold text-dark mb-4">#{msg['profile.otherOptions']}</h4>
-              <div class="row g-3">
-              <div class="col-6 col-md-3">
-                <!-- Toggle la sección de cambio de contraseña -->
-                <button type="button" class="btn btn-outline-primary w-100 py-3 rounded-3" data-bs-toggle="collapse" data-bs-target="#changePwdCollapse" aria-expanded="false" aria-controls="changePwdCollapse">
-                  <i class="bi bi-shield-lock fs-4 d-block mb-2"></i>
-                  <small class="fw-medium">#{msg['button.changePassword']}</small>
-                </button>
+              <!-- Save Button: envia a userBean.updateProfile -->
+              <div class="col-12 mt-4">
+                <div class="d-grid">
+                  <h:commandButton value="#{msg['button.saveChanges']}" styleClass="btn btn-warning btn-lg py-3 fw-bold text-white rounded-3" action="#{userBean.updateProfile}" />
+                </div>
               </div>
-              <div class="col-6 col-md-3">
-                <!-- Exportar Datos deshabilitado por indicación del usuario -->
-                <button class="btn btn-outline-info w-100 py-3 rounded-3" disabled="disabled" title="Exportar datos deshabilitado">
-                  <i class="bi bi-download fs-4 d-block mb-2"></i>
-                  <small class="fw-medium">#{msg['button.exportData']}</small>
-                </button>
-              </div>
-              <div class="col-6 col-md-3">
-                <button class="btn btn-outline-secondary w-100 py-3 rounded-3">
-                  <i class="bi bi-question-circle fs-4 d-block mb-2"></i>
-                  <small class="fw-medium">#{msg['button.help']}</small>
-                </button>
-              </div>
-              <div class="col-6 col-md-3">
-                <button class="btn btn-outline-danger w-100 py-3 rounded-3">
-                  <i class="bi bi-trash fs-4 d-block mb-2"></i>
-                  <small class="fw-medium">#{msg['button.deleteAccount']}</small>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Save Button: envia a userBean.updateProfile -->
-        <div class="col-12">
-          <div class="d-grid">
-            <h:commandButton value="#{msg['button.saveChanges']}" styleClass="btn btn-warning btn-lg py-3 fw-bold text-white rounded-3" action="#{userBean.updateProfile}" />
-          </div>
-        </div>
-        </h:form>
+            </h:form>
       </div>
     </div>
 

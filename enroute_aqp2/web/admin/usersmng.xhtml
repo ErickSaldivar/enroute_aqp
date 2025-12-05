@@ -2,6 +2,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="/templates/sidebarTemplate.xhtml">
 
@@ -38,18 +39,264 @@
                                 <h:outputText value="#{u.email}" />
                             </p:column>
 
-                            <p:column headerText="#{msg['table.role']}" style="width:120px; text-align:center;">
-                                <h:outputText value="#{u.rol ? 'Admin' : 'Cliente'}" />
+                            <p:column headerText="#{msg['table.role']}" style="width:180px; text-align:center;">
+                                <div class="d-flex align-items-center justify-content-center gap-2">
+                                    <h:outputText value="#{u.rol ? 'Admin' : 'Cliente'}" />
+                                    <!-- Botón para promover Cliente a Admin -->
+                                    <button type="button" class="btn btn-sm btn-warning" 
+                                            onclick="showPromoteModal(#{u.id}, '#{u.nombre}')"
+                                            style="#{u.rol ? 'display:none;' : ''}"
+                                            title="Convertir a Admin">
+                                        <i class="bi bi-arrow-up-circle"></i>
+                                    </button>
+                                    <!-- Botón para convertir Admin a Cliente -->
+                                    <button type="button" class="btn btn-sm btn-info" 
+                                            onclick="showDemoteModal(#{u.id}, '#{u.nombre}')"
+                                            style="#{not u.rol ? 'display:none;' : ''}"
+                                            title="Convertir a Cliente">
+                                        <i class="bi bi-arrow-down-circle"></i>
+                                    </button>
+                                </div>
                             </p:column>
 
                             <p:column headerText="#{msg['table.registeredAt']}">
                                 <h:outputText value="#{u.fechaRegistro}" />
                             </p:column>
                         </p:dataTable>
+                        
+                        <!-- Campos ocultos para almacenar los datos -->
+                        <h:inputHidden id="selectedUserId" value="#{usersMngBean.selectedUserId}" />
+                        <h:inputHidden id="superAdminPass" value="#{usersMngBean.superAdminPassword}" />
+                        
+                        <!-- Botón oculto para ejecutar la promoción -->
+                        <p:commandButton id="promoteBtn" 
+                                        widgetVar="promoteBtnWidget"
+                                        action="#{usersMngBean.promoteToAdmin(usersMngBean.selectedUserId, usersMngBean.superAdminPassword)}" 
+                                        style="display:none;"
+                                        update="usersTable"
+                                        oncomplete="handlePromoteComplete()" />
+                        
+                        <!-- Botón oculto para ejecutar la conversión a cliente -->
+                        <p:commandButton id="demoteBtn" 
+                                        widgetVar="demoteBtnWidget"
+                                        action="#{usersMngBean.demoteToClient(usersMngBean.selectedUserId, usersMngBean.superAdminPassword)}" 
+                                        style="display:none;"
+                                        update="usersTable"
+                                        oncomplete="handleDemoteComplete()" />
                     </h:form>
                 </div>
             </div>
         </div>
+        
+        <!-- Modal para promover usuario a Admin -->
+        <div class="modal fade" id="promoteModal" tabindex="-1" aria-labelledby="promoteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="promoteModalLabel">
+                            <i class="bi bi-shield-lock text-warning"></i> Convertir a Administrador
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de que deseas convertir a <strong id="userName"></strong> en administrador?</p>
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <div>Esta acción requiere permisos de superadministrador</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="superAdminPassword" class="form-label">Contraseña de Superadmin</label>
+                            <input type="password" class="form-control" id="superAdminPassword" 
+                                   placeholder="Ingresa la contraseña de superadmin" required="required"/>
+                            <div class="invalid-feedback" id="passwordError">
+                                Contraseña incorrecta
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-warning" onclick="promoteToAdmin()">
+                            <i class="bi bi-shield-check"></i> Convertir a Admin
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal para convertir Admin a Cliente -->
+        <div class="modal fade" id="demoteModal" tabindex="-1" aria-labelledby="demoteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="demoteModalLabel">
+                            <i class="bi bi-shield-lock text-info"></i> Convertir a Cliente
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de que deseas convertir a <strong id="userNameDemote"></strong> en cliente?</p>
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <div>Esta acción requiere permisos de superadministrador</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="superAdminPasswordDemote" class="form-label">Contraseña de Superadmin</label>
+                            <input type="password" class="form-control" id="superAdminPasswordDemote" 
+                                   placeholder="Ingresa la contraseña de superadmin" required="required"/>
+                            <div class="invalid-feedback" id="passwordErrorDemote">
+                                Contraseña incorrecta
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-info" onclick="demoteToClient()">
+                            <i class="bi bi-person-check"></i> Convertir a Cliente
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        //<![CDATA[
+            let selectedUserId = null;
+            let promoteResult = null;
+            
+            function showPromoteModal(userId, userName) {
+                selectedUserId = userId;
+                document.getElementById('userName').textContent = userName;
+                document.getElementById('superAdminPassword').value = '';
+                document.getElementById('superAdminPassword').classList.remove('is-invalid');
+                const modal = new bootstrap.Modal(document.getElementById('promoteModal'));
+                modal.show();
+            }
+            
+            function showDemoteModal(userId, userName) {
+                selectedUserId = userId;
+                document.getElementById('userNameDemote').textContent = userName;
+                document.getElementById('superAdminPasswordDemote').value = '';
+                document.getElementById('superAdminPasswordDemote').classList.remove('is-invalid');
+                const modal = new bootstrap.Modal(document.getElementById('demoteModal'));
+                modal.show();
+            }
+            
+            function promoteToAdmin() {
+                const password = document.getElementById('superAdminPassword').value;
+                const passwordInput = document.getElementById('superAdminPassword');
+                
+                if (!password) {
+                    passwordInput.classList.add('is-invalid');
+                    document.getElementById('passwordError').textContent = 'Por favor ingrese la contraseña';
+                    return;
+                }
+                
+                // Validar contraseña en el cliente primero
+                if (password !== 'unodostres_123') {
+                    passwordInput.classList.add('is-invalid');
+                    document.getElementById('passwordError').textContent = 'Contraseña incorrecta';
+                    return;
+                }
+                
+                // Contraseña correcta, establecer los valores en los campos ocultos
+                document.getElementById('usersForm:selectedUserId').value = selectedUserId;
+                document.getElementById('usersForm:superAdminPass').value = password;
+                
+                // Ejecutar el comando JSF usando PrimeFaces
+                PF('promoteBtnWidget').jq.click();
+            }
+            
+            function demoteToClient() {
+                const password = document.getElementById('superAdminPasswordDemote').value;
+                const passwordInput = document.getElementById('superAdminPasswordDemote');
+                
+                if (!password) {
+                    passwordInput.classList.add('is-invalid');
+                    document.getElementById('passwordErrorDemote').textContent = 'Por favor ingrese la contraseña';
+                    return;
+                }
+                
+                // Validar contraseña en el cliente primero
+                if (password !== 'unodostres_123') {
+                    passwordInput.classList.add('is-invalid');
+                    document.getElementById('passwordErrorDemote').textContent = 'Contraseña incorrecta';
+                    return;
+                }
+                
+                // Contraseña correcta, establecer los valores en los campos ocultos
+                document.getElementById('usersForm:selectedUserId').value = selectedUserId;
+                document.getElementById('usersForm:superAdminPass').value = password;
+                
+                // Ejecutar el comando JSF usando PrimeFaces
+                PF('demoteBtnWidget').jq.click();
+            }
+            
+            function handlePromoteComplete() {
+                // Cerrar el modal
+                const modalElement = document.getElementById('promoteModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (modal) {
+                    modal.hide();
+                }
+                
+                // Mostrar mensaje de éxito
+                alert('Usuario convertido a administrador exitosamente');
+                
+                // Recargar la página para asegurar que todo esté actualizado
+                setTimeout(function() {
+                    window.location.reload();
+                }, 500);
+            }
+            
+            function handleDemoteComplete() {
+                // Cerrar el modal
+                const modalElement = document.getElementById('demoteModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (modal) {
+                    modal.hide();
+                }
+                
+                // Mostrar mensaje de éxito
+                alert('Administrador convertido a cliente exitosamente');
+                
+                // Recargar la página para asegurar que todo esté actualizado
+                setTimeout(function() {
+                    window.location.reload();
+                }, 500);
+            }
+            
+            // Limpiar error al escribir
+            document.addEventListener('DOMContentLoaded', function() {
+                const passwordInput = document.getElementById('superAdminPassword');
+                if (passwordInput) {
+                    passwordInput.addEventListener('input', function() {
+                        this.classList.remove('is-invalid');
+                    });
+                    
+                    // Permitir presionar Enter para confirmar
+                    passwordInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            promoteToAdmin();
+                        }
+                    });
+                }
+                
+                const passwordInputDemote = document.getElementById('superAdminPasswordDemote');
+                if (passwordInputDemote) {
+                    passwordInputDemote.addEventListener('input', function() {
+                        this.classList.remove('is-invalid');
+                    });
+                    
+                    // Permitir presionar Enter para confirmar
+                    passwordInputDemote.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            demoteToClient();
+                        }
+                    });
+                }
+            });
+        //]]>
+        </script>
     </ui:define>
 
 </ui:composition>

@@ -8,7 +8,7 @@
                                 template="/templates/sidebarTemplate.xhtml">
 
     <ui:param name="active" value="routesmng" />
-    <ui:define name="pageTitle">#{msg['admin.routes.title']} - Enroute AQP</ui:define>
+    <ui:define name="pageTitle">Administrar Rutas - Enroute AQP</ui:define>
 
     <ui:define name="content">
         <div class="container-fluid p-0 h-100">
@@ -22,7 +22,7 @@
                         <h:form id="routesForm" style="flex:1; display:flex; flex-direction:column;">
                     <p:growl id="msgs" showDetail="true" life="4000" />
                     <p:dataTable id="routesTable" value="#{routesMngBean.lineas}" var="ln" paginator="true" rows="9"
-                                 emptyMessage="#{msg['table.routes.empty']}" widgetVar="routesTbl">
+                                 emptyMessage="No hay rutas registradas" widgetVar="routesTbl">
                         <p:column style="width:40px; text-align:center;">
                             <p:rowToggler />
                         </p:column>
@@ -35,23 +35,23 @@
                         <p:column headerText="Descripción">
                             <h:outputText value="#{ln.descripcion}" />
                         </p:column>
-                        <p:column headerText="#{msg['table.actions']}" style="width:220px; text-align:center;">
-                            <p:commandButton type="button" value="#{msg['button.view']}" onclick="drawRoute('#{ln.id}');" styleClass="btn btn-sm btn-outline-primary me-2" />
+                        <p:column headerText="Acciones" style="width:220px; text-align:center;">
+                            <p:commandButton type="button" value="Ver" onclick="drawRoute('#{ln.id}');" styleClass="btn btn-sm btn-outline-primary me-2" />
                             <h:link outcome="/admin/editroute.xhtml" styleClass="btn btn-sm btn-outline-secondary me-2">
                                 <i class="bi bi-pencil"></i>
-                                <span class="ms-1">#{msg['button.edit']}</span>
+                                <span class="ms-1">Editar</span>
                                 <f:param name="id" value="#{ln.id}" />
                             </h:link>
                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" />
-                            <p:commandButton value="#{msg['button.delete']}" styleClass="btn btn-sm btn-outline-danger" update=":routesForm:routesTable :routesForm:msgs"
+                            <p:commandButton value="Borrar" styleClass="btn btn-sm btn-outline-danger" update=":routesForm:routesTable :routesForm:msgs"
                                              actionListener="#{routesMngBean.deleteLinea(ln.id)}">
-                                <p:confirm header="#{msg['dialog.confirm.title']}" message="#{msg['dialog.confirm.deleteRoute']}" icon="ui-icon-alert" />
+                                <p:confirm header="Confirmar" message="¿Eliminar la ruta #{ln.nombre}?" icon="ui-icon-alert" />
                             </p:commandButton>
                         </p:column>
 
                         <p:rowExpansion>
                             <div class="p-2">
-                                <strong>#{msg['label.stops']}</strong>
+                                <strong>Paraderos:</strong>
                                 <p:dataTable value="#{routesMngBean.paraderos(ln.id)}" var="p" rows="6" paginator="true">
                                     <p:column headerText="#" style="width:60px; text-align:center;">
                                         <h:outputText value="#{p.orden}" />
@@ -88,7 +88,7 @@
         <div class="position-fixed" style="right: 24px; bottom: 24px; z-index: 1050;">
             <h:link outcome="/admin/editroute.xhtml" styleClass="btn btn-lg btn-primary rounded-pill shadow d-flex align-items-center px-3">
                 <i class="bi bi-plus-lg me-2"></i>
-                <span>#{msg['button.addRoute']}</span>
+                <span>Agregar Ruta</span>
             </h:link>
         </div>
 
@@ -100,6 +100,7 @@
         function initAdminMap(){
             if(!document.getElementById('adminRoutesLeafletMap')) return;
             adminMap = L.map('adminRoutesLeafletMap').setView([-16.4090, -71.5375], 12);
+            
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(adminMap);
         }
         function clearLayers(){

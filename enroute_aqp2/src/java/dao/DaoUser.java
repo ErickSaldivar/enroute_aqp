@@ -25,5 +25,9 @@ public interface DaoUser {
     void eliminarUsuario(int id) throws Exception;
 
     public User autenticarUsuario(String username, String password) throws Exception;
+    
+    void promoteToAdmin(int userId) throws Exception;
+    
+    void demoteToClient(int userId) throws Exception;
 
 }

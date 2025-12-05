@@ -130,6 +130,30 @@ public class DaoUser_Impl implements DaoUser {
     public void eliminarUsuario(int id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    @Override
+    public void promoteToAdmin(int userId) throws Exception {
+        String sql = "UPDATE usuarios SET es_admin = true WHERE id_usuario = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException("Error al promover usuario a admin: " + e.getMessage(), e);
+        }
+    }
+    
+    @Override
+    public void demoteToClient(int userId) throws Exception {
+        String sql = "UPDATE usuarios SET es_admin = false WHERE id_usuario = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException("Error al convertir admin a cliente: " + e.getMessage(), e);
+        }
+    }
 
     @Override
     public User autenticarUsuario(String username, String password) throws Exception {

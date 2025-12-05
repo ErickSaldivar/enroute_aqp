@@ -440,6 +440,21 @@
                     infoEl.innerText = 'Linea sugerida: ' + plan.linea.nombre + (busOnly ? '' : (' | Caminata: ' + walkKm + ' km')) + ' | Bus: ' + busKm + ' km | Paraderos: ' + plan.busSegment.length;
                 }
 
+                // Calcular tiempo estimado (asumiendo velocidad promedio de 20 km/h para el bus)
+                const tiempoEstimadoMinutos = Math.round((plan.busDist / 1000) / 20 * 60);
+                
+                // Guardar información de la ruta para usarla después
+                window.currentRouteInfo = {
+                    idLinea: plan.linea.id,
+                    nombreLinea: plan.linea.nombre,
+                    paraderoSubida: plan.originParadero.nombre || 'Paradero',
+                    paraderoBajada: plan.destParadero.nombre || 'Paradero',
+                    tiempoEstimado: tiempoEstimadoMinutos
+                };
+                
+                // Mostrar modal con la información
+                mostrarModalRuta(window.currentRouteInfo);
+
                 // Segmento caminando origen -> paradero origen
                 const o = originMarker.getLatLng();
                 const pO = L.latLng(plan.originParadero.lat, plan.originParadero.lng);
@@ -518,6 +533,78 @@
 
             // Exponer para depuración (walking + bus)
             try { window.planTransitRoute = () => planTransitRoute(true, false); } catch(_){ }
+            
+            // ========================= MODAL DE INFORMACIÓN DE RUTA =========================
+            
+            function mostrarModalRuta(routeInfo) {
+                try {
+                    // Actualizar contenido del modal
+                    document.getElementById('paraderoSubida').textContent = routeInfo.paraderoSubida;
+                    document.getElementById('paraderoBajada').textContent = routeInfo.paraderoBajada;
+                    document.getElementById('nombreLinea').textContent = routeInfo.nombreLinea;
+                    document.getElementById('tiempoEstimado').textContent = routeInfo.tiempoEstimado + ' minutos';
+                    document.getElementById('precioViaje').textContent = 'S/. 1.00';
+                    
+                    // Mostrar el modal usando Bootstrap 5
+                    const modalElement = document.getElementById('routeInfoModal');
+                    if (modalElement) {
+                        const modal = new bootstrap.Modal(modalElement);
+                        modal.show();
+                    }
+                } catch (e) {
+                    console.error('Error mostrando modal:', e);
+                }
+            }
+            
+            function confirmarLlegada() {
+                if (!window.currentRouteInfo) {
+                    alert('No hay información de ruta disponible');
+                    return;
+                }
+                
+                // Guardar el viaje usando JSF
+                guardarViajeEnHistorial(
+                    window.currentRouteInfo.idLinea,
+                    window.currentRouteInfo.paraderoSubida,
+                    window.currentRouteInfo.paraderoBajada,
+                    window.currentRouteInfo.nombreLinea,
+                    window.currentRouteInfo.tiempoEstimado
+                );
+                
+                // Cerrar el modal
+                const modalElement = document.getElementById('routeInfoModal');
+                if (modalElement) {
+                    const modal = bootstrap.Modal.getInstance(modalElement);
+                    if (modal) modal.hide();
+                }
+                
+                // Mostrar mensaje de confirmación
+                alert('¡Viaje guardado en tu historial!');
+            }
+            
+            function guardarViajeEnHistorial(idLinea, paraderoSubida, paraderoBajada, nombreLinea, tiempoEstimado) {
+                try {
+                    // Actualizar los campos ocultos del formulario JSF
+                    document.getElementById('saveTripForm:idLinea').value = idLinea;
+                    document.getElementById('saveTripForm:paraderoSubida').value = paraderoSubida;
+                    document.getElementById('saveTripForm:paraderoBajada').value = paraderoBajada;
+                    document.getElementById('saveTripForm:nombreLinea').value = nombreLinea;
+                    document.getElementById('saveTripForm:tiempoEstimado').value = tiempoEstimado;
+                    
+                    // Hacer clic en el botón oculto para ejecutar el action del bean
+                    document.getElementById('saveTripForm:btnSaveTrip').click();
+                } catch (e) {
+                    console.error('Error en guardarViajeEnHistorial:', e);
+                }
+            }
+            
+            // Hacer funciones accesibles globalmente
+            try { 
+                window.confirmarLlegada = confirmarLlegada;
+                window.mostrarModalRuta = mostrarModalRuta;
+            } catch(_) { }
+            
+            // ========================= FIN MODAL =========================
             
             // Inicializar el mapa cuando cargue la página
             document.addEventListener('DOMContentLoaded', function() {
