@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="/templates/sidebarTemplate.xhtml">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core" template="/templates/sidebarTemplate.xhtml">
 
-  <ui:param name="active" value="config" />
+
+  <ui:param name="active" value="configuracion" />
   <ui:define name="pageTitle">Configuración - Enroute AQP</ui:define>
 
   <ui:define name="content">
@@ -52,7 +50,7 @@
         <!-- Notification Settings -->
         <div class="col-12">
           <div class="bg-white rounded-3 shadow-sm p-4">
-            <h4 class="fw-bold text-dark mb-4">Configuración de Notificaciones</h4>
+          <h4 class="fw-bold text-dark mb-4">Configuración de Notificaciones</h4>
             <div class="row g-3">
               <div class="col-12">
                 <div class="form-check d-flex align-items-center p-3 bg-light rounded-3">
@@ -84,6 +82,24 @@
                 </div>
               </div>
             </div>
+
+        <div class="col-12">
+          <div class="bg-white rounded-3 shadow-sm p-4">
+            <h4 class="fw-bold text-dark mb-4">Idioma</h4>
+            <h:form>
+              <div class="btn-group" role="group">
+                <h:commandLink action="#{localeBean.change('es')}" styleClass="btn btn-outline-secondary #{localeBean.language eq 'es' ? 'active' : ''}">
+                  <span>ES</span>
+                  <f:ajax render="@all" />
+                </h:commandLink>
+                <h:commandLink action="#{localeBean.change('en')}" styleClass="btn btn-outline-secondary #{localeBean.language eq 'en' ? 'active' : ''}">
+                  <span>EN</span>
+                  <f:ajax render="@all" />
+                </h:commandLink>
+              </div>
+            </h:form>
+          </div>
+        </div>          
           </div>
         </div>
       </div>
