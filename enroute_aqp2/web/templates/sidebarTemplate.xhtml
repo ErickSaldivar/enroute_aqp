@@ -46,6 +46,8 @@
       .flag-icon { width: 20px; height: 15px; object-fit: cover; margin-right: 8px; border-radius: 2px; }
       .content-wrap { display:flex; flex-direction:column; height:100vh; overflow:hidden; }
       .content-scroll { flex:1; overflow-y:auto; }
+      /* Remove overflow and padding for map page */
+      main.content-wrap[data-active="mapa"] .content-scroll { overflow:hidden; padding:0 !important; }
       /* Mobile header button */
       .mobile-toggle { position: fixed; top: 14px; left: 14px; z-index: 1051; }
       /* Avoid toggle button overlapping page titles on small screens */
@@ -172,6 +174,40 @@
                 <span>#{msg['nav.config']}</span>
           </h:link>
           
+          <!-- Language Selector Dropdown -->
+          <div class="dropdown language-dropdown mt-2">
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100 d-flex align-items-center justify-content-between" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="d-flex align-items-center">
+                <h:panelGroup rendered="#{localeBean.language eq 'es'}">
+                  <img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon" />
+                  <span>Español</span>
+                </h:panelGroup>
+                <h:panelGroup rendered="#{localeBean.language eq 'en'}">
+                  <img src="https://flagcdn.com/w40/us.png" alt="English" class="flag-icon" />
+                  <span>English</span>
+                </h:panelGroup>
+              </span>
+            </button>
+            <ul class="dropdown-menu w-100" aria-labelledby="languageDropdown">
+              <li>
+                <h:form styleClass="m-0">
+                  <h:commandLink action="#{localeBean.change('es')}" styleClass="dropdown-item d-flex align-items-center #{localeBean.language eq 'es' ? 'active' : ''}">
+                    <img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon" />
+                    <span>Español</span>
+                  </h:commandLink>
+                </h:form>
+              </li>
+              <li>
+                <h:form styleClass="m-0">
+                  <h:commandLink action="#{localeBean.change('en')}" styleClass="dropdown-item d-flex align-items-center #{localeBean.language eq 'en' ? 'active' : ''}">
+                    <img src="https://flagcdn.com/w40/us.png" alt="English" class="flag-icon" />
+                    <span>English</span>
+                  </h:commandLink>
+                </h:form>
+              </li>
+            </ul>
+          </div>
+          
           <div class="d-flex align-items-center gap-2 mt-3 px-2 user-mini">
             <h:panelGroup rendered="#{not empty sessionScope.userName}">
               <div class="user-avatar">
@@ -279,7 +315,41 @@
                 <i class="bi bi-gear"></i>
                 <span>#{msg['nav.config']}</span>
           </h:link>
-        
+          
+          <!-- Language Selector Dropdown (Mobile) -->
+          <div class="dropdown language-dropdown mt-2">
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100 d-flex align-items-center justify-content-between" type="button" id="languageDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="d-flex align-items-center">
+                <h:panelGroup rendered="#{localeBean.language eq 'es'}">
+                  <img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon" />
+                  <span>Español</span>
+                </h:panelGroup>
+                <h:panelGroup rendered="#{localeBean.language eq 'en'}">
+                  <img src="https://flagcdn.com/w40/us.png" alt="English" class="flag-icon" />
+                  <span>English</span>
+                </h:panelGroup>
+              </span>
+            </button>
+            <ul class="dropdown-menu w-100" aria-labelledby="languageDropdownMobile">
+              <li>
+                <h:form styleClass="m-0">
+                  <h:commandLink action="#{localeBean.change('es')}" styleClass="dropdown-item d-flex align-items-center #{localeBean.language eq 'es' ? 'active' : ''}">
+                    <img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon" />
+                    <span>Español</span>
+                  </h:commandLink>
+                </h:form>
+              </li>
+              <li>
+                <h:form styleClass="m-0">
+                  <h:commandLink action="#{localeBean.change('en')}" styleClass="dropdown-item d-flex align-items-center #{localeBean.language eq 'en' ? 'active' : ''}">
+                    <img src="https://flagcdn.com/w40/us.png" alt="English" class="flag-icon" />
+                    <span>English</span>
+                  </h:commandLink>
+                </h:form>
+              </li>
+            </ul>
+          </div>
+          
           <div class="d-flex align-items-center gap-2 mt-3">
             <h:panelGroup rendered="#{not empty sessionScope.userName}">
               <div class="user-avatar">

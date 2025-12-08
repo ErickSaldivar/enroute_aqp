@@ -9,10 +9,18 @@
     <ui:define name="pageTitle">Mapa - Enroute AQP</ui:define>
 
     <ui:define name="content">
-        <div class="container-fluid px-0 py-0">
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center; flex-direction: column;">
+            <div class="spinner-border text-warning" style="width: 4rem; height: 4rem;" role="status">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+            <h4 class="text-white mt-3 fw-bold">Cargando...</h4>
+        </div>
+
+        <div class="container-fluid px-0 py-0" style="height: 100vh; display: flex; flex-direction: column; overflow: hidden;">
 
             <!--Mobile Header-->
-            <div class="d-lg-none bg-white shadow-sm p-3 border-bottom mb-3">
+            <div class="d-lg-none bg-white shadow-sm p-3 border-bottom mb-3" style="flex-shrink: 0;">
                 <h2 class="mb-0 fw-bold text-dark">Viajar</h2>
             </div>
             
@@ -27,23 +35,26 @@
             </h:form>
             
             <!-- Search / Controls -->
-            <div class="card shadow-sm border-0 mb-4">
+            <div class="card shadow-sm border-0 mb-3" style="flex-shrink: 0;">
                 <div class="card-body">
                     <div class="row g-2 g-lg-3">
                         <div class="col-12 col-lg-5">
-                            <div class="position-relative">
-                                <input type="text" class="form-control form-control-lg ps-5" placeholder="#{msg['map.origin.placeholder']}" id="origen" />
-                                <i class="bi bi-geo-alt position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white"><i class="bi bi-geo-alt-fill" style="color: #DD6B20;"></i></span>
+                                <input type="text" class="form-control" placeholder="#{msg['map.origin.placeholder']}" id="origen" />
+                                <button class="btn btn-outline-secondary" type="button" onclick="usarUbicacionActual()" title="Usar mi ubicación actual">
+                                    <i class="bi bi-crosshair"></i>
+                                </button>
                             </div>
                         </div>
                         <div class="col-12 col-lg-5">
-                            <div class="position-relative">
-                                <input type="text" class="form-control form-control-lg ps-5" placeholder="#{msg['map.dest.placeholder']}" id="destino" />
-                                <i class="bi bi-geo-alt-fill position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white"><i class="bi bi-geo-alt-fill" style="color: #1f2937;"></i></span>
+                                <input type="text" class="form-control" placeholder="#{msg['map.dest.placeholder']}" id="destino" />
                             </div>
                         </div>
                         <div class="col-12 col-lg-2 d-grid">
-                            <button id="btn-buscar" type="button" class="btn btn-lg fw-bold" style="background-color: #DD6B20; color: white;" onclick="buscarRuta()">
+                            <button id="btn-buscar" type="button" class="btn fw-bold" style="background-color: #DD6B20; color: white;" onclick="buscarRuta()">
                                 <i class="bi bi-search me-2"></i>
                                 #{msg['button.search']}
                             </button>
@@ -53,10 +64,8 @@
             </div>
 
             <!-- Map area -->
-            <div class="card shadow-sm border-0">
-                <div class="card-body p-0" style="min-height:720px;">
-                    <div id="map" style="width:100%; height:100%; min-height:720px;"></div>
-                </div>
+            <div style="flex: 1; min-height: 0; overflow: hidden;">
+                <div id="map" style="width:100%; height:99%;"></div>
             </div>
         </div>
 
