@@ -7,7 +7,7 @@
                 template="/templates/sidebarTemplate.xhtml">
 
   <ui:param name="active" value="rutas" />
-  <ui:define name="pageTitle">Rutas Disponibles - Enroute AQP</ui:define>
+  <ui:define name="pageTitle">#{msg['page.routes.title']}</ui:define>
 
   <ui:define name="content">
     <!-- Main layout converted from rutas.jsp -->
@@ -22,7 +22,7 @@
           <div class="p-4 h-100 d-flex flex-column">
             <!-- Page Title (Desktop only) -->
             <div class="d-none d-lg-block mb-4">
-              <h1 class="fw-bold text-dark mb-0">Rutas Disponibles</h1>
+              <h1 class="fw-bold text-dark mb-0">#{msg['page.routes.title']}</h1>
             </div>
 
             <!-- Available Routes (paginated) -->
@@ -89,8 +89,8 @@
       });
       function searchRoutes() {
         const searchTerm = document.getElementById('routeSearch').value;
-        if (searchTerm.trim()) alert('Buscando rutas para: ' + searchTerm);
-        else alert('Por favor, ingresa un origen y destino');
+        if (searchTerm.trim()) alert('#{msg['alerts.searching']}: ' + searchTerm);
+        else alert('#{msg['alerts.enterOriginDest']}');
       }
     </script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />

@@ -21,4 +21,11 @@ public class LocaleBean implements Serializable {
         FacesContext.getCurrentInstance().getViewRoot().setLocale(this.locale);
         return null;
     }
+
+    public void applyLocale() {
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        if (ctx != null && ctx.getViewRoot() != null) {
+            ctx.getViewRoot().setLocale(this.locale);
+        }
+    }
 }
