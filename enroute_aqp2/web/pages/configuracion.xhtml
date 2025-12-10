@@ -86,28 +86,31 @@
               </div>
             </div>
           </div>
-
-          <div class="col-12">
-              <div class="bg-white rounded-3 shadow-sm p-4">
-                  <h4 class="fw-bold text-dark mb-4">#{msg['config.language.title']}</h4>
-                  <h:form>
-                      <div class="btn-group" role="group">
-                          <h:commandLink action="#{localeBean.change('es')}" styleClass="btn btn-outline-secondary #{localeBean.language eq 'es' ? 'active' : ''}">
-                              <span>ES</span>
-                              <f:ajax render="@all" />
-                          </h:commandLink>
-                          <h:commandLink action="#{localeBean.change('en')}" styleClass="btn btn-outline-secondary #{localeBean.language eq 'en' ? 'active' : ''}">
-                              <span>EN</span>
-                              <f:ajax render="@all" />
-                          </h:commandLink>
-                      </div>
-                  </h:form>            
-              </div>
-          </div>
         </div>
 
+        <!-- Language Settings -->
+        <div class="col-12">
+          <div class="bg-white rounded-3 shadow-sm p-4">
+            <h4 class="fw-bold text-dark mb-4">#{msg['config.language.title']}</h4>
+            <h:form>
+              <div class="btn-group" role="group">
+                <h:commandLink action="#{localeBean.change('es')}" styleClass="btn btn-outline-secondary #{localeBean.language eq 'es' ? 'active' : ''}">
+                  <span>ES</span>
+                  <f:ajax render="@all" />
+                </h:commandLink>
+                <h:commandLink action="#{localeBean.change('en')}" styleClass="btn btn-outline-secondary #{localeBean.language eq 'en' ? 'active' : ''}">
+                  <span>EN</span>
+                  <f:ajax render="@all" />
+                </h:commandLink>
+              </div>
+            </h:form>            
+          </div>
+        </div>
+      </div>
+    </div>
+
     <style>
-      /* Small adjustments to match app look */
+      /* Ajuste de color de fondo */
       .bg-light { background-color: #f8f9fa !important; }
     </style>
   </ui:define>
