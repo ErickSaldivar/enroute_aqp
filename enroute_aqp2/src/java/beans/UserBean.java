@@ -1,13 +1,12 @@
 package beans;
 
-import dao.DaoUser;
-import dao.impl.DaoUser_Impl;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import models.User;
+import services.UserApiService;
 
 @ManagedBean(name = "userBean")
 @SessionScoped
@@ -27,15 +26,16 @@ public class UserBean implements Serializable {
     private String apellidoInput;
 
     private User user;
+    private final UserApiService userApiService;
 
     public UserBean() {
+        userApiService = new UserApiService();
         // initialize from session if possible
         Object uid = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userId");
         if (uid != null) {
             try {
                 int userId = (Integer) uid;
-                DaoUser dao = new DaoUser_Impl();
-                User u = dao.obtenerUsuarioPorId(userId);
+                User u = userApiService.obtenerUsuarioPorId(userId);
                 if (u != null) {
                     this.user = u;
                     this.id = u.getId();
@@ -43,6 +43,9 @@ public class UserBean implements Serializable {
                     this.apellido = u.getApellido();
                     this.email = u.getEmail();
                     this.fechaRegistro = u.getFechaRegistro();
+                    // Inicializar campos de entrada con valores actuales
+                    this.nombreInput = u.getNombre();
+                    this.apellidoInput = u.getApellido();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -146,21 +149,19 @@ public class UserBean implements Serializable {
                 this.user = new User();
                 this.user.setId(this.id);
             }
-            // Si el usuario escribió un nuevo valor en los inputs, lo usamos; si no, conservamos el existente
-            String finalNombre = (this.nombreInput != null && !this.nombreInput.trim().isEmpty()) ? this.nombreInput.trim() : this.user.getNombre();
-            String finalApellido = (this.apellidoInput != null && !this.apellidoInput.trim().isEmpty()) ? this.apellidoInput.trim() : this.user.getApellido();
+            
+            // Actualizar con los valores de los inputs
+            this.user.setNombre(this.nombreInput != null ? this.nombreInput.trim() : this.nombre);
+            this.user.setApellido(this.apellidoInput != null ? this.apellidoInput.trim() : this.apellido);
+            this.user.setEmail(this.email);
+            this.user.setPassword(null); // no actualizar contraseña aquí
 
-            this.user.setNombre(finalNombre);
-            this.user.setApellido(finalApellido);
-            // Do not change email or fechaRegistro here
-            this.user.setPassword(null); // ensure password not updated
+            userApiService.modificarUsuario(this.user);
 
-            DaoUser dao = new DaoUser_Impl();
-            dao.modificarUsuario(this.user);
-
-            // Update session name
+            // Actualizar variables locales y sesión
+            this.nombre = this.user.getNombre();
+            this.apellido = this.user.getApellido();
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userName", this.nombre);
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userName", this.user.getNombre());
 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Perfil actualizado", "Tus datos se han guardado correctamente."));
             return null;
@@ -184,11 +185,13 @@ public class UserBean implements Serializable {
             if (this.user == null) {
                 this.user = new User();
                 this.user.setId(this.id);
+                this.user.setNombre(this.nombre);
+                this.user.setApellido(this.apellido);
+                this.user.setEmail(this.email);
             }
-            // set plain password - Dao will hash it
+            // set plain password - API will hash it
             this.user.setPassword(this.newPassword);
-            DaoUser dao = new DaoUser_Impl();
-            dao.modificarUsuario(this.user);
+            userApiService.modificarUsuario(this.user);
 
             // clear fields
             this.newPassword = null;

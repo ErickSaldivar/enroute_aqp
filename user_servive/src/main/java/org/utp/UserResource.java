@@ -268,4 +268,64 @@ public class UserResource {
                     .build();
         }
     }
+
+    /**
+     * POST /api/users/{id}/promote
+     * Promueve un usuario a administrador.
+     * 
+     * @param id ID del usuario a promover
+     * @return Usuario actualizado (200 OK) o 404 Not Found
+     */
+    @POST
+    @Path("/{id}/promote")
+    @Transactional
+    public Response promoteToAdmin(@PathParam("id") int id) {
+        try {
+            User user = User.findById(id);
+            if (user == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("{\"error\": \"Usuario no encontrado\"}")
+                        .build();
+            }
+
+            user.setEsAdmin(true);
+            user.persist();
+            return Response.ok(user).build();
+        } catch (Exception e) {
+            return Response
+                    .status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"error\": \"Error al promover usuario: " + e.getMessage() + "\"}")
+                    .build();
+        }
+    }
+
+    /**
+     * POST /api/users/{id}/demote
+     * Convierte un administrador en usuario cliente.
+     * 
+     * @param id ID del usuario a convertir en cliente
+     * @return Usuario actualizado (200 OK) o 404 Not Found
+     */
+    @POST
+    @Path("/{id}/demote")
+    @Transactional
+    public Response demoteToClient(@PathParam("id") int id) {
+        try {
+            User user = User.findById(id);
+            if (user == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("{\"error\": \"Usuario no encontrado\"}")
+                        .build();
+            }
+
+            user.setEsAdmin(false);
+            user.persist();
+            return Response.ok(user).build();
+        } catch (Exception e) {
+            return Response
+                    .status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"error\": \"Error al convertir usuario a cliente: " + e.getMessage() + "\"}")
+                    .build();
+        }
+    }
 }

@@ -133,10 +133,18 @@
               </h:panelGroup>
             </li>
             <li class="nav-item">
-              <h:link outcome="rutas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'rutas' ? 'active' : ''}">
-                <i class="bi bi-geo"></i>
-                <span>#{msg['nav.rutas']}</span>
-              </h:link>
+              <h:panelGroup rendered="#{not empty sessionScope.userName}">
+                <h:link outcome="rutas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'rutas' ? 'active' : ''}">
+                  <i class="bi bi-geo"></i>
+                  <span>#{msg['nav.rutas']}</span>
+                </h:link>
+              </h:panelGroup>
+              <h:panelGroup rendered="#{empty sessionScope.userName}">
+                <a href="#" onclick="showLoginModal(); return false;" class="nav-link d-flex align-items-center px-3 py-2">
+                  <i class="bi bi-geo"></i>
+                  <span>#{msg['nav.rutas']}</span>
+                </a>
+              </h:panelGroup>
             </li>
             <li class="nav-item">
               <h:panelGroup rendered="#{not empty sessionScope.userName}">
@@ -244,10 +252,18 @@
               </h:panelGroup>
             </li>
             <li class="nav-item">
-              <h:link outcome="rutas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'rutas' ? 'active' : ''}">
-                <i class="bi bi-geo"></i>
-                <span>#{msg['nav.rutas']}</span>
-              </h:link>
+              <h:panelGroup rendered="#{not empty sessionScope.userName}">
+                <h:link outcome="rutas" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'rutas' ? 'active' : ''}">
+                  <i class="bi bi-geo"></i>
+                  <span>#{msg['nav.rutas']}</span>
+                </h:link>
+              </h:panelGroup>
+              <h:panelGroup rendered="#{empty sessionScope.userName}">
+                <a href="#" onclick="showLoginModal(); return false;" class="nav-link d-flex align-items-center px-3 py-2">
+                  <i class="bi bi-geo"></i>
+                  <span>#{msg['nav.rutas']}</span>
+                </a>
+              </h:panelGroup>
             </li>
             <li class="nav-item">
               <h:panelGroup rendered="#{not empty sessionScope.userName}">

@@ -10,8 +10,8 @@ public class User extends PanacheEntityBase {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private int id; // Mapeado a la columna 'id' de la base de datos
+    @Column(name = "id_usuario", nullable = false)
+    private int id; // Mapeado a la columna 'id_usuario' de la base de datos
 
     @Column(length = 100, nullable = false)
     private String nombre;

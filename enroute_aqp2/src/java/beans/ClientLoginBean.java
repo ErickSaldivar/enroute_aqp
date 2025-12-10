@@ -1,13 +1,12 @@
 package beans;
 
-import dao.DaoUser;
-import dao.impl.DaoUser_Impl;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import models.User;
+import services.UserApiService;
 
 @ManagedBean(name = "clientLoginBean")
 @SessionScoped
@@ -16,8 +15,10 @@ public class ClientLoginBean implements Serializable {
     private String email;
     private String password;
     private User user;
+    private final UserApiService userApiService;
 
     public ClientLoginBean() {
+        userApiService = new UserApiService();
     }
 
     public String getEmail() {
@@ -45,9 +46,8 @@ public class ClientLoginBean implements Serializable {
     }
 
     public String login() {
-        DaoUser dao = new DaoUser_Impl();
         try {
-            User u = dao.autenticarUsuario(email, password);
+            User u = userApiService.autenticarUsuario(email, password);
             if (u != null) {
                 this.user = u;
                 // store user info and role in session map so views can render accordingly

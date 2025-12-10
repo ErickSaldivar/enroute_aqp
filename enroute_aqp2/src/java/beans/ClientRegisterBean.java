@@ -1,8 +1,6 @@
 package beans;
 
 import dao.DBConnection;
-import dao.DaoUser;
-import dao.impl.DaoUser_Impl;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import models.User;
+import services.UserApiService;
 
 @ManagedBean(name = "clientRegisterBean")
 @RequestScoped
@@ -21,8 +20,11 @@ public class ClientRegisterBean implements Serializable {
     private String email;
     private String password;
     private String confirmPassword;
+    private final UserApiService userApiService;
 
-    public ClientRegisterBean() {}
+    public ClientRegisterBean() {
+        userApiService = new UserApiService();
+    }
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
@@ -67,15 +69,13 @@ public class ClientRegisterBean implements Serializable {
             u.setNombre(nombre);
             u.setApellido("");
             u.setEmail(email);
-            u.setPassword(password); // DAO will hash
+            u.setPassword(password); // API will hash
             u.setRol(false); // cliente
 
-            DaoUser dao = new DaoUser_Impl();
-            dao.agregarUsuario(u);
+            userApiService.agregarUsuario(u);
 
             // After successful registration, authenticate the user automatically
-            DaoUser daoAuth = new DaoUser_Impl();
-            models.User logged = daoAuth.autenticarUsuario(email, password);
+            models.User logged = userApiService.autenticarUsuario(email, password);
             if (logged != null) {
                 // Put session values (same keys used in ClientLoginBean)
                 fc.getExternalContext().getSessionMap().put("userId", logged.getId());

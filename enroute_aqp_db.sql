@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2025 a las 01:53:06
+-- Tiempo de generación: 10-12-2025 a las 21:29:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -28,12 +28,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `historial_viajes` (
-  `id_viaje` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `origen` varchar(200) DEFAULT NULL,
-  `destino` varchar(200) DEFAULT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_linea` int(11) NOT NULL,
+  `paradero_subida` varchar(255) NOT NULL,
+  `paradero_bajada` varchar(255) NOT NULL,
+  `nombre_linea` varchar(100) NOT NULL,
+  `tiempo_estimado` int(11) NOT NULL COMMENT 'Tiempo estimado en minutos',
+  `precio` decimal(5,2) DEFAULT 1.00 COMMENT 'Precio del viaje en soles',
+  `fecha_viaje` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Historial de viajes realizados por los usuarios';
 
 -- --------------------------------------------------------
 
@@ -81,7 +85,9 @@ INSERT INTO `lineas` (`id_linea`, `nombre`, `descripcion`) VALUES
 (27, 'BT-2-IDA', 'Lara --> Estación Norte Terminal Pesquero (Río Seco)'),
 (28, 'BT-2-VUELTA', 'Estación Norte terminal Pesquero (Río Seco) --> Lara'),
 (29, 'T-20-IDA', 'Terminal MegaBus AQP S.A.C (Villa el Triunfo) --> Las Begonias'),
-(30, 'T-20-VUELTA', 'Las Begonias (Altura del Puente Peatonal) --> Terminal MegaBus AQP S.A.C (Villa el Triunfo)');
+(30, 'T-20-VUELTA', 'Las Begonias (Altura del Puente Peatonal) --> Terminal MegaBus AQP S.A.C (Villa el Triunfo)'),
+(31, 'z35', 'aeropuerto -> centro ida'),
+(32, 'Jordi The Dickboy', 'Jordi The Dickboy');
 
 -- --------------------------------------------------------
 
@@ -1002,7 +1008,11 @@ INSERT INTO `linea_paraderos` (`id_linea_paradero`, `id_linea`, `id_paradero`, `
 (899, 29, 681, 6),
 (900, 29, 682, 7),
 (901, 29, 683, 8),
-(902, 29, 684, 9);
+(902, 29, 684, 9),
+(904, 31, 685, 1),
+(905, 31, 686, 2),
+(907, 32, 688, 1),
+(908, 32, 689, 2);
 
 -- --------------------------------------------------------
 
@@ -1023,7 +1033,7 @@ CREATE TABLE `paraderos` (
 --
 
 INSERT INTO `paraderos` (`id_paradero`, `nombre`, `direccion`, `latitud`, `longitud`) VALUES
-(1, 'Terminal COTUM Express S.A.C.', 'Calle 8', -16.38710000, -71.57779800),
+(1, 'Terminal COTUM Express S.A.C.', 'Calle 8', -16.38841414, -71.57652764),
 (2, 'Alto Victoria', 'Calle 7', -16.38475700, -71.57657300),
 (3, '15 de Agosto (Alto Libertad)', 'Avenida Lima, 1369', -16.38384800, -71.57473100),
 (4, 'Estadio de Alto Libertad', 'Avenida Lima', -16.38289500, -71.57285500),
@@ -1707,7 +1717,11 @@ INSERT INTO `paraderos` (`id_paradero`, `nombre`, `direccion`, `latitud`, `longi
 (681, 'Duraznos', 'Progreso', -16.41491700, -71.58514300),
 (682, 'Internacional', 'Progreso', -16.41690900, -71.58274700),
 (683, 'Francisco Bolognesi', 'Progreso', -16.41596300, -71.58194000),
-(684, 'Huaranguillo', 'Progreso', -16.41497000, -71.57900000);
+(684, 'Huaranguillo', 'Progreso', -16.41497000, -71.57900000),
+(685, 'Aeropuerto', 'Aeropuerto Rodriguez Ballon', -16.34499156, -71.56717994),
+(686, 'Mercado Zamacola', 'Mercado de Zamacola', -16.35190983, -71.56421882),
+(688, 'Paradero Parra', 'Inicio Avenida Parra', -16.40570121, -71.53997884),
+(689, 'Cruce Puente San Martin', 'Puente San Martin', -16.41829824, -71.55036411);
 
 -- --------------------------------------------------------
 
@@ -1746,8 +1760,10 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `email`, `password_h
 -- Indices de la tabla `historial_viajes`
 --
 ALTER TABLE `historial_viajes`
-  ADD PRIMARY KEY (`id_viaje`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_usuario` (`id_usuario`),
+  ADD KEY `idx_fecha` (`fecha_viaje`),
+  ADD KEY `idx_linea` (`id_linea`);
 
 --
 -- Indices de la tabla `lineas`
@@ -1784,25 +1800,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `historial_viajes`
 --
 ALTER TABLE `historial_viajes`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `lineas`
 --
 ALTER TABLE `lineas`
-  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `linea_paraderos`
 --
 ALTER TABLE `linea_paraderos`
-  MODIFY `id_linea_paradero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=904;
+  MODIFY `id_linea_paradero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=909;
 
 --
 -- AUTO_INCREMENT de la tabla `paraderos`
 --
 ALTER TABLE `paraderos`
-  MODIFY `id_paradero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=685;
+  MODIFY `id_paradero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=690;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -1818,7 +1834,8 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `historial_viajes`
 --
 ALTER TABLE `historial_viajes`
-  ADD CONSTRAINT `historial_viajes_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `historial_viajes_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `historial_viajes_ibfk_2` FOREIGN KEY (`id_linea`) REFERENCES `lineas` (`id_linea`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `linea_paraderos`

@@ -42,7 +42,7 @@
                       <div class="col-12">
                         <label for="nombre" class="form-label fw-medium text-dark">#{msg['label.name']}</label>
                         <h:inputText id="nombre" styleClass="form-control form-control-lg bg-light border-0"
-                                     value="#{empty userBean.nombreInput ? userBean.nombre : userBean.nombreInput}">
+                                     value="#{userBean.nombreInput}">
                           
                         </h:inputText>
                       </div>
@@ -50,7 +50,7 @@
                       <div class="col-12">
                         <label for="apellido" class="form-label fw-medium text-dark">#{msg['label.lastName']}</label>
                         <h:inputText id="apellido" styleClass="form-control form-control-lg bg-light border-0"
-                                     value="#{empty userBean.apellidoInput ? userBean.apellido : userBean.apellidoInput}">
+                                     value="#{userBean.apellidoInput}">
                           
                         </h:inputText>
                       </div>

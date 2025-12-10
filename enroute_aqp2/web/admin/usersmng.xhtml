@@ -70,19 +70,19 @@
                         
                         <!-- Botón oculto para ejecutar la promoción -->
                         <p:commandButton id="promoteBtn" 
-                                        widgetVar="promoteBtnWidget"
-                                        action="#{usersMngBean.promoteToAdmin(usersMngBean.selectedUserId, usersMngBean.superAdminPassword)}" 
+                                        action="#{usersMngBean.promoteToAdmin}" 
                                         style="display:none;"
                                         update="usersTable"
-                                        oncomplete="handlePromoteComplete()" />
+                                        oncomplete="handlePromoteComplete()" 
+                                        ajax="true" />
                         
                         <!-- Botón oculto para ejecutar la conversión a cliente -->
                         <p:commandButton id="demoteBtn" 
-                                        widgetVar="demoteBtnWidget"
-                                        action="#{usersMngBean.demoteToClient(usersMngBean.selectedUserId, usersMngBean.superAdminPassword)}" 
+                                        action="#{usersMngBean.demoteToClient}" 
                                         style="display:none;"
                                         update="usersTable"
-                                        oncomplete="handleDemoteComplete()" />
+                                        oncomplete="handleDemoteComplete()" 
+                                        ajax="true" />
                     </h:form>
                 </div>
             </div>
@@ -202,8 +202,8 @@
                 document.getElementById('usersForm:selectedUserId').value = selectedUserId;
                 document.getElementById('usersForm:superAdminPass').value = password;
                 
-                // Ejecutar el comando JSF usando PrimeFaces
-                PF('promoteBtnWidget').jq.click();
+                // Ejecutar el comando JSF haciendo click directamente
+                document.getElementById('usersForm:promoteBtn').click();
             }
             
             function demoteToClient() {
@@ -227,8 +227,8 @@
                 document.getElementById('usersForm:selectedUserId').value = selectedUserId;
                 document.getElementById('usersForm:superAdminPass').value = password;
                 
-                // Ejecutar el comando JSF usando PrimeFaces
-                PF('demoteBtnWidget').jq.click();
+                // Ejecutar el comando JSF haciendo click directamente
+                document.getElementById('usersForm:demoteBtn').click();
             }
             
             function handlePromoteComplete() {
