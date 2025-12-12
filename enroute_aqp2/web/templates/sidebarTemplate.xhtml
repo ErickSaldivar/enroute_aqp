@@ -56,7 +56,6 @@
       @media (max-width: 991.98px) {
         /* For specific pages reserve space on their page titles so the fixed toggle doesn't overlap */
         main.content-wrap[data-active="mapa"] h2,
-        main.content-wrap[data-active="favoritos"] h2,
         main.content-wrap[data-active="historial"] h2,
         main.content-wrap[data-active="perfil"] h2,
         main.content-wrap[data-active="rutas"] h2,
@@ -103,20 +102,6 @@
                 <i class="bi bi-bus-front"></i>
                 <span>#{msg['nav.viajar']}</span>
               </h:link>
-            </li>
-            <li class="nav-item">
-              <h:panelGroup rendered="#{not empty sessionScope.userName}">
-                <h:link outcome="/pages/favoritos.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
-                  <i class="bi bi-heart"></i>
-                  <span>#{msg['nav.favoritos']}</span>
-                </h:link>
-              </h:panelGroup>
-              <h:panelGroup rendered="#{empty sessionScope.userName}">
-                <a href="#" onclick="showLoginModal(); return false;" class="nav-link d-flex align-items-center px-3 py-2">
-                  <i class="bi bi-heart"></i>
-                  <span>#{msg['nav.favoritos']}</span>
-                </a>
-              </h:panelGroup>
             </li>
             <li class="nav-item">
               <h:panelGroup rendered="#{not empty sessionScope.userName}">
@@ -222,20 +207,6 @@
                 <i class="bi bi-bus-front"></i>
                 <span>#{msg['nav.viajar']}</span>
               </h:link>
-            </li>
-            <li class="nav-item">
-              <h:panelGroup rendered="#{not empty sessionScope.userName}">
-                <h:link outcome="/pages/favoritos.xhtml" styleClass="nav-link d-flex align-items-center px-3 py-2 #{active eq 'favoritos' ? 'active' : ''}">
-                  <i class="bi bi-heart"></i>
-                  <span>#{msg['nav.favoritos']}</span>
-                </h:link>
-              </h:panelGroup>
-              <h:panelGroup rendered="#{empty sessionScope.userName}">
-                <a href="#" onclick="showLoginModal(); return false;" class="nav-link d-flex align-items-center px-3 py-2">
-                  <i class="bi bi-heart"></i>
-                  <span>#{msg['nav.favoritos']}</span>
-                </a>
-              </h:panelGroup>
             </li>
             <li class="nav-item">
               <h:panelGroup rendered="#{not empty sessionScope.userName}">
