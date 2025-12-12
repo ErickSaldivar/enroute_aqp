@@ -6,19 +6,19 @@
                 template="/templates/sidebarTemplate.xhtml">
 
   <ui:param name="active" value="historial" />
-  <ui:define name="pageTitle">Historial - Enroute AQP</ui:define>
+  <ui:define name="pageTitle">#{msg['page.history.title']}</ui:define>
 
   <ui:define name="content">
     <div class="container-fluid px-0">
       <!-- Mobile Header -->
       <div class="d-lg-none bg-white shadow-sm p-3 border-bottom mb-3">
-        <h2 class="mb-0 fw-bold text-dark">Historial de Rutas</h2>
+        <h2 class="mb-0 fw-bold text-dark">#{msg['page.history.title']}</h2>
       </div>
 
       <!-- Desktop Title -->
       <div class="d-none d-lg-block mb-4">
         <div class="d-flex justify-content-between align-items-center">
-          <h1 class="fw-bold text-dark mb-0">Historial de Rutas</h1>
+          <h1 class="fw-bold text-dark mb-0">#{msg['page.history.title']}</h1>
         </div>
       </div>
 
@@ -26,7 +26,7 @@
       <div class="row g-4">
         <ui:fragment rendered="#{empty historialBean.historialAgrupado}">
           <div class="col-12">
-            <p class="text-center text-muted">No tienes viajes registrados aún</p>
+            <p class="text-center text-muted">#{msg['page.history.empty']}</p>
           </div>
         </ui:fragment>
         
@@ -47,7 +47,7 @@
                       <div class="flex-grow-1">
                         <h5 class="mb-1 fw-bold text-dark">#{viaje.nombreLinea}</h5>
                         <p class="mb-0 text-muted small">
-                          Origen: #{viaje.paraderoSubida}, Destino: #{viaje.paraderoBajada}
+                          #{msg['page.history.origin']}: #{viaje.paraderoSubida}, #{msg['page.history.destination']}: #{viaje.paraderoBajada}
                         </p>
                       </div>
                     </div>
@@ -64,20 +64,20 @@
         <!-- Statistics -->
         <div class="col-12">
           <div class="bg-white rounded-3 shadow-sm p-4">
-            <h4 class="fw-bold text-dark mb-4">Estadísticas del Mes</h4>
+            <h4 class="fw-bold text-dark mb-4">#{msg['page.history.stats.title']}</h4>
             <div class="row g-3">
               <div class="col-6 col-md-3">
                 <div class="text-center p-3 bg-light rounded-3">
                   <i class="bi bi-bus-front fs-2 mb-2 d-block" style="color: #DD6B20;"></i>
                   <h5 class="fw-bold text-dark mb-1">#{historialBean.totalViajes}</h5>
-                  <small class="text-muted">Rutas Usadas</small>
+                  <small class="text-muted">#{msg['page.history.routesUsed']}</small>
                 </div>
               </div>
               <div class="col-6 col-md-3">
                 <div class="text-center p-3 bg-light rounded-3">
                   <i class="bi bi-clock fs-2 text-info mb-2 d-block"></i>
                   <h5 class="fw-bold text-dark mb-1">#{historialBean.totalHoras}h</h5>
-                  <small class="text-muted">Tiempo Total</small>
+                  <small class="text-muted">#{msg['page.history.totalTime']}</small>
                 </div>
               </div>
               <div class="col-6 col-md-3">
@@ -89,14 +89,14 @@
                                        xmlns:f="http://xmlns.jcp.org/jsf/core"/>
                     </h:outputText>
                   </h5>
-                  <small class="text-muted">Gasto Estimado</small>
+                  <small class="text-muted">#{msg['page.history.estimatedSpending']}</small>
                 </div>
               </div>
               <div class="col-6 col-md-3">
                 <div class="text-center p-3 bg-light rounded-3">
                   <i class="bi bi-geo-alt fs-2 text-danger mb-2 d-block"></i>
                   <h5 class="fw-bold text-dark mb-1">#{historialBean.destinosUnicos}</h5>
-                  <small class="text-muted">Destinos Únicos</small>
+                  <small class="text-muted">#{msg['page.history.uniqueDestinations']}</small>
                 </div>
               </div>
             </div>
@@ -107,13 +107,13 @@
         <h:form>
           <div class="col-12">
             <div class="bg-white rounded-3 shadow-sm p-4">
-              <h4 class="fw-bold text-dark mb-3">Acciones Rápidas</h4>
+              <h4 class="fw-bold text-dark mb-3">#{msg['page.history.quickActions.title']}</h4>
               <div class="row g-3">
                 
                 <div class="col-6 col-md-3">
-                  <h:commandButton value="Limpiar Historial" styleClass="btn btn-outline-danger w-100 py-3 rounded-3" 
+                  <h:commandButton value="#{msg['button.clearHistory']}" styleClass="btn btn-outline-danger w-100 py-3 rounded-3" 
                                    action="#{historialBean.limpiarHistorial}"
-                                   onclick="return confirm('¿Está seguro de que desea limpiar todo el historial?');">
+                                   onclick="return confirm('#{msg['dialog.confirm.clearHistory']}');">
                     <f:facet name="icon" xmlns:f="http://xmlns.jcp.org/jsf/core">
                       <i class="bi bi-trash fs-4"></i>
                     </f:facet>
