@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-12-2025 a las 21:29:56
+-- Tiempo de generación: 12-12-2025 a las 06:08:23
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,36 +56,36 @@ CREATE TABLE `lineas` (
 --
 
 INSERT INTO `lineas` (`id_linea`, `nombre`, `descripcion`) VALUES
-(1, 'A1-IDA', 'Terminal COTUM Express S.A.C. -> La Merced'),
-(2, 'A1-VUELTA', 'La Merced -> Terminal COTUM Express S.A.C.'),
-(3, 'A13-IDA', 'Paradero Emarsistran S.A. (Umapalca) -> Grifo San Fernando - Repsol'),
-(4, 'A13-VUELTA', 'Grifo San Fernando - Repsol -> Paradero Emarsistran S.A. (Umapalca)'),
-(5, 'A14-IDA', 'Terminal Unión AQP S.A. (El Mirador) -> La Salle'),
-(6, 'A14-VUELTA', 'La Salle -> Terminal Unión AQP S.A. (El Mirador)'),
-(7, 'A15-IDA', 'Terminal Unión AQP (El Salvador) -> Policlínico Metropolitano EsSalud (Seguro Social)'),
-(8, 'A15-VUELTA', 'Policlínico Metropolitano EsSalud (Seguro Social) -> Terminal Unión AQP (El Salvador)'),
-(9, 'A17-IDA', 'Terminal COTUM Express S.A.C. -> Grifo Monterrey'),
-(10, 'A17-VUELTA', 'Grifo Monterrey -> Terminal COTUM Express S.A.C.'),
-(11, 'A18-IDA', 'Terminal Emarsistran S.A. (El Pasto) -> Piscina Lonccos y Ccalas'),
-(12, 'A18-VUELTA', 'Piscina Lonccos y Ccalas -> Terminal Emarsistran S.A. (El Pasto)'),
-(13, 'A19-IDA', 'Megabus AQP S.A.C. (Ampliación Pampas del Cusco) -> Plataforma Andrés Avelino Cáceres'),
-(14, 'A19-VUELTA', 'Plataforma Andrés Avelino Cáceres -> Megabus AQP S.A.C. (Ampliación Pampas del Cusco)'),
-(15, 'A10-IDA', 'Terminal AQP Masivo S.A.C. (Villa Santa Rosa) -> Terminal Terrestre'),
-(16, 'A10-VUELTA', 'Terminal Terrestre -> Terminal AQP Masivo S.A.C. (Villa Santa Rosa)'),
-(17, 'A11-IDA', 'Paradero Emarsistran S.A. (Horacio Zeballos Gámez) -> Estación Sur Lara'),
-(18, 'A11-VUELTA', 'Estación Sur Lara -> Paradero Emarsistran S.A. (Horacio Zeballos Gámez)'),
-(19, 'A12-IDA', 'Terminal Emarsistran S.A. (La Campiña) -> Estación Sur Lara'),
-(20, 'A12-VUELTA', 'Estación Sur Lara -> Terminal Emarsistran S.A. (La Campiña)'),
-(21, 'A-8-IDA', 'Lima --> José Olaya'),
-(22, 'A-8-VUELTA', 'José Olaya --> Complejo deportivo del Colegio Internacional'),
-(23, 'A-9-IDA', 'Lima (Semi Rural Pachacútec) --> Cerro Viejo (Salamanca)'),
-(24, 'A-9-VUELTA', 'Cerro Viejo (Salamanca) --> Arequipa (Semi Rural Pachacútec)'),
-(25, 'BT-1-IDA', 'Estación Norte terminal Pesquero (Río Seco) --> Lara'),
-(26, 'BT-1-VUELTA', 'Lara --> Terminal Pesquero (Río Seco)'),
-(27, 'BT-2-IDA', 'Lara --> Estación Norte Terminal Pesquero (Río Seco)'),
-(28, 'BT-2-VUELTA', 'Estación Norte terminal Pesquero (Río Seco) --> Lara'),
-(29, 'T-20-IDA', 'Terminal MegaBus AQP S.A.C (Villa el Triunfo) --> Las Begonias'),
-(30, 'T-20-VUELTA', 'Las Begonias (Altura del Puente Peatonal) --> Terminal MegaBus AQP S.A.C (Villa el Triunfo)'),
+(1, 'COTUM Express A1-IDA', 'Terminal COTUM Express S.A.C. -> La Merced'),
+(2, 'COTUM Express A1-VUELTA', 'La Merced -> Terminal COTUM Express S.A.C.'),
+(3, 'Emarsistran A13-IDA', 'Paradero Emarsistran S.A. (Umapalca) -> Grifo San Fernando - Repsol'),
+(4, 'Emarsistran A13-VUELTA', 'Grifo San Fernando - Repsol -> Paradero Emarsistran S.A. (Umapalca)'),
+(5, 'Union AQP A14-IDA', 'Terminal Unión AQP S.A. (El Mirador) -> La Salle'),
+(6, 'Union AQP A14-VUELTA', 'La Salle -> Terminal Unión AQP S.A. (El Mirador)'),
+(7, 'Union AQP A15-IDA', 'Terminal Unión AQP (El Salvador) -> Policlínico Metropolitano EsSalud (Seguro Social)'),
+(8, 'Union AQP A15-VUELTA', 'Policlínico Metropolitano EsSalud (Seguro Social) -> Terminal Unión AQP (El Salvador)'),
+(9, 'COTUM Express A17-IDA', 'Terminal COTUM Express S.A.C. -> Grifo Monterrey'),
+(10, 'COTUM Express A17-VUELTA', 'Grifo Monterrey -> Terminal COTUM Express S.A.C.'),
+(11, 'Emarsistran A18-IDA', 'Terminal Emarsistran S.A. (El Pasto) -> Piscina Lonccos y Ccalas'),
+(12, 'Emarsistran A18-VUELTA', 'Piscina Lonccos y Ccalas -> Terminal Emarsistran S.A. (El Pasto)'),
+(13, 'Megabus AQP A19-IDA', 'Megabus AQP S.A.C. (Ampliación Pampas del Cusco) -> Plataforma Andrés Avelino Cáceres'),
+(14, 'Megabus AQP A19-VUELTA', 'Plataforma Andrés Avelino Cáceres -> Megabus AQP S.A.C. (Ampliación Pampas del Cusco)'),
+(15, 'AQP Masivo A10-IDA', 'Terminal AQP Masivo S.A.C. (Villa Santa Rosa) -> Terminal Terrestre'),
+(16, 'AQP Masivo A10-VUELTA', 'Terminal Terrestre -> Terminal AQP Masivo S.A.C. (Villa Santa Rosa)'),
+(17, 'Emarsistran A11-IDA', 'Paradero Emarsistran S.A. (Horacio Zeballos Gámez) -> Estación Sur Lara'),
+(18, 'Emarsistran A11-VUELTA', 'Estación Sur Lara -> Paradero Emarsistran S.A. (Horacio Zeballos Gámez)'),
+(19, 'Emarsistran A12-IDA', 'Terminal Emarsistran S.A. (La Campiña) -> Estación Sur Lara'),
+(20, 'Emarsistran A12-VUELTA', 'Estación Sur Lara -> Terminal Emarsistran S.A. (La Campiña)'),
+(21, 'COTUM Express A-8-IDA', 'Lima --> José Olaya'),
+(22, 'COTUM Express A-8-VUELTA', 'José Olaya --> Complejo deportivo del Colegio Internacional'),
+(23, 'COTUM Express A-9-IDA', 'Lima (Semi Rural Pachacútec) --> Cerro Viejo (Salamanca)'),
+(24, 'COTUM Express A-9-VUELTA', 'Cerro Viejo (Salamanca) --> Arequipa (Semi Rural Pachacútec)'),
+(25, 'Integra Arequipa BT-1-IDA', 'Estación Norte terminal Pesquero (Río Seco) --> Lara'),
+(26, 'Integra Arequipa BT-1-VUELTA', 'Lara --> Terminal Pesquero (Río Seco)'),
+(27, 'Integra Arequipa BT-2-IDA', 'Lara --> Estación Norte Terminal Pesquero (Río Seco)'),
+(28, 'Integra Arequipa BT-2-VUELTA', 'Estación Norte terminal Pesquero (Río Seco) --> Lara'),
+(29, 'Megabus AQP T-20-IDA', 'Terminal MegaBus AQP S.A.C (Villa el Triunfo) --> Las Begonias'),
+(30, 'Megabus AQP T-20-VUELTA', 'Las Begonias (Altura del Puente Peatonal) --> Terminal MegaBus AQP S.A.C (Villa el Triunfo)'),
 (31, 'z35', 'aeropuerto -> centro ida'),
 (32, 'Jordi The Dickboy', 'Jordi The Dickboy');
 
